@@ -5,7 +5,7 @@
     "description": "Solis Construction Backend Documentation",
     "version": "1.0.0"
   },
-  "host": "localhost:8000",
+  "host": "localhost:5000",
   "basePath": "/",
   "schemes": [
     "http"

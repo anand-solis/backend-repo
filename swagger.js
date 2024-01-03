@@ -5,7 +5,7 @@ const docs = {
         title: "API Documentation",
         description: "Solis Construction Backend Documentation"
     },
-    host: "localhost:8000"
+    host: "localhost:5000"
 };
 
 const outputFile = "./swagger.json";
