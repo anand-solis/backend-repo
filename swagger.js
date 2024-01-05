@@ -8,11 +8,11 @@ const docs = {
     host: "localhost:5000"
 };
 
-const outputFile = "./swagger.json";
+const outputFile = "./src/docs/swagger.json";
 
 const routes = [
     "index.js",
-    "./routes/login/login.js"
+    "routes/login/login.js"
 ];
 
 swaggerAutogen(outputFile, routes, docs);

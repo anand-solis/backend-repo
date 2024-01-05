@@ -1,7 +1,6 @@
-const User = require("../../models/account/users.model");
-const connectDB = require("../../utils/connectDB");
+const User = require("@/models/account/users.model");
 const md5 = require("md5");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 const LoginController = (req, res) => {
 
