@@ -5,15 +5,15 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
+// Json Body
+app.use(express.json({ urlencoded: true }))
+
 // Documentation Imports
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("@/docs/swagger.json");
 
 // Utils Imports
 const connectDB = require("@/utils/connectDB");
-
-// Routes Imports
-const login = require("@/routes/login/login.route");
 
 // Server Configuration
 const PORT = process.env.PORT;
@@ -25,7 +25,10 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(cors({ origin: "*" }));
 
 // API Routes
-app.use(login);
+app.use(require("@/routes/otp/otp.route"));
+app.use(require("@/routes/login/login.route"));
+app.use(require("@/routes/email/email.route"));
+app.use(require("@/routes/sms/sms.route"));
 
 async function startServer() {
     try {

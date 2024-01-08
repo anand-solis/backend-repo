@@ -4,7 +4,7 @@
     "description": "",
     "main": "server.js",
     "scripts": {
-        "start": "node --watch server.js",
+        "start": "nodemon server.js",
         "docs": "node swagger.js"
     },
     "_moduleAliases": {
@@ -18,10 +18,11 @@
         "dotenv": "^16.3.1",
         "express": "^4.18.2",
         "jsonwebtoken": "^9.0.2",
-        "md5": "^2.3.0",
         "module-alias": "^2.2.3",
         "mongoose": "^8.0.3",
-        "nodemailer": "^6.9.8"
+        "node-cache": "^5.1.2",
+        "nodemailer": "^6.9.8",
+        "nodemon": "^3.0.2"
     },
     "devDependencies": {
         "swagger-autogen": "^2.23.7",
