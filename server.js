@@ -6,7 +6,7 @@ const app = express();
 const cors = require("cors");
 
 // Json Body
-app.use(express.json({ urlencoded: true }))
+app.use(express.json({ urlencoded: true }));
 
 // Documentation Imports
 const swaggerUi = require("swagger-ui-express");
@@ -25,10 +25,11 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(cors({ origin: "*" }));
 
 // API Routes
-app.use(require("@/routes/otp/otp.route"));
-app.use(require("@/routes/login/login.route"));
-app.use(require("@/routes/email/email.route"));
-app.use(require("@/routes/sms/sms.route"));
+app.use(require("@/routes/otp.route"));
+app.use(require("@/routes/login.route"));
+app.use(require("@/routes/profile.route"));
+app.use(require("@/routes/email.route"));
+app.use(require("@/routes/sms.route"));
 
 async function startServer() {
     try {

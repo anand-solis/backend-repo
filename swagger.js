@@ -11,9 +11,11 @@ const docs = {
 const outputFile = "./docs/swagger.json";
 
 const routes = [
-    "routes/login/login.route.js",
-    "routes/otp/otp.route.js",
-    "routes/email/email.route.js"
+    "routes/login.route.js",
+    "routes/otp.route.js",
+    "routes/profile.route.js",
+    "routes/email.route.js",
+    "routes/sms.route.js"
 ];
 
 swaggerAutogen(outputFile, routes, docs);

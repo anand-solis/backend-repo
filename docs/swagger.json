@@ -31,7 +31,27 @@
         }
       }
     },
+    "/profile": {
+      "patch": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/email": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/sms": {
       "post": {
         "description": "",
         "responses": {

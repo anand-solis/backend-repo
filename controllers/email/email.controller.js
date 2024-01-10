@@ -21,7 +21,7 @@ const EmailController = async (email, subject, content) => {
 
     try {
         await transporter.sendMail(emailContent);
-        return { success: true, error: "", message: "OTP sent successfully via Email." };
+        return { success: true, error: "", message: "Email sent successfully." };
     } catch (error) {
         return { success: true, error: `Error: ${error}`, message: "" };
     }

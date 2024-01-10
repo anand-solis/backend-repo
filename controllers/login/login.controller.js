@@ -53,7 +53,7 @@ const LoginController = async (req, res) => {
                         };
                     }
 
-                    const AddedUser = await User(AddUserDetails);
+                    const AddedUser = await User.create(AddUserDetails);
                     const assigned = await AssignJWTToken(AddedUser);
 
                     if(assigned.success) await OTP.deleteMany({ param: param });
@@ -69,7 +69,6 @@ const LoginController = async (req, res) => {
             return res.json({ success: false, error: "OTP Not found in the database" });
         }
     } catch (error) {
-        console.log(error)
         return res.json({ success: false, error: `Error: ${error}` });
     }
 }

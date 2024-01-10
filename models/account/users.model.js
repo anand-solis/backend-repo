@@ -3,19 +3,19 @@ const mongoose = require("mongoose");
 const UserSchema = mongoose.Schema({
     name: {
         type: String,
-        required: [true, "Name is required."],
-        default: ""
+        // required: [true, "Name is required."],
+        // default: null
     },
     email: {
         address: {
             type: String,
-            required: [true, "Email is required."],
-            unique: [true, "Email must be unique."],
-            lowercase: true,
-            match: [
-                /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                "Please enter a valid email address."
-            ],
+            // required: [true, "Email is required."],
+            // unique: [true, "Email must be unique."],
+            // lowercase: true,
+            // match: [
+            //     /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+            //     "Please enter a valid email address."
+            // ],
             default: ""
         },
         isValid: {
@@ -27,12 +27,12 @@ const UserSchema = mongoose.Schema({
     phone: {
         number: {
             type: String,
-            required: [true, "Phone Number is required."],
-            unique: [true, "Phone Number must be unique."],
-            match: [ // Phone number validation (simplified for illustration)
-                /^\d{10}$/,
-                "Please enter a valid 10-digit phone number."
-            ],
+            // required: [true, "Phone Number is required."],
+            // unique: [true, "Phone Number must be unique."],
+            // match: [ // Phone number validation (simplified for illustration)
+            //     /^\d{10}$/,
+            //     "Please enter a valid 10-digit phone number."
+            // ],
             default: ""
         },
         isValid: {
@@ -42,9 +42,10 @@ const UserSchema = mongoose.Schema({
         }
     },
     role: {
-        type: String,
-        required: [true, "Role is Required."],
-        default: ""
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Role"
+        // required: [true, "Role is Required."],
+        // default: null
     },
     blocked: {
         type: Boolean,

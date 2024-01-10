@@ -4,6 +4,6 @@ const PublicMiddleware = require("@/utils/middleware/publicMiddleware");
 
 const router = express.Router();
 
-router.post("/email", PublicMiddleware, SMSController);
+router.post("/sms", PublicMiddleware, SMSController);
 
 module.exports = router;
