@@ -1,30 +1,11 @@
-const nodemailer = require("nodemailer");
+const sendEmailController = require("@/controllers/email/sendEmail.controller");
 
-const EmailController = async (email, subject, content) => {
-    const transporter = nodemailer.createTransport({
-        service: process.env.SMTP_SERVICE,
-        host: process.env.SMTP_HOST,
-        port: process.env.SMTP_PORT,
-        secure: true,
-        auth: {
-            user: process.env.SMTP_USERNAME,
-            pass: process.env.SMTP_PASSWORD,
-        },
-    });
+const EmailController = async (req, res) => {
+    const { email, subject, content } = req.body;
 
-    const emailContent = {
-        from: `"${process.env.SMTP_FROM}" <${process.env.SMTP_USERNAME}>`,
-        to: email,
-        subject: subject,
-        html: content,
-    };
+    const send = await sendEmailController(email, subject, content);
 
-    try {
-        await transporter.sendMail(emailContent);
-        return { success: true, error: "", message: "Email sent successfully." };
-    } catch (error) {
-        return { success: true, error: `Error: ${error}`, message: "" };
-    }
+    return res.json({ success: send.success, error: send.error, message: send.message });
 }
 
 module.exports = EmailController;
