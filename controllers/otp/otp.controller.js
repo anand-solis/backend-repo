@@ -1,8 +1,9 @@
 const OTP = require("@/models/account/otp.model");
 const validateParam = require("@/controllers/otp/validateParam.controller");
 const generateCode = require("@/controllers/otp/generateCode.controller");
-const EmailController = require("@/controllers/email/email.controller");
+const sendEmailController = require("@/controllers/email/sendEmail.controller");
 const SMSController = require("@/controllers/sms/sms.controller");
+const VerificationOTP = require("@/emails/VerificationOTP.template");
 
 const OTPController = async (req, res) => {
     const { param } = req.body;
@@ -15,7 +16,7 @@ const OTPController = async (req, res) => {
             otp.save();
 
             if (paramType.type == "email") {
-                const sendEmail = await EmailController(param, "Verification OTP", code);
+                const sendEmail = await sendEmailController(param, "Verification OTP", VerificationOTP(code));
                 return res.json({ success: sendEmail.success, error: sendEmail.error, message: sendEmail.message });
             }
             else if (paramType.type == "phone") {
