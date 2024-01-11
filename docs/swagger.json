@@ -41,6 +41,16 @@
         }
       }
     },
+    "/profile/new": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/email": {
       "post": {
         "description": "",
