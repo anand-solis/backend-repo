@@ -27,6 +27,7 @@ app.use(cors({ origin: "*" }));
 // API Routes
 app.use(require("@/routes/otp.route"));
 app.use(require("@/routes/login.route"));
+app.use(require("@/routes/role.route"));
 app.use(require("@/routes/profile.route"));
 app.use(require("@/routes/email.route"));
 app.use(require("@/routes/sms.route"));
