@@ -17,12 +17,12 @@ const LoginController = async (req, res) => {
 
                 if(OTPResponse.type == "email") {
                     findOptions = {
-                        email: OTPResponse.param
+                        "email.address": OTPResponse.param
                     };
                 }
                 else if(OTPResponse.type == "phone"){
                     findOptions = {
-                        phone: OTPResponse.param
+                        "phone.number": OTPResponse.param
                     };
                 }
 
