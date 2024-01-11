@@ -31,6 +31,16 @@
         }
       }
     },
+    "/roles": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/profile": {
       "patch": {
         "description": "",

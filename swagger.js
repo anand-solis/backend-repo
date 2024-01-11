@@ -13,6 +13,7 @@ const outputFile = "./docs/swagger.json";
 const routes = [
     "routes/login.route.js",
     "routes/otp.route.js",
+    "routes/role.route.js",
     "routes/profile.route.js",
     "routes/email.route.js",
     "routes/sms.route.js"
