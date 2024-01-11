@@ -8,12 +8,10 @@ const ProfileController = async (req, res) => {
             {
                 name: name,
                 email: {
-                    address: email.address,
-                    isValid: email.isValid
+                    address: email.address
                 },
                 phone: {
-                    number: phone.number,
-                    isValid: phone.isValid
+                    number: phone.number
                 },
                 role: role
             }
