@@ -80,6 +80,16 @@
           }
         }
       }
+    },
+    "/organization": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
     }
   }
 }

@@ -31,6 +31,7 @@ app.use(require("@/routes/role.route"));
 app.use(require("@/routes/profile.route"));
 app.use(require("@/routes/email.route"));
 app.use(require("@/routes/sms.route"));
+app.use(require("@/routes/organization.route"));
 
 async function startServer() {
     try {
