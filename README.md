@@ -4,4 +4,5 @@
 ## API Documentation -> /docs
 
 ## Pending Tasks
- - Email & SMS API Connection
+ - SMS API Connection
+ - Validations for Required fields (express-validator)
