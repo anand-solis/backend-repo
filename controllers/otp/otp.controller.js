@@ -29,7 +29,7 @@ const OTPController = async (req, res) => {
         }
     }
     else {
-        return res.json({ success: false, error: `Error: Email or Mobile Number is not valid.`, message: "" });
+        return res.json({ success: false, error: `Email / Mobile Number is not valid.`, message: "" });
     }
 }
 
