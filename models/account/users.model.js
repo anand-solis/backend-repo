@@ -16,7 +16,7 @@ const UserSchema = mongoose.Schema({
             //     /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
             //     "Please enter a valid email address."
             // ],
-            default: ""
+            // default: ""
         },
         isValid: {
             type: Boolean,
@@ -33,7 +33,7 @@ const UserSchema = mongoose.Schema({
             //     /^\d{10}$/,
             //     "Please enter a valid 10-digit phone number."
             // ],
-            default: ""
+            // default: ""
         },
         isValid: {
             type: Boolean,
