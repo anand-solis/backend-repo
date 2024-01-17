@@ -1,9 +1,10 @@
 const express = require("express");
-const RoleController = require("@/controllers/role/role.controller");
+const MemberController = require("@/controllers/organization/member/member.controller");
+
 const Middleware = require("@/utils/middleware/middleware");
 
 const router = express.Router();
 
-router.get("/roles", Middleware, RoleController);
+router.post("/organization", Middleware, OrganizationController);
 
 module.exports = router;

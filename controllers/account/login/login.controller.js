@@ -1,5 +1,5 @@
-const OTPExpiryValidation = require("@/controllers/login/OTPExpiryValidation.controller");
-const AssignJWTToken = require("@/controllers/login/AssignToken.controller");
+const OTPExpiryValidation = require("@/controllers/account/login/OTPExpiryValidation.controller");
+const AssignJWTToken = require("@/controllers/account/login/AssignToken.controller");
 const User = require("@/models/account/users.model");
 const OTP = require("@/models/account/otp.model");
 

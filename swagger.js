@@ -11,10 +11,10 @@ const docs = {
 const outputFile = "./docs/swagger.json";
 
 const routes = [
-    "routes/app/login.route.js",
-    "routes/app/otp.route.js",
-    "routes/app/role.route.js",
-    "routes/app/profile.route.js",
+    "routes/account/login.route.js",
+    "routes/account/otp.route.js",
+    "routes/account/role.route.js",
+    "routes/account/profile.route.js",
     "routes/app/email.route.js",
     "routes/app/sms.route.js",
     "routes/organization/organization.route.js"

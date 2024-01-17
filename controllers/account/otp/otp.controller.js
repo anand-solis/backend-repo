@@ -1,8 +1,8 @@
 const OTP = require("@/models/account/otp.model");
-const validateParam = require("@/controllers/otp/validateParam.controller");
-const generateCode = require("@/controllers/otp/generateCode.controller");
-const sendEmailController = require("@/controllers/email/sendEmail.controller");
-const sendSMSController = require("@/controllers/sms/sendSMS.controller");
+const validateParam = require("@/controllers/account/otp/validateParam.controller");
+const generateCode = require("@/controllers/account/otp/generateCode.controller");
+const sendEmailController = require("@/controllers/app/email/sendEmail.controller");
+const sendSMSController = require("@/controllers/app/sms/sendSMS.controller");
 const EmailVerificationOTP = require("@/templates/emails/EmailVerificationOTP.template");
 const SMSVerificationOTP = require("@/templates/sms/SMSVerificationOTP.template");
 

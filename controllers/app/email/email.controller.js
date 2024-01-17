@@ -1,4 +1,4 @@
-const sendEmailController = require("@/controllers/email/sendEmail.controller");
+const sendEmailController = require("@/controllers/app/email/sendEmail.controller");
 
 const EmailController = async (req, res) => {
     const { email, subject, content } = req.body;

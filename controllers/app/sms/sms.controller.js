@@ -1,4 +1,4 @@
-const sendSMSController = require("@/controllers/sms/sendSMS.controller");
+const sendSMSController = require("@/controllers/app/sms/sendSMS.controller");
 
 const SMSController = async (req, res) => {
     const { number, content } = req.body;

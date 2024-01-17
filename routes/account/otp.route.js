@@ -1,5 +1,5 @@
 const express = require("express");
-const OTPController = require("@/controllers/otp/otp.controller");
+const OTPController = require("@/controllers/account/otp/otp.controller");
 const PublicMiddleware = require("@/utils/middleware/publicMiddleware");
 
 const router = express.Router();

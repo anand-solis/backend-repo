@@ -1,5 +1,5 @@
 const express = require("express");
-const OrganizationController = require("@/controllers/organization/organization.controller");
+const OrganizationController = require("@/controllers/organization/main/organization.controller");
 
 const Middleware = require("@/utils/middleware/middleware");
 

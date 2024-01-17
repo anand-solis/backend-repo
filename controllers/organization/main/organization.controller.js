@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Member = require("@/models/organization/members.model");
-const createOrganization = require("@/controllers/organization/createOrganization.controller");
-const createPermissions = require("@/controllers/organization/createPermissions.controller");
-const createSubscriptionPlan = require("@/controllers/organization/createSubscriptionPlan.controller");
+const createOrganization = require("@/controllers/organization/main/createOrganization.controller");
+const createPermissions = require("@/controllers/organization/main/createPermissions.controller");
+const createSubscriptionPlan = require("@/controllers/organization/main/createSubscriptionPlan.controller");
 
 const OrganizationController = async (req, res) => {
     const session = await mongoose.startSession();

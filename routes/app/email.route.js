@@ -1,5 +1,5 @@
 const express = require("express");
-const EmailController = require("@/controllers/email/email.controller");
+const EmailController = require("@/controllers/app/email/email.controller");
 const PublicMiddleware = require("@/utils/middleware/publicMiddleware");
 
 const router = express.Router();

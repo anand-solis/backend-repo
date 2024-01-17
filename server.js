@@ -25,10 +25,10 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(cors({ origin: "*" }));
 
 // API Routes
-app.use(require("@/routes/app/otp.route"));
-app.use(require("@/routes/app/login.route"));
-app.use(require("@/routes/app/role.route"));
-app.use(require("@/routes/app/profile.route"));
+app.use(require("@/routes/account/otp.route"));
+app.use(require("@/routes/account/login.route"));
+app.use(require("@/routes/account/role.route"));
+app.use(require("@/routes/account/profile.route"));
 app.use(require("@/routes/app/email.route"));
 app.use(require("@/routes/app/sms.route"));
 app.use(require("@/routes/organization/organization.route"));
