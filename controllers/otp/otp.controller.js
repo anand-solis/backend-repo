@@ -14,7 +14,7 @@ const OTPController = async (req, res) => {
     if (paramType.success) {
         try {
             const otp = await OTP({ otp: code, type: paramType.type, param: param });
-            otp.save();
+            await otp.save();
 
             if (paramType.type == "email") {
                 const sendEmail = await sendEmailController(param, "Verification OTP", EmailVerificationOTP(code));
