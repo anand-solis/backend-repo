@@ -25,13 +25,13 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(cors({ origin: "*" }));
 
 // API Routes
-app.use(require("@/routes/otp.route"));
-app.use(require("@/routes/login.route"));
-app.use(require("@/routes/role.route"));
-app.use(require("@/routes/profile.route"));
-app.use(require("@/routes/email.route"));
-app.use(require("@/routes/sms.route"));
-app.use(require("@/routes/organization.route"));
+app.use(require("@/routes/app/otp.route"));
+app.use(require("@/routes/app/login.route"));
+app.use(require("@/routes/app/role.route"));
+app.use(require("@/routes/app/profile.route"));
+app.use(require("@/routes/app/email.route"));
+app.use(require("@/routes/app/sms.route"));
+app.use(require("@/routes/organization/organization.route"));
 
 async function startServer() {
     try {
