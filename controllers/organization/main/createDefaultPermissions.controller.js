@@ -3,7 +3,7 @@ const Feature = require("@/models/app/features.model");
 const Permission = require("@/models/organization/permissions.model");
 const Member = require("@/models/organization/members.model");
 
-const createPermissions = async (organizationId, userId) => {
+const createDefaultPermissions = async (organizationId, userId) => {
     try {
         const features = await Feature.find({}).select("_id");
 
@@ -77,4 +77,4 @@ const createPermissions = async (organizationId, userId) => {
     }
 }
 
-module.exports = createPermissions;
+module.exports = createDefaultPermissions;

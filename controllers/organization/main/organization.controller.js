@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-const Member = require("@/models/organization/members.model");
 const createOrganization = require("@/controllers/organization/main/createOrganization.controller");
-const createPermissions = require("@/controllers/organization/main/createPermissions.controller");
+const createDefaultPermissions = require("@/controllers/organization/main/createDefaultPermissions.controller");
 const createSubscriptionPlan = require("@/controllers/organization/main/createSubscriptionPlan.controller");
 
 const OrganizationController = async (req, res) => {
@@ -9,31 +8,22 @@ const OrganizationController = async (req, res) => {
     session.startTransaction();
 
     try {
-        const isPresent = await Member.findOne({ user: req?.user?._id, isCreator: true }).select("_id");
+        const organization = await createOrganization(req, session);
 
-        if (!isPresent?._id) {
-            const organization = await createOrganization(req, session);
+        if (organization.success) {
+            await createSubscriptionPlan(organization.id, session);
+            await createDefaultPermissions(organization.id, req?.user?._id, session);
 
-            if (organization.success) {
-                await createSubscriptionPlan(organization.id, session);
-                await createPermissions(organization.id, req?.user?._id, session);
-
-                await session.commitTransaction();
-                session.endSession();
-
-                res.json({ success: true, error: "", message: "Organization created successfully." });
-            }
-            else {
-                await session.commitTransaction();
-                session.endSession();
-
-                res.json({ success: organization.success, error: organization.error, message: organization.message });
-            }
-        } else {
-            await session.abortTransaction();
+            await session.commitTransaction();
             session.endSession();
 
-            res.json({ success: false, error: `You can't create more than 1 organization.`, message: "" });
+            res.json({ success: true, error: "", message: "Organization created successfully." });
+        }
+        else {
+            await session.commitTransaction();
+            session.endSession();
+
+            res.json({ success: organization.success, error: organization.error, message: organization.message });
         }
     } catch (error) {
         await session.abortTransaction();
