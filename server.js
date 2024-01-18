@@ -32,6 +32,9 @@ app.use(require("@/routes/account/profile.route"));
 app.use(require("@/routes/app/email.route"));
 app.use(require("@/routes/app/sms.route"));
 app.use(require("@/routes/organization/organization.route"));
+app.use(require("@/routes/organization/permission.route"));
+app.use(require("@/routes/organization/site.route"));
+app.use(require("@/routes/organization/invite.route"));
 
 async function startServer() {
     try {

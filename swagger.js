@@ -17,7 +17,10 @@ const routes = [
     "routes/account/profile.route.js",
     "routes/app/email.route.js",
     "routes/app/sms.route.js",
-    "routes/organization/organization.route.js"
+    "routes/organization/organization.route.js",
+    "routes/organization/permission.route",
+    "routes/organization/site.route",
+    "routes/organization/invite.route"
 ];
 
 swaggerAutogen(outputFile, routes, docs);
