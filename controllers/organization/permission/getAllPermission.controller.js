@@ -1,9 +1,10 @@
 const Permission = require("@/models/organization/permissions.model");
 
 const getAllPermissionController = async (req, res) => {
+    const { organization } = req.body;
     try{
         const permission = await Permission
-        .find({})
+        .find({ organization: organization })
         .sort({ name: 1 })
         .select("-organization -features")
         .populate({
@@ -11,9 +12,9 @@ const getAllPermissionController = async (req, res) => {
             select: "name"
         });
 
-        return res.json({ permission: permission, success: true, error: "", message: "All permissions fetched successfully" });
+        return res.json({ permissions: permission, success: true, error: "", message: "All permissions fetched successfully" });
     } catch(error) {
-        return res.json({ permission: null, success: false, error: `Error: ${error}`, message: "" });
+        return res.json({ permissions: null, success: false, error: `Error: ${error}`, message: "" });
     }
 }
 
