@@ -19,7 +19,7 @@ router.get(
 );
 
 router.get(
-    "/permission:id",
+    "/permission/:id",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
     getPermissionController
