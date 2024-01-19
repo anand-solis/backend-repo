@@ -17,6 +17,7 @@ router.get(
     (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
     getAllPermissionController
 );
+
 router.get(
     "/permission:id",
     Middleware,
