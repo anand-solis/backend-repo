@@ -2,18 +2,22 @@ const DefaultPermissions = () => {
     const permissions = [
         {
             "name": "Admin",
+            "isAdmin": true,
             "permissions": []
         },
         {
             "name": "Organization Manager",
+            "isAdmin": false,
             "permissions": []
         },
         {
             "name": "Project Manager",
+            "isAdmin": false,
             "permissions": []
         },
         {
             "name": "Project On-site Team",
+            "isAdmin": false,
             "permissions": [
                 {
                     "name": "Roles & Permissions",

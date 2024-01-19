@@ -14,6 +14,7 @@ const createDefaultPermissions = async (organizationId, userId) => {
                 let NewPermissionRules = {
                     organization: organizationId,
                     name: permission.name,
+                    isAdmin: permission.isAdmin,
                     createdBy: userId,
                     features: []
                 };

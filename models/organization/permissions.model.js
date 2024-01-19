@@ -10,6 +10,11 @@ const PermissionSchema = mongoose.Schema({
         type: String,
         required: [true, "Permission name is required."]
     },
+    isAdmin: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     features: [
         {
             feature: {

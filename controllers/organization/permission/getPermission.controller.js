@@ -5,7 +5,7 @@ const getPermissionController = async (req, res) => {
         const permission = await Permission
         .findOne({ _id: id, organization: organization })
         .sort({ name: 1 })
-        .select("name features")
+        .select("name isAdmin features")
         .populate({
             path: "features.feature",
             select: ["name", "key"]
