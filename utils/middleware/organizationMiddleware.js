@@ -5,7 +5,7 @@ const Subscription = require("@/models/app/subscription.model");
 
 
 const organizationMiddleware = async (req, res, next, key, rule, subscription) => {
-    const { organization } = req.body;
+    const { organization } = req.query;
 
     try {
         const member = await Member

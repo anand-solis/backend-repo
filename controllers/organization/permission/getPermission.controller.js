@@ -1,5 +1,5 @@
 const getPermissionController = async (req, res) => {
-    const { organization } = req.body;
+    const { organization } = req.query;
     const { id } = req.params;
     try{
         const permission = await Permission

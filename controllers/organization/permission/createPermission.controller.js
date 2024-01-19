@@ -2,7 +2,8 @@ const Feature = require("@/models/app/features.model");
 const Permission = require("@/models/organization/permissions.model");
 
 const createPermissionController = async (req, res) => {
-    const { name, organization } = req.body;
+    const { name } = req.body;
+    const { organization } = req.query;
     try {
         const features = await Feature.find({}).select("_id");
 

@@ -1,7 +1,7 @@
 const Permission = require("@/models/organization/permissions.model");
 
 const getAllPermissionController = async (req, res) => {
-    const { organization } = req.body;
+    const { organization } = req.query;
     try{
         const permission = await Permission
         .find({ organization: organization })
