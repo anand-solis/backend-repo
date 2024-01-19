@@ -8,9 +8,34 @@ const updatePermissionController = require("@/controllers/organization/permissio
 
 const router = express.Router();
 
-router.get("/permission", Middleware, getAllPermissionController);
-router.get("/permission:id", Middleware, getPermissionController);
-router.post("/permission", Middleware, organizationMiddleware, createPermissionController);
-router.patch("/permission", Middleware, updatePermissionController);
+const key = "roles-and-permissions";
+const plan = "admin_settings";
+
+router.get(
+    "/permission",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
+    getAllPermissionController
+);
+router.get(
+    "/permission:id",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
+    getPermissionController
+);
+
+router.post(
+    "/permission",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
+    createPermissionController
+);
+
+router.patch(
+    "/permission",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
+    updatePermissionController
+);
 
 module.exports = router;

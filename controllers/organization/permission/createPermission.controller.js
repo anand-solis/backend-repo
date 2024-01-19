@@ -15,7 +15,7 @@ const createPermissionController = async (req, res) => {
             };
 
             features.map((feature) => {
-                NewPermission.features.push({
+                NewPermissionRules.features.push({
                     feature: feature._id,
                     permissions: {
                         read: false,
