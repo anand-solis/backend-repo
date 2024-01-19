@@ -10,7 +10,7 @@ const Middleware = async (req, res, next) => {
     const token = authHeader && authHeader.split(" ")[1];
     try {
         if (!token) {
-            return res.json({ success: false, error: "UNAUTHORIZED" });
+            return res.json({ success: false, error: "Unauthorized user." });
         }
         const cachedValue = myCache.get("userData");
         if (myCache.has("userData") && cachedValue.token == token) {
@@ -23,7 +23,10 @@ const Middleware = async (req, res, next) => {
 
             const user = await User.findOne({ _id: _id });
             if (!user) {
-                return res.json({ success: false, error: "USERNOTFOUND" });
+                return res.json({ success: false, error: "User account not found." });
+            }
+            if (user.blocked) {
+                return res.json({ success: false, error: "User account blocked." });
             }
             user.token = token;
             req.user = user;
