@@ -130,6 +130,14 @@
     "/{permissionid}": {
       "get": {
         "description": "",
+        "parameters": [
+          {
+            "name": "permissionid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
