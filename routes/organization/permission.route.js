@@ -1,6 +1,6 @@
 const express = require("express");
 const Middleware = require("@/utils/middleware/middleware");
-const organizationMiddleware = require("@/utils/middleware/organizationMiddleware");
+const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 const getAllPermissionController = require("@/controllers/organization/permission/getAllPermission.controller");
 const getPermissionController = require("@/controllers/organization/permission/getPermission.controller");
 const createPermissionController = require("@/controllers/organization/permission/createPermission.controller");
