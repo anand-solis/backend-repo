@@ -81,6 +81,16 @@
         }
       }
     },
+    "/organization/switch": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/organization": {
       "post": {
         "description": "",
