@@ -2,7 +2,7 @@ const express = require("express");
 const Middleware = require("@/utils/middleware/middleware");
 const getAllSiteController = require("@/controllers/organization/site/getAllSite.controller");
 const createSiteController = require("@/controllers/organization/site/createSite.controller");
-const organizationMiddleware = require("@/utils/middleware/organization/organizationMemberMiddleware");
+const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 
 const router = express.Router();
 

@@ -19,8 +19,7 @@ const SiteSchema = mongoose.Schema({
         required: [true, "Site end date is required."]
     },
     banner: {
-        type: String,
-        required: [true, "Site banner is required."]
+        type: String
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
