@@ -9,7 +9,6 @@
 
 # Today Tasks
  - permission PATCH
- - organization list - GET
  - site - GET
  - site - POST
  - invite - POST
