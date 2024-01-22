@@ -7,7 +7,10 @@
  - SMS API Connection
  - Validations for Required fields (express-validator)
 
-# Today Tasks
+## Bugs
+- Check create member in organization not working.
+
+## Today Tasks
  - permission PATCH
  - site - GET
  - site - POST
