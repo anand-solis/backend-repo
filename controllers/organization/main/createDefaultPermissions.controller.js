@@ -52,7 +52,7 @@ const createDefaultPermissions = async (organizationId, userId) => {
                 await NewPermission.save();
             })
 
-            const AdminPermission = await Permission.findOne({ organization: organizationId, name: "Admin" }).select("_id");
+            const AdminPermission = await Permission.findOne({ organization: organizationId, isAdmin: true }).select("_id");
 
             if(AdminPermission?._id){
                 const NewMember = new Member({
