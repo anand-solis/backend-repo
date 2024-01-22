@@ -1,7 +1,7 @@
 const Member = require("@/models/organization/members.model");
 const Plan = require("@/models/organization/plan.model");
 
-const organizationMiddleware = async (req, res, next) => {
+const organizationMemberMiddleware = async (req, res, next) => {
     const { organization } = req.query;
 
     try {
@@ -39,4 +39,4 @@ const organizationMiddleware = async (req, res, next) => {
     }
 }
 
-module.exports = organizationMiddleware;
+module.exports = organizationMemberMiddleware;
