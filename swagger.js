@@ -19,7 +19,6 @@ const routes = [
     "routes/app/sms.route.js",
     "routes/organization/organization.route.js",
     "routes/organization/permission.route",
-    "routes/organization/invite.route",
     "routes/organization/site/site.route"
 ];
 

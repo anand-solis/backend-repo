@@ -11,4 +11,3 @@
  - permission PATCH
  - site - GET
  - site - POST
- - invite - POST
