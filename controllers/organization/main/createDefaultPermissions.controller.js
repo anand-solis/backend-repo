@@ -1,7 +1,7 @@
 const DefaultPermissions = require("@/helpers/defaultPermissions");
 const Feature = require("@/models/app/features.model");
-const Permission = require("@/models/organization/permissions.model");
-const Member = require("@/models/organization/members.model");
+const Permission = require("@/models/organization/permission.model");
+const Member = require("@/models/organization/member.model");
 
 const createDefaultPermissions = async (organizationId, userId) => {
     try {

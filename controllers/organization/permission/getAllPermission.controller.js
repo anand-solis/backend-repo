@@ -1,4 +1,4 @@
-const Permission = require("@/models/organization/permissions.model");
+const Permission = require("@/models/organization/permission.model");
 
 const getAllPermissionController = async (req, res) => {
     const { organization } = req.query;

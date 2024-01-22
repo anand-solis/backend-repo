@@ -1,4 +1,4 @@
-const Member = require("@/models/organization/members.model");
+const Member = require("@/models/organization/member.model");
 const Plan = require("@/models/organization/plan.model");
 
 const organizationMemberMiddleware = async (req, res, next) => {

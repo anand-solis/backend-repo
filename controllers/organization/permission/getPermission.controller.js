@@ -1,3 +1,5 @@
+const Permission = require("@/models/organization/permission.model");
+
 const getPermissionController = async (req, res) => {
     const { organization } = req.query;
     const { id } = req.params;
@@ -22,5 +24,3 @@ const getPermissionController = async (req, res) => {
 }
 
 module.exports = getPermissionController;
-
-const Permission = require("@/models/organization/permissions.model");
