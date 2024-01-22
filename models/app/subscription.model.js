@@ -23,11 +23,11 @@ const SubscriptionSchema = mongoose.Schema({
         required: true,
         default: 0
     },
-    // project_management: {
-    //     type: Boolean,
-    //     required: true,
-    //     default: false
-    // },
+    project_management: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     // material_management: {
     //     type: Boolean,
     //     required: true,
