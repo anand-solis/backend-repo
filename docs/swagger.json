@@ -91,16 +91,6 @@
         }
       }
     },
-    "/members": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/permission": {
       "get": {
         "description": "",
@@ -127,12 +117,12 @@
         }
       }
     },
-    "/{permissionid}": {
+    "/permission/{id}": {
       "get": {
         "description": "",
         "parameters": [
           {
-            "name": "permissionid",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"

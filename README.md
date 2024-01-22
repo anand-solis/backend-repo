@@ -6,3 +6,10 @@
 ## Pending Tasks
  - SMS API Connection
  - Validations for Required fields (express-validator)
+
+# Today Tasks
+ - permission PATCH
+ - organization list - GET
+ - site - GET
+ - site - POST
+ - invite - POST
