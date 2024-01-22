@@ -5,13 +5,13 @@
     "description": "Solis Construction Backend API Documentation",
     "version": "1.0.0"
   },
-  "host": "localhost:5000",
+  "host": "http://localhost:5000",
   "basePath": "/",
   "schemes": [
     "http"
   ],
   "paths": {
-    "/login": {
+    "/send-otp": {
       "post": {
         "description": "",
         "responses": {
@@ -21,7 +21,7 @@
         }
       }
     },
-    "/send-otp": {
+    "/login": {
       "post": {
         "description": "",
         "responses": {
@@ -149,6 +149,16 @@
         }
       }
     },
+    "/send-invite": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/sites": {
       "get": {
         "description": "",
@@ -160,16 +170,6 @@
       }
     },
     "/site/add": {
-      "post": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/send-invite": {
       "post": {
         "description": "",
         "responses": {
