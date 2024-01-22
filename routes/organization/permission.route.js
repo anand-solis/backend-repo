@@ -12,7 +12,7 @@ const key = "roles-and-permissions";
 const plan = "admin_settings";
 
 router.get(
-    "/permission",
+    "/permissions",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
     getAllPermissionController
@@ -26,14 +26,14 @@ router.get(
 );
 
 router.post(
-    "/permission",
+    "/permission/add",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
     createPermissionController
 );
 
 router.patch(
-    "/permission",
+    "/permission/update",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
     updatePermissionController

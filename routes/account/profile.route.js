@@ -5,7 +5,7 @@ const Middleware = require("@/utils/middleware/middleware");
 
 const router = express.Router();
 
-router.patch("/profile", Middleware, ProfileController);
+router.patch("/setting-up-account", Middleware, ProfileController);
 router.get("/profile/new", Middleware, CheckNewUserController);
 
 module.exports = router;

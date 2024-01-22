@@ -4,6 +4,6 @@ const Middleware = require("@/utils/middleware/middleware");
 
 const router = express.Router();
 
-router.post("/invite", Middleware, sendInviteController);
+router.post("/send-invite", Middleware, sendInviteController);
 
 module.exports = router;

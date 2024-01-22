@@ -4,6 +4,6 @@ const PublicMiddleware = require("@/utils/middleware/publicMiddleware");
 
 const router = express.Router();
 
-router.post("/otp", PublicMiddleware, OTPController);
+router.post("/send-otp", PublicMiddleware, OTPController);
 
 module.exports = router;

@@ -14,6 +14,6 @@ router.get(
     getOrganizationSwitchController
 );
 
-router.post("/organization", Middleware, OrganizationController);
+router.post("/organization/add", Middleware, OrganizationController);
 
 module.exports = router;

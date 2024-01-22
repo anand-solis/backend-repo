@@ -5,7 +5,7 @@ const createSiteController = require("@/controllers/organization/site/createSite
 
 const router = express.Router();
 
-router.get("/site", Middleware, getAllSiteController);
-router.post("/site", Middleware, createSiteController);
+router.get("/sites", Middleware, getAllSiteController);
+router.post("/site/add", Middleware, createSiteController);
 
 module.exports = router;
