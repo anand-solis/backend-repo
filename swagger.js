@@ -20,7 +20,7 @@ const routes = [
     "routes/organization/organization.route.js",
     "routes/organization/permission.route",
     "routes/organization/invite.route",
-    "routes/organization/site.route"
+    "routes/organization/site/site.route"
 ];
 
 swaggerAutogen(outputFile, routes, docs);
