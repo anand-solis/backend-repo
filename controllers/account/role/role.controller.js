@@ -1,9 +1,14 @@
 const Role = require("@/models/account/roles.model");
-const queryMiddleware = require("@/utils/middleware/api/queryMiddleware");
 
 const RoleController = async (req, res) => {
-    const roles = await queryMiddleware(req, Role);
-    return res.json({ roles: roles.data, success: roles.success, error: roles.error, message: roles.message });
+    try {
+        const roles = await Role.find({}).select("name").sort({ createdAt: -1 });
+
+        return res.json({ roles: roles, success: true, error: "", message: "Roles fetched successfully." });
+
+    } catch (error) {
+        return res.json({ roles: null, success: false, error: `Error: ${error}`, message: "" });
+    }
 }
 
 module.exports = RoleController;
