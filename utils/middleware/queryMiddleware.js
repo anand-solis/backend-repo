@@ -52,16 +52,16 @@ const getPopulate = (populate) => {
                 options.select = options.fields;
                 delete options.fields;
             }
-            if (options?.filter) {
-                options.match = {};
+            // if (options?.filter) {
+            //     options.match = {};
 
-                Object.entries(options.filter).forEach(([key, value]) => {
-                    const operator = key.replace(/\[.*?\]/g, '');
-                    options.match[operator] = value;
-                });
+            //     Object.entries(options.filter).forEach(([key, value]) => {
+            //         const operator = key.replace(/\[.*?\]/g, '');
+            //         options.match[operator] = value;
+            //     });
 
-                delete options.filter;
-            }
+            //     delete options.filter;
+            // }
             if (options?.sort) {
                 options.options = { sort: options.sort };
                 delete options.sort;
@@ -79,11 +79,6 @@ const getPopulate = (populate) => {
 
                 delete options.pagination;
             }
-
-            console.log({
-                path,
-                ...options
-            });
 
             return {
                 path,
