@@ -13,7 +13,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("@/docs/swagger.json");
 
 // Utils Imports
-const connectDB = require("@/utils/connectDB");
+const connectDB = require("@/utils/connections/database/connectDB");
 
 // Server Configuration
 const PORT = process.env.PORT;
