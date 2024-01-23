@@ -17,9 +17,6 @@ const getPermissionController = async (req, res) => {
             select: "name"
         });
 
-        
-//  Progress Add new feature in get single permission API
-
         return res.json({ permission: permission, success: true, error: "", message: "permission details fetched successfully" });
     } catch(error) {
         return res.json({ permission: null, success: false, error: `Error: ${error}`, message: "" });

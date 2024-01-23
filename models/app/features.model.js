@@ -3,15 +3,17 @@ const mongoose = require("mongoose");
 const FeatureSchema = mongoose.Schema({
     key: {
         type: String,
-        required: true
+        required: [true, "Feature key is required."],
+        unique: [true, "Feature key must be unique."]
     },
     name: {
         type: String,
-        required: true
+        required: [true, "Feature name is required."],
+        unique: [true, "Feature name must be unique."]
     },
     description: {
         type: String,
-        required: true
+        required: false
     }
 }, { timestamps: true });
 

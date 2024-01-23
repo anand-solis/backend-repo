@@ -17,6 +17,7 @@ const routes = [
     "routes/account/profile.route.js",
     "routes/app/email.route.js",
     "routes/app/sms.route.js",
+    "routes/app/feature.route",
     "routes/organization/organization.route.js",
     "routes/organization/permission.route",
     "routes/organization/site/site.route"

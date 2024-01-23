@@ -81,6 +81,26 @@
         }
       }
     },
+    "/feature/add": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/feature/remove": {
+      "delete": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/organization/switch": {
       "get": {
         "description": "",
