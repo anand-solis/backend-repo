@@ -6,6 +6,10 @@ const SiteSchema = mongoose.Schema({
         ref: "Organization",
         required: true
     },
+    endDate: {
+        type: Date,
+        required: [true, "Site end date is required."]
+    },
     name: {
         type: String,
         required: [true, "Site name is required."]
@@ -13,10 +17,6 @@ const SiteSchema = mongoose.Schema({
     startDate: {
         type: Date,
         required: [true, "Site start date is required."]
-    },
-    endDate: {
-        type: String,
-        required: [true, "Site end date is required."]
     },
     banner: {
         type: String
