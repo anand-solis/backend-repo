@@ -51,6 +51,11 @@ const PermissionSchema = mongoose.Schema({
         ref: "User",
         required: true
     },
+    updatedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: false
+    },
 }, { timestamps: true });
 
 module.exports = mongoose.model("Permission", PermissionSchema);
