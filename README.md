@@ -8,9 +8,8 @@
  - Validations for Required fields (express-validator)
 
 ## Bugs
-- Check create member in organization not working.
+
 
 ## Today Tasks
  - permission PATCH
- - site - GET
  - site - POST
