@@ -1,7 +1,8 @@
 const express = require("express");
 const Middleware = require("@/utils/middleware/middleware");
-const inviteMemberByMobileController = require("@/controllers/organization/member/inviteMemberByMobile.controller");
-const inviteMemberByDesktopController = require("@/controllers/organization/member/inviteMemberByDesktop.controller");
+const siteMiddleware = require("@/utils/middleware/organization/siteMiddleware");
+const inviteMemberByMobileController = require("@/controllers/organization/member/invite/inviteMemberByMobile.controller");
+const inviteMemberByDesktopController = require("@/controllers/organization/member/invite/inviteMemberByDesktop.controller");
 
 const router = express.Router();
 
@@ -12,7 +13,7 @@ router.post(
     "/invite/mobile",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
-    siteInviteMiddleware,
+    siteMiddleware,
     inviteMemberByMobileController
 );
 
@@ -20,7 +21,7 @@ router.post(
     "/invite/desktop",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
-    siteInviteMiddleware,
+    siteMiddleware,
     inviteMemberByDesktopController
 );
 
