@@ -13,7 +13,7 @@ const createDefaultPermissions = async (organizationId, userId) => {
             .select("name isAdmin features")
             .populate({
                 path: "features.feature",
-                select: ["_id"]
+                select: "_id"
             });
 
             defaultPermissions.forEach(async (permission) => {
