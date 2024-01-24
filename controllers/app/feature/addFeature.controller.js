@@ -22,14 +22,23 @@ const AddFeatureController = async (req, res) => {
                 const index = permission.features?.findIndex(item => item?.feature == featureId);
 
                 if(index == -1){
+                    let permissions = {
+                        read: false,
+                        update: false,
+                        delete: false,
+                        insert: false
+                    }
+                    if(permission.isAdmin){
+                        permissions = {
+                            read: true,
+                            update: true,
+                            delete: true,
+                            insert: true
+                        }
+                    }
                     updatedFeature.push({
                         feature: featureId,
-                        permissions: {
-                            read: false,
-                            update: false,
-                            delete: false,
-                            insert: false
-                        }
+                        permissions
                     })
                 }
 
