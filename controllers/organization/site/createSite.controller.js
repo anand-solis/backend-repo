@@ -1,5 +1,7 @@
 const Site = require("@/models/organization/site/site.model");
 const Plan = require("@/models/organization/plan.model");
+const Member = require("@/models/organization/member.model");
+const SiteMember = require("@/models/organization/site/siteMember.model");
 
 const createSiteController = async (req, res) => {
     const { name, startDate, endDate } = req.body;
@@ -14,7 +16,7 @@ const createSiteController = async (req, res) => {
                 select: "sites_count"
             });
 
-        const createdSites = await Site.find({ organization : organization }).select("_id");
+        const createdSites = await Site.find({ organization: organization }).select("_id");
         const createdSitesCount = createdSites.length;
 
         if (plan?.subscription?.sites_count) {
@@ -29,7 +31,28 @@ const createSiteController = async (req, res) => {
 
                 const newSiteResponse = await newSite.save();
 
-                return res.json({ site: newSiteResponse?._id, success: true, error: "", message: "Site successfully created." });
+                if (newSiteResponse?._id) {
+                    const OrganizationMember = await Member.findOne({ organization: organization }).select("user");
+
+                    if (OrganizationMember?._id) {
+                        const NewSiteMember = new SiteMember({
+                            site: newSiteResponse?._id,
+                            member: OrganizationMember.user,
+                            isCreator: true,
+                            inviteAccepted: true
+                        })
+
+                        await NewSiteMember.save();
+
+                        return res.json({ site: newSiteResponse?._id, success: true, error: "", message: "Site successfully created." });
+                    }
+                    else{
+                        return res.json({ site: null, success: false, error: "You are not a member of this organization.", message: "" });
+                    }
+                }
+                else {
+                    return res.json({ site: null, success: false, error: "Site not created.", message: "" });
+                }
             }
             else {
                 return res.json({ site: null, success: false, error: "Error: You exceed limit to create site in your organization, Upgrade your subscription plan.", message: "" });
