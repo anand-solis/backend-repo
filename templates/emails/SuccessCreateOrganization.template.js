@@ -10,8 +10,7 @@ const SuccessCreateOrganization = (name, email, phone) => {
                 <tbody>
                     <tr style="width:100%">
                         <td>
-                            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-                                style="display:flex;justify-content:center;align-items:center;padding:30px">
+                            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="display:flex;justify-content:center;align-items:center;padding:30px">
                                 <tbody>
                                     <tr>
                                         <td>
@@ -20,8 +19,7 @@ const SuccessCreateOrganization = (name, email, phone) => {
                                     </tr>
                                 </tbody>
                             </table>
-                            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-                                style="width:100%;display:flex">
+                            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="width:100%;display:flex">
                                 <tbody>
                                     <tr>
                                         <td>
@@ -29,12 +27,9 @@ const SuccessCreateOrganization = (name, email, phone) => {
                                                 role="presentation">
                                                 <tbody style="width:100%">
                                                     <tr style="width:100%">
-                                                        <td data-id="__react-email-column"
-                                                            style="border-bottom:1px solid rgb(238,238,238);width:249px"></td>
-                                                        <td data-id="__react-email-column"
-                                                            style="border-bottom:1px solid rgb(145,71,255);width:102px"></td>
-                                                        <td data-id="__react-email-column"
-                                                            style="border-bottom:1px solid rgb(238,238,238);width:249px"></td>
+                                                        <td data-id="__react-email-column" style="border-bottom:1px solid rgb(238,238,238);width:249px"></td>
+                                                        <td data-id="__react-email-column" style="border-bottom:1px solid rgb(145,71,255);width:102px"></td>
+                                                        <td data-id="__react-email-column" style="border-bottom:1px solid rgb(238,238,238);width:249px"></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -42,33 +37,32 @@ const SuccessCreateOrganization = (name, email, phone) => {
                                     </tr>
                                 </tbody>
                             </table>
-                            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-                                style="padding:5px 50px 10px 60px">
+                            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:5px 50px 10px 60px">
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <p style="font-size:14px;line-height:1.5;margin:16px 0">Hey,</p>
-                                            <p style="font-size:14px;line-height:1.5;margin:16px 0">You have successfully created your Organization.</p>
-                                            <p style="font-size:14px;line-height:1.5;margin:16px 0"></p>
-                                            <p style="font-size:14px;line-height:1.5;margin:16px 0">
-                                            <h5>Here is Your Details,</h5>
-                                            <h5>Organization Name:&nbsp;
+                                            <p style="font-size:16px;line-height:1.5;margin:16px 0">Hey,</p>
+                                            <p style="font-size:16px;line-height:1.5;margin:16px 0">You have successfully created your Organization.</p>
+                                            <p style="font-size:16px;line-height:1.5;margin:16px 0"></p>
+                                            <p style="font-size:16px;line-height:1.5;margin:16px 0">
+                                            <h4>Here is Your Details,</h4>
+                                            <h4>Organization Name:&nbsp;
                                                 <span style="color:#377dff;font-family:HelveticaNeue,Helvetica,Arial,sans-serif">
                                                     ${name}
                                                 </span>
-                                            </h5>
-                                            <h5>Email:&nbsp;
+                                            </h4>
+                                            <h4>Email:&nbsp;
                                                 <span style="color:#377dff;font-family:HelveticaNeue,Helvetica,Arial,sans-serif">
                                                     ${email}
                                                 </span>
-                                            </h5>
-                                            <h5>Phone Number:&nbsp;
+                                            </h4>
+                                            <h4>Phone Number:&nbsp;
                                                 <span style="color:#377dff;font-family:HelveticaNeue,Helvetica,Arial,sans-serif">
                                                     ${phone}
                                                 </span>
-                                            </h5>
+                                            </h4>
                                             </p>
-                                            <p style="font-size:14px;line-height:1.5;margin:16px 0">Thanks,<br />Solis Reality Team</p>
+                                            <p style="font-size:16px;line-height:1.5;margin:16px 0">Thanks,<br />Solis Reality Team</p>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -77,16 +71,14 @@ const SuccessCreateOrganization = (name, email, phone) => {
                     </tr>
                 </tbody>
             </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-                style="width:580px;margin:0 auto">
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="width:580px;margin:0 auto">
                 <tbody>
                     <tr>
                         <td>
                             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation">
                                 <tbody style="width:100%">
                                     <tr style="width:100%">
-                                        <td align="right" data-id="__react-email-column" style="width:50%;padding-right:8px">
-                                        </td>
+                                        <td align="right" data-id="__react-email-column" style="width:50%;padding-right:8px"></td>
                                         <td align="left" data-id="__react-email-column" style="width:50%;padding-left:8px"></td>
                                     </tr>
                                 </tbody>
