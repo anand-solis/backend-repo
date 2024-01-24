@@ -28,6 +28,21 @@ const SubscriptionSchema = mongoose.Schema({
         required: true,
         default: false
     },
+    admin_settings: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    users_count: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    isTrial: {
+        type: Boolean,
+        required: true,
+        default: false
+    }
     // material_management: {
     //     type: Boolean,
     //     required: true,
@@ -48,21 +63,11 @@ const SubscriptionSchema = mongoose.Schema({
     //     required: true,
     //     default: false
     // },
-    admin_settings: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
     // support: {
     //     type: Boolean,
     //     required: true,
     //     default: false
     // },
-    users_count: {
-        type: Number,
-        required: true,
-        default: 0
-    },
     // expense: {
     //     type: Boolean,
     //     required: true,
@@ -73,11 +78,6 @@ const SubscriptionSchema = mongoose.Schema({
     //     required: true,
     //     default: false
     // },
-    isTrial: {
-        type: Boolean,
-        required: true,
-        default: false
-    }
 }, { timestamps: true });
 
 const Subscription = mongoose.model("Subscription", SubscriptionSchema);

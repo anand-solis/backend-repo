@@ -1,9 +1,26 @@
 const Permission = require("@/models/organization/permission.model");
+const Plan = require("@/models/organization/plan.model");
 
 const getPermissionController = async (req, res) => {
     const { organization } = req.query;
     const { id } = req.params;
+
+    const subscription = {
+        project_management: [ "sites" ],
+        admin_settings: [ "roles-and-permissions", "members" ]
+    }
+
+    const subscriptionKeys = Object.keys(subscription);
+
     try{
+        const plan = await Plan
+        .findOne({ organization: organization })
+        .select("subscription")
+        .populate({
+            path: "subscription",
+            select: subscriptionKeys
+        })
+
         const permission = await Permission
         .findOne({ _id: id, organization: organization })
         .sort({ name: 1 })
@@ -16,6 +33,15 @@ const getPermissionController = async (req, res) => {
             path: "createdBy",
             select: "name"
         });
+
+        subscriptionKeys.map(key => {
+            if(!plan.subscription[key]){
+                subscription[key].map(feature => {
+                    const index = permission?.features?.findIndex(item => item.feature.key == feature);
+                    permission?.features?.splice(index, 1);
+                })
+            }
+        })
 
         return res.json({ permission: permission, success: true, error: "", message: "Permission fetched successfully." });
     } catch(error) {

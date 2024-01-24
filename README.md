@@ -9,7 +9,6 @@
 
 ## Bugs
  - Members not creating while adding organization.
- - Show Features on permission api based on subscription.
 
 ## Today Tasks
  - Invite Members { Mobile, Desktop }.
