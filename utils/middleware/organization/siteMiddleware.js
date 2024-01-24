@@ -1,7 +1,7 @@
 const Site = require("@/models/organization/site/site.model");
 const SiteMember = require("@/models/organization/site/siteMember.model");
 
-const siteMiddleware = async (req, res) => {
+const siteMiddleware = async (req, res, next) => {
     const { organization, site } = req.query;
 
     const siteDetails = await Site.findOne({ _id: site, organization: organization }).select("_id");
