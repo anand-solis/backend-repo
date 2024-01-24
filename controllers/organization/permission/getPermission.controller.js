@@ -17,7 +17,7 @@ const getPermissionController = async (req, res) => {
             select: "name"
         });
 
-        return res.json({ permission: permission, success: true, error: "", message: "permission details fetched successfully" });
+        return res.json({ permission: permission, success: true, error: "", message: "Permission fetched successfully." });
     } catch(error) {
         return res.json({ permission: null, success: false, error: `Error: ${error}`, message: "" });
     }
