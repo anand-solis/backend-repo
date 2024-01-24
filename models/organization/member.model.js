@@ -20,6 +20,11 @@ const MemberSchema = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    inviteAccepted: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 }, { timestamps: true });
 

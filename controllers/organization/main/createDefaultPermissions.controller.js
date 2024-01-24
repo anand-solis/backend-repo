@@ -59,9 +59,10 @@ const createDefaultPermissions = async (organizationId, userId) => {
                     organization: organizationId,
                     user: userId,
                     permission: AdminPermission._id,
-                    isCreator: true
+                    isCreator: true,
+                    inviteAccepted: true
                 })
-    
+
                 await NewMember.save();
             }
             else{
