@@ -2,25 +2,19 @@ const swaggerAutogen = require("swagger-autogen")();
 
 const docs = {
     info: {
-        title: "Solis Construction Backend API Documentation",
-        description: "Solis Construction Backend API Documentation"
+        title: "Solis Construction",
+        description: "Solis Construction Backend API Documentation",
+        version: "1.0.0"
     },
-    host: "http://localhost:5000"
+    host: "http://localhost:5000",
+    basePath: "/",
+    schemes: ["http"],
+    consumes: ["application/json"],
+    produces: ["application/json"],
 };
 
 const outputFile = "./docs/swagger.json";
 
-const routes = [
-    "routes/account/otp.route.js",
-    "routes/account/login.route.js",
-    "routes/account/role.route.js",
-    "routes/account/profile.route.js",
-    "routes/app/email.route.js",
-    "routes/app/sms.route.js",
-    "routes/app/feature.route",
-    "routes/organization/organization.route.js",
-    "routes/organization/permission.route",
-    "routes/organization/site/site.route"
-];
+const routes = ["routes/**/*.js"];
 
 swaggerAutogen(outputFile, routes, docs);
