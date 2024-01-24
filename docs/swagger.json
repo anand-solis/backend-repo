@@ -67,16 +67,6 @@
         }
       }
     },
-    "/email": {
-      "post": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/feature/add": {
       "post": {
         "description": "",
@@ -89,16 +79,6 @@
     },
     "/feature/remove": {
       "delete": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/sms": {
-      "post": {
         "description": "",
         "responses": {
           "default": {
