@@ -32,4 +32,5 @@ const EmailVerificationOTP = (code) => {
 
     return template;
 }
+
 module.exports = EmailVerificationOTP;

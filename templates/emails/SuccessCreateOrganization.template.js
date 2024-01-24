@@ -92,4 +92,5 @@ const SuccessCreateOrganization = (name, email, phone) => {
 
     return template;
 }
+
 module.exports = SuccessCreateOrganization;
