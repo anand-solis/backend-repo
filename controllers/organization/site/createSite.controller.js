@@ -32,12 +32,12 @@ const createSiteController = async (req, res) => {
                 const newSiteResponse = await newSite.save();
 
                 if (newSiteResponse?._id) {
-                    const OrganizationMember = await Member.findOne({ organization: organization }).select("user");
+                    const OrganizationMember = await Member.findOne({ organization: organization, user: req.user._id }).select("_id");
 
                     if (OrganizationMember?._id) {
                         const NewSiteMember = new SiteMember({
                             site: newSiteResponse?._id,
-                            member: OrganizationMember.user,
+                            member: OrganizationMember._id,
                             isCreator: true,
                             inviteAccepted: true
                         })
