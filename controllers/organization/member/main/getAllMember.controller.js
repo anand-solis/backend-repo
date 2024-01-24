@@ -6,10 +6,10 @@ const getAllMemberController = async (req, res) => {
     try {
         const members = await Member
             .find({ organization: organization })
-            .select("user inviteAccepted permission")
+            .select("user inviteAccepted permission isCreator")
             .populate({
                 path: "user",
-                select: "name phone.number email.address"
+                select: ["name", "phone.number", "email.address"]
             })
             .populate({
                 path: "permission",
