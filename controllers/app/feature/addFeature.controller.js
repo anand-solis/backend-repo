@@ -1,3 +1,4 @@
+const DefaultPermission = require("@/models/app/defaultPermission.model");
 const Feature = require("@/models/app/features.model");
 const Permission = require("@/models/organization/permission.model");
 
@@ -16,6 +17,35 @@ const AddFeatureController = async (req, res) => {
         if(newFeature?._id){
             const featureId = newFeature?._id;
             const permissions = await Permission.find({});
+            const defaultPermissions = await DefaultPermission.find({});
+
+            defaultPermissions && defaultPermissions.map(async (defaultPermission) => {
+                const updatedFeature = defaultPermission.features;
+                const index = defaultPermission.features?.findIndex(item => item?.feature == featureId);
+
+                if(index == -1){
+                    let permissions = {
+                        read: false,
+                        update: false,
+                        delete: false,
+                        insert: false
+                    }
+                    if(defaultPermission.isAdmin){
+                        permissions = {
+                            read: true,
+                            update: true,
+                            delete: true,
+                            insert: true
+                        }
+                    }
+                    updatedFeature.push({
+                        feature: featureId,
+                        permissions
+                    })
+                }
+
+                await DefaultPermission.findOneAndUpdate({ _id: defaultPermission._id}, {features: updatedFeature})
+            })
 
             permissions && permissions.map(async (permission) => {
                 const updatedFeature = permission.features;

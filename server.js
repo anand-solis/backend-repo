@@ -29,7 +29,10 @@ app.use(require("@/routes/account/otp.route"));
 app.use(require("@/routes/account/login.route"));
 app.use(require("@/routes/account/role.route"));
 app.use(require("@/routes/account/profile.route"));
+
 app.use(require("@/routes/app/feature.route"));
+app.use(require("@/routes/app/defaultPermission.route"));
+
 app.use(require("@/routes/organization/organization.route"));
 app.use(require("@/routes/organization/permission.route"));
 app.use(require("@/routes/organization/site/site.route"));

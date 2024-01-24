@@ -1,4 +1,4 @@
-const DefaultPermissions = require("@/helpers/defaultPermissions");
+const DefaultPermission = require("@/models/app/defaultPermission.model");
 const Feature = require("@/models/app/features.model");
 const Permission = require("@/models/organization/permission.model");
 const Member = require("@/models/organization/member.model");
@@ -8,9 +8,15 @@ const createDefaultPermissions = async (organizationId, userId) => {
         const features = await Feature.find({}).select("_id");
 
         if (features.length > 0) {
-            const HardPermissions = DefaultPermissions();
+            const defaultPermissions = await DefaultPermission
+            .find({})
+            .select("name isAdmin features")
+            .populate({
+                path: "features.feature",
+                select: ["_id"]
+            });
 
-            HardPermissions.forEach(async (permission) => {
+            defaultPermissions.forEach(async (permission) => {
                 let NewPermissionRules = {
                     organization: organizationId,
                     name: permission.name,
@@ -19,31 +25,16 @@ const createDefaultPermissions = async (organizationId, userId) => {
                     features: []
                 };
 
-                features.map((feature) => {
-                    const index = permission.permissions?.findIndex(item => item.id === feature._id);
-
-                    const hardPermission = permission.permissions[index];
-                    let rule = {};
-
-                    if(hardPermission){
-                        rule = {
-                            read: hardPermission.read,
-                            update: hardPermission.update,
-                            delete: hardPermission.delete,
-                            insert: hardPermission.insert,
-                        }
-                    }
-                    else{
-                        rule = {
-                            read: true,
-                            update: true,
-                            delete: true,
-                            insert: true,
-                        }
-                    }
+                permission.features.map((feature) => {
+                    let rule = {
+                        read: feature.permissions.read,
+                        update: feature.permissions.update,
+                        delete: feature.permissions.delete,
+                        insert: feature.permissions.insert,
+                    };
 
                     NewPermissionRules.features.push({
-                        feature: feature._id,
+                        feature: feature.feature._id,
                         permissions: rule
                     })
                 })
