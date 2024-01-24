@@ -8,7 +8,7 @@
  - Validations for Required fields (express-validator)
 
 ## Bugs
-
+ - Members not creating while adding organization
 
 ## Today Tasks
  - Invite Members
