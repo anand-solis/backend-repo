@@ -11,8 +11,9 @@
  - Members not creating while adding organization.
 
 ## Today Tasks
- - Invite Members { Mobile, Desktop }.
+ - Invite Members in Site { Mobile, Desktop }.
  - Member Role Update
+ - Member Add Member
  - Organization Full GET
  - Organization Full PATCH
  - User Profile GET
