@@ -1,7 +1,9 @@
 const express = require("express");
 const Middleware = require("@/utils/middleware/middleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
+const organizationMemberMiddleware = require("@/utils/middleware/organization/organizationMemberMiddleware");
 const getAllPermissionController = require("../../controllers/organization/permission/getAllPermission.controller");
+const getPermissionByUserController = require("../../controllers/organization/permission/getPermissionByUser.controller");
 const getPermissionController = require("../../controllers/organization/permission/getPermission.controller");
 const createPermissionController = require("../../controllers/organization/permission/createPermission.controller");
 const updatePermissionController = require("../../controllers/organization/permission/updatePermission.controller");
@@ -16,6 +18,13 @@ router.get(
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
     getAllPermissionController
+);
+
+router.get(
+    "/permission/user",
+    Middleware,
+    (req, res, next) => organizationMemberMiddleware(req, res, next),
+    getPermissionByUserController
 );
 
 router.get(

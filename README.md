@@ -17,4 +17,3 @@
  - Organization Full PATCH
  - User Profile GET
  - User Profile PATCH
- - Permission By User

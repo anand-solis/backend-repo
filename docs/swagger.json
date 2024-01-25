@@ -328,6 +328,23 @@
         }
       }
     },
+    "/permission/user": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/permission/{id}": {
       "get": {
         "description": "",
