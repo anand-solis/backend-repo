@@ -476,9 +476,21 @@
     "/site/not-members": {
       "get": {
         "description": "",
+        "parameters": [
+          {
+            "name": "site",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "organization",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       }
