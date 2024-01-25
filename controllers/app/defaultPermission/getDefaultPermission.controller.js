@@ -5,7 +5,6 @@ const getDefaultPermissionController = async (req, res) => {
     try{
         const defaultPermission = await DefaultPermission
         .findOne({ _id: id })
-        .sort({ name: 1 })
         .select("name isAdmin features")
         .populate({
             path: "features.feature",
