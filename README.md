@@ -9,6 +9,7 @@
 
 ## Bugs
  - Members not creating while adding organization.
+ - Add Features in subscription.
 
 ## Today Tasks
  - Invite Members in Site { Mobile, Desktop }.
