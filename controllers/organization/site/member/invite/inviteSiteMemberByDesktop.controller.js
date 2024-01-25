@@ -4,7 +4,7 @@ const SiteMember = require("@/models/organization/site/siteMember.model");
 const sendEmailController = require("@/controllers/app/email/sendEmail.controller");
 const SiteInvite = require("@/templates/emails/SiteInvite.template");
 
-const inviteMemberByDesktopController = async (req, res) => {
+const inviteSiteMemberByDesktopController = async (req, res) => {
     const { members } = req.body;
 
     try{
@@ -14,4 +14,4 @@ const inviteMemberByDesktopController = async (req, res) => {
     }
 }
 
-module.exports = inviteMemberByDesktopController;
+module.exports = inviteSiteMemberByDesktopController;

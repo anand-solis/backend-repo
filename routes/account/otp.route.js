@@ -1,5 +1,5 @@
 const express = require("express");
-const OTPController = require("@/controllers/account/otp/otp.controller");
+const OTPController = require("../../controllers/account/otp/otp.controller");
 
 const router = express.Router();
 

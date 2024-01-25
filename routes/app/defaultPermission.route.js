@@ -1,10 +1,10 @@
 const express = require("express");
 const Middleware = require("@/utils/middleware/middleware");
 const superAdminMiddleware = require("@/utils/middleware/superAdminMiddleware");
-const getAllDefaultPermissionController = require("@/controllers/app/defaultPermission/getAllDefaultPermission.controller");
-const getDefaultPermissionController = require("@/controllers/app/defaultPermission/getDefaultPermission.controller");
-const createDefaultPermissionController = require("@/controllers/app/defaultPermission/createDefaultPermission.controller");
-const updateDefaultPermissionController = require("@/controllers/app/defaultPermission/updateDefaultPermission.controller");
+const getAllDefaultPermissionController = require("../../controllers/app/defaultPermission/getAllDefaultPermission.controller");
+const getDefaultPermissionController = require("../../controllers/app/defaultPermission/getDefaultPermission.controller");
+const createDefaultPermissionController = require("../../controllers/app/defaultPermission/createDefaultPermission.controller");
+const updateDefaultPermissionController = require("../../controllers/app/defaultPermission/updateDefaultPermission.controller");
 
 const router = express.Router();
 
