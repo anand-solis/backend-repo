@@ -12,4 +12,3 @@
 
 ## Today Tasks
  - Invite Members { Mobile, Desktop }.
- - Member Site Not Added.
