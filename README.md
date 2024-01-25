@@ -12,3 +12,10 @@
 
 ## Today Tasks
  - Invite Members { Mobile, Desktop }.
+ - Member Role Update
+ - Organization Full GET
+ - Organization Full PATCH
+ - User Profile GET
+ - User Profile PATCH
+ - Permission By User
+ - Subscription By Organization
