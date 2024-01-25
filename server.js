@@ -35,9 +35,8 @@ app.use(require("@/routes/app/defaultPermission.route"));
 
 app.use(require("@/routes/organization/organization.route"));
 app.use(require("@/routes/organization/permission.route"));
-app.use(require("@/routes/organization/site/site.route"));
-app.use(require("@/routes/organization/member/invite.route"));
-app.use(require("@/routes/organization/member/member.route"));
+app.use(require("@/routes/organization/site.route"));
+app.use(require("@/routes/organization/member.route"));
 
 async function startServer() {
     try {
