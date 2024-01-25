@@ -37,6 +37,7 @@ app.use(require("@/routes/organization/organization.route"));
 app.use(require("@/routes/organization/permission.route"));
 app.use(require("@/routes/organization/site.route"));
 app.use(require("@/routes/organization/member.route"));
+app.use(require("@/routes/organization/plan.route"));
 
 async function startServer() {
     try {
