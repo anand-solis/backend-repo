@@ -7,7 +7,10 @@ const getPlanController = async (req, res) => {
         const plan = await Plan
             .findOne({ organization: organization })
             .select("subscription expiry")
-            .populate("subscription");
+            .populate({
+                path: "subscription",
+                select: ["-__v", "-createdAt", "-updatedAt"]
+            });
 
         return res.status(200).json({ plan: plan, success: true, error: "", message: "Plan details fetched successfully." });
     } catch (error) {
