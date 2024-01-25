@@ -22,10 +22,10 @@ const getAllAddedSiteMemberController = async (req, res) => {
                 ]
             })
 
-        return res.json({ siteMembers: siteMember, success: true, error: "", message: "Site members fetched successfully." });
+        return res.status(200).json({ siteMembers: siteMember, success: true, error: "", message: "Site members fetched successfully." });
 
     } catch (error) {
-        return res.json({ siteMembers: null, success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ siteMembers: null, success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

@@ -30,10 +30,10 @@ const RemoveFeatureController = async (req, res) => {
             await Permission.findOneAndUpdate({ _id: permission._id }, { features: updatedFeature })
         })
 
-        return res.json({ success: true, error: "", message: "Feature removed successfully." });
+        return res.status(200).json({ success: true, error: "", message: "Feature removed successfully." });
 
     } catch (error) {
-        return res.json({ success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

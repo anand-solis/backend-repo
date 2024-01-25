@@ -28,13 +28,13 @@ const updatePermissionController = async (req, res) => {
     
             await Permission.findOneAndUpdate({ _id: permissions._id }, updatePermission);
     
-            return res.json({ success: true, error: "", message: "Permission updated successfully." });
+            return res.status(200).json({ success: true, error: "", message: "Permission updated successfully." });
         }
         else{
-            return res.json({ success: false, error: "Admin Permissions can't change.", message: "" });
+            return res.status(401).json({ success: false, error: "Admin Permissions can't change.", message: "" });
         }
     } catch (error){
-        return res.json({ success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

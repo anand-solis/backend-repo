@@ -44,26 +44,26 @@ const createSiteController = async (req, res) => {
 
                         await NewSiteMember.save();
 
-                        return res.json({ site: newSiteResponse?._id, success: true, error: "", message: "Site successfully created." });
+                        return res.status(201).json({ site: newSiteResponse?._id, success: true, error: "", message: "Site successfully created." });
                     }
                     else{
-                        return res.json({ site: null, success: false, error: "You are not a member of this organization.", message: "" });
+                        return res.status(401).json({ site: null, success: false, error: "You are not a member of this organization.", message: "" });
                     }
                 }
                 else {
-                    return res.json({ site: null, success: false, error: "Site not created.", message: "" });
+                    return res.status(400).json({ site: null, success: false, error: "Site not created.", message: "" });
                 }
             }
             else {
-                return res.json({ site: null, success: false, error: "Error: You exceed limit to create site in your organization, Upgrade your subscription plan.", message: "" });
+                return res.status(401).json({ site: null, success: false, error: "Error: You exceed limit to create site in your organization, Upgrade your subscription plan.", message: "" });
             }
         }
         else {
-            return res.json({ site: null, success: false, error: "Error: You don't have this features in your subscription plan.", message: "" });
+            return res.status(401).json({ site: null, success: false, error: "Error: You don't have this features in your subscription plan.", message: "" });
         }
 
     } catch (error) {
-        return res.json({ site: null, success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ site: null, success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

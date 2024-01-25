@@ -54,9 +54,9 @@ const ProfileController = async (req, res) => {
         }
 
         await User.findOneAndUpdate({ _id: req?.user?._id }, data);
-        return res.json({ success: true, error: "" });
+        return res.status(200).json({ success: true, error: "", message: "Profile updated successfully." });
     } catch (error) {
-        return res.json({ success: false, error: `Error: ${error}` });
+        return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

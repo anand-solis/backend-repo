@@ -12,9 +12,9 @@ const getAllSiteController = async (req, res) => {
             select: "name"
         });
 
-        return res.json({ sites: sites, success: true, error: "", message: "Sites fetched successfully." });
+        return res.status(200).json({ sites: sites, success: true, error: "", message: "Sites fetched successfully." });
     } catch (error) {
-        return res.json({ sites: null, success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ sites: null, success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

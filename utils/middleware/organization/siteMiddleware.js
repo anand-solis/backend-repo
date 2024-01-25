@@ -22,11 +22,11 @@ const siteMiddleware = async (req, res, next) => {
             next();
         }
         else{
-            return res.json({ success: false, error: "You are not a member of this site project." });
+            return res.status(401).json({ success: false, error: "You are not a member of this site project." });
         }
     }
     else{
-        return res.json({ success: false, error: "This site project not exist in your organization." });
+        return res.status(204).json({ success: false, error: "This site project not exist in your organization." });
     }
 }
 

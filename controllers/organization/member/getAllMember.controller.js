@@ -16,9 +16,9 @@ const getAllMemberController = async (req, res) => {
                 select: "name"
             })
 
-        return res.json({ members: members, success: true, error: "", message: "Members fetched successfully." })
+        return res.status(200).json({ members: members, success: true, error: "", message: "Members fetched successfully." })
     } catch (error) {
-        return res.json({ members: null, success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ members: null, success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

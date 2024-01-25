@@ -10,7 +10,7 @@ const inviteSiteMemberByDesktopController = async (req, res) => {
     try{
 
     } catch (error) {
-        return res.json({ success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

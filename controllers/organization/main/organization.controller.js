@@ -22,19 +22,19 @@ const OrganizationController = async (req, res) => {
             await session.commitTransaction();
             session.endSession();
 
-            return res.json({ success: true, error: "", message: "Organization created successfully." });
+            return res.status(201).json({ success: true, error: "", message: "Organization created successfully." });
         }
         else {
             await session.commitTransaction();
             session.endSession();
 
-            return res.json({ success: organization.success, error: organization.error, message: organization.message });
+            return res.status(200).json({ success: organization.success, error: organization.error, message: organization.message });
         }
     } catch (error) {
         await session.abortTransaction();
         session.endSession();
 
-        return res.json({ success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

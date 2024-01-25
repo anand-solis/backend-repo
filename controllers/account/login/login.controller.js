@@ -33,7 +33,7 @@ const LoginController = async (req, res) => {
 
                     if(assigned.success) await OTP.deleteMany({ param: param });
 
-                    return res.json({ success: assigned.success, error: assigned.error, token: assigned.token });
+                    return res.status(200).json({ success: assigned.success, error: assigned.error, token: assigned.token });
                 }
                 else{
                     if(OTPResponse.type == "email") {
@@ -58,18 +58,18 @@ const LoginController = async (req, res) => {
 
                     if(assigned.success) await OTP.deleteMany({ param: param });
 
-                    return res.json({ success: assigned.success, error: assigned.error, token: assigned.token });
+                    return res.status(200).json({ success: assigned.success, error: assigned.error, token: assigned.token });
                 }
             }
             else {
-                return res.json({ success: false, error: "OTP is expired." });
+                return res.status(204).json({ success: false, error: "OTP is expired." });
             }
         }
         else {
-            return res.json({ success: false, error: "OTP Not found in the database" });
+            return res.status(204).json({ success: false, error: "OTP Not found in the database" });
         }
     } catch (error) {
-        return res.json({ success: false, error: `Error: ${error}` });
+        return res.status(500).json({ success: false, error: `Error: ${error}` });
     }
 }
 

@@ -43,31 +43,31 @@ const organizationMiddleware = async (req, res, next, key, rule, subscription) =
                                 next();
                             }
                             else {
-                                return res.json({ success: false, error: "Error: You don't have permission to do this task, Upgrade your subscription.", message: "" });
+                                return res.status(401).json({ success: false, error: "Error: You don't have permission to do this task, Upgrade your subscription.", message: "" });
                             }
                         }
                         else {
-                            return res.json({ success: false, error: "Error: Your organization subscription plan is expired.", message: "" });
+                            return res.status(401).json({ success: false, error: "Error: Your organization subscription plan is expired.", message: "" });
                         }
                     }
                     else {
-                        return res.json({ success: false, error: "Error: You don't have any valid subscription plan.", message: "" });
+                        return res.status(401).json({ success: false, error: "Error: You don't have any valid subscription plan.", message: "" });
                     }
                 }
                 else {
-                    return res.json({ success: false, error: "Error: You don't have any permissions to do this task, Contact your organization admin.", message: "" });
+                    return res.status(401).json({ success: false, error: "Error: You don't have any permissions to do this task, Contact your organization admin.", message: "" });
                 }
             }
             else {
-                return res.json({ success: false, error: "Error: You don't have this features in your subscription plan.", message: "" })
+                return res.status(401).json({ success: false, error: "Error: You don't have this features in your subscription plan.", message: "" })
             }
         }
         else {
-            return res.json({ success: false, error: "Error: You are not in this organization.", message: "" });
+            return res.status(401).json({ success: false, error: "Error: You are not in this organization.", message: "" });
         }
 
     } catch (error) {
-        return res.json({ success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

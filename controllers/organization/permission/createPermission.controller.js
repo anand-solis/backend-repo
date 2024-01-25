@@ -30,13 +30,13 @@ const createPermissionController = async (req, res) => {
             const NewPermission = new Permission(NewPermissionRules);
             await NewPermission.save();
 
-            return res.json({ success: true, error: "", message: "New permission created successfully." });
+            return res.status(201).json({ success: true, error: "", message: "New permission created successfully." });
         }
         else {
-            return res.json({ success: false, error: "You don't have any features yet.", message: "" });
+            return res.status(204).json({ success: false, error: "You don't have any features yet.", message: "" });
         }
     } catch (error) {
-        return res.json({ success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

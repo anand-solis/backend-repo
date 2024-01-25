@@ -18,18 +18,18 @@ const OTPController = async (req, res) => {
 
             if (paramType.type == "email") {
                 const sendEmail = await sendEmailController(param, "Verification OTP", EmailVerificationOTP(code));
-                return res.json({ success: sendEmail.success, error: sendEmail.error, message: sendEmail.message });
+                return res.status(200).json({ success: sendEmail.success, error: sendEmail.error, message: sendEmail.message });
             }
             else if (paramType.type == "phone") {
                 const sendSMS = await sendSMSController(param, SMSVerificationOTP(code));
-                return res.json({ success: sendSMS.success, error: sendSMS.error, message: sendSMS.message });
+                return res.status(200).json({ success: sendSMS.success, error: sendSMS.error, message: sendSMS.message });
             }
         } catch (error) {
-            return res.json({ success: false, error: `Error: ${error}`, message: "" });
+            return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
         }
     }
     else {
-        return res.json({ success: false, error: `Email / Mobile Number is not valid.`, message: "" });
+        return res.status(400).json({ success: false, error: `Email / Mobile Number is not valid.`, message: "" });
     }
 }
 

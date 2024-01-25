@@ -10,7 +10,7 @@ const Middleware = async (req, res, next) => {
     const token = authHeader && authHeader.split(" ")[1];
     try {
         if (!token) {
-            return res.json({ success: false, error: "Unauthorized user." });
+            return res.status(401).json({ success: false, error: "Unauthorized user." });
         }
         const cachedValue = myCache.get("userData");
         if (myCache.has("userData") && cachedValue.token == token) {
@@ -23,10 +23,10 @@ const Middleware = async (req, res, next) => {
 
             const user = await User.findOne({ _id: _id });
             if (!user) {
-                return res.json({ success: false, error: "User account not found." });
+                return res.status(401).json({ success: false, error: "User account not found." });
             }
             if (user.blocked) {
-                return res.json({ success: false, error: "User account blocked." });
+                return res.status(401).json({ success: false, error: "User account blocked." });
             }
             user.token = token;
             req.user = user;
@@ -34,7 +34,7 @@ const Middleware = async (req, res, next) => {
             next();
         }
     } catch (error) {
-        return res.json({ success: false, error: `Error: ${error}` });
+        return res.status(500).json({ success: false, error: `Error: ${error}` });
     }
 }
 

@@ -23,19 +23,19 @@ const organizationMemberMiddleware = async (req, res, next) => {
                     next();
                 }
                 else {
-                    return res.json({ success: false, error: "Error: Your organization subscription plan is expired.", message: "" });
+                    return res.status(401).json({ success: false, error: "Error: Your organization subscription plan is expired.", message: "" });
                 }
             }
             else {
-                return res.json({ success: false, error: "Error: You don't have any valid subscription plan.", message: "" });
+                return res.status(401).json({ success: false, error: "Error: You don't have any valid subscription plan.", message: "" });
             }
         }
         else {
-            return res.json({ success: false, error: "Error: You are not in this organization.", message: "" });
+            return res.status(401).json({ success: false, error: "Error: You are not in this organization.", message: "" });
         }
 
     } catch (error) {
-        return res.json({ success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

@@ -11,9 +11,9 @@ const getDefaultPermissionController = async (req, res) => {
             select: ["name", "key"]
         });
 
-        return res.json({ defaultPermission: defaultPermission, success: true, error: "", message: "Default Permission fetched successfully." });
+        return res.status(200).json({ defaultPermission: defaultPermission, success: true, error: "", message: "Default Permission fetched successfully." });
     } catch(error) {
-        return res.json({ defaultPermission: null, success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ defaultPermission: null, success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

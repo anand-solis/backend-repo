@@ -75,13 +75,13 @@ const AddFeatureController = async (req, res) => {
                 await Permission.findOneAndUpdate({ _id: permission._id}, {features: updatedFeature})
             })
 
-            return res.json({ success: true, error: "", message: "New Feature added successfully." });
+            return res.status(201).json({ success: true, error: "", message: "New Feature added successfully." });
         }
         else{
-            return res.json({ success: false, error: `Error: Feature not added.`, message: "" });
+            return res.status(204).json({ success: false, error: `Error: Feature not added.`, message: "" });
         }
     } catch (error) {
-        return res.json({ success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

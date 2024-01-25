@@ -6,17 +6,17 @@ const CheckNewUserController = async (req, res) => {
 
         if(user?._id){
             if(user?.name && user?.role){
-                return res.json({ exist: true, isNew: false, success: true, error: "" });
+                return res.status(200).json({ exist: true, isNew: false, success: true, error: "" });
             }
             else{
-                return res.json({ exist: true, isNew: true, success: true, error: "" });
+                return res.status(200).json({ exist: true, isNew: true, success: true, error: "" });
             }
         }
         else{
-            return res.json({ exist: false, isNew: null, success: true, error: "" });
+            return res.status(204).json({ exist: false, isNew: null, success: true, error: "" });
         }
     } catch (error) {
-        return res.json({ exist: null, isNew: null, success: false, error: `Error: ${error}` });
+        return res.status(500).json({ exist: null, isNew: null, success: false, error: `Error: ${error}` });
     }
 }
 

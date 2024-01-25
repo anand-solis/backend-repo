@@ -9,7 +9,7 @@ const createDefaultPermissionController = async (req, res) => {
             const response = await DefaultPermission.findOne({ isAdmin: true }).select("_id");
 
             if(response?._id){
-                return res.json({ success: false, error: "Admin permissions already exist.", message: "" });
+                return res.status(409).json({ success: false, error: "Admin permissions already exist.", message: "" });
             }
             else{
                 await create(name, isAdmin, res);
@@ -19,7 +19,7 @@ const createDefaultPermissionController = async (req, res) => {
             await create(name, isAdmin, res);
         }
     } catch (error) {
-        return res.json({ success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
 }
 
@@ -58,10 +58,10 @@ async function create(name, isAdmin, res){
         const NewDefaultPermission = new DefaultPermission(NewDefaultPermissionRules);
         await NewDefaultPermission.save();
 
-        return res.json({ success: true, error: "", message: "New default permission created successfully." });
+        return res.status(201).json({ success: true, error: "", message: "New default permission created successfully." });
     }
     else {
-        return res.json({ success: false, error: "You don't have any features yet.", message: "" });
+        return res.status(204).json({ success: false, error: "You don't have any features yet.", message: "" });
     }
 }
 

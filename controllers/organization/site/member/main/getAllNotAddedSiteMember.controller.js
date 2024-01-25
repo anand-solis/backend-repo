@@ -23,10 +23,10 @@ const getAllNotAddedSiteMemberController = async (req, res) => {
 
         const notSiteMembers = organizationMembers.filter(member => !siteMemberIds.includes(member._id.toString()));
 
-        return res.json({ notSiteMembers: notSiteMembers, success: true, error: "", message: "Not added in site members fetched successfully." });
+        return res.status(200).json({ notSiteMembers: notSiteMembers, success: true, error: "", message: "Not added in site members fetched successfully." });
 
     } catch (error) {
-        return res.json({ notSiteMembers: null, success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ notSiteMembers: null, success: false, error: `Error: ${error}`, message: "" });
     }
 }
 

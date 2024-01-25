@@ -5,7 +5,7 @@ const getPermissionByUserController = async (req, res) => {
 
     try{
         const permission = await Member
-        .findOne({ user: req.user._id, organization: organization }, {'permissions':1, "_id": 0})
+        .findOne({ user: req.user._id, organization: organization }, {"permissions": 1, "_id": 0})
         
         .populate({
             path: "permission",
@@ -16,9 +16,9 @@ const getPermissionByUserController = async (req, res) => {
             }
         })
 
-        return res.json({ permission: permission.permission, success: true, error: "", message: "User permission fetched successfully." });
+        return res.status(200).json({ permission: permission.permission, success: true, error: "", message: "User permission fetched successfully." });
     } catch(error) {
-        return res.json({ permission: null, success: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ permission: null, success: false, error: `Error: ${error}`, message: "" });
     }
 }
 
