@@ -10,6 +10,8 @@
 
 ## Bugs
  - Members not creating while adding organization.
+
+## Enhancement
  - Add Features in subscription.
 
 ## Today Tasks
