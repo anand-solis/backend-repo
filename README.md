@@ -18,4 +18,3 @@
  - Invite Members in Site { Mobile, Desktop }.
  - Member Role Update
  - Member Add Member
- - Organization Full PATCH

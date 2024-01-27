@@ -365,7 +365,7 @@
         }
       }
     },
-    "/organization": {
+    "/organization/get": {
       "get": {
         "description": "",
         "parameters": [
@@ -373,6 +373,65 @@
             "name": "organization",
             "in": "query",
             "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/organization/update": {
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "city": {
+                  "example": "any"
+                },
+                "state": {
+                  "example": "any"
+                },
+                "pin_code": {
+                  "example": "any"
+                },
+                "gst_number": {
+                  "example": "any"
+                },
+                "pan_number": {
+                  "example": "any"
+                },
+                "tan": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
