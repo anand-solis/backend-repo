@@ -16,5 +16,4 @@
  - Member Role Update
  - Member Add Member
  - Organization Full PATCH
- - User Profile GET
  - User Profile PATCH
