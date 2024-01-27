@@ -6,6 +6,7 @@
 ## Pending Tasks
  - SMS API Connection.
  - Validations for Required fields (express-validator).
+ - {setting-up-account, profile/update}
 
 ## Bugs
  - Members not creating while adding organization.
@@ -16,4 +17,3 @@
  - Member Role Update
  - Member Add Member
  - Organization Full PATCH
- - User Profile PATCH
