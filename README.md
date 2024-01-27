@@ -15,7 +15,6 @@
  - Invite Members in Site { Mobile, Desktop }.
  - Member Role Update
  - Member Add Member
- - Organization Full GET
  - Organization Full PATCH
  - User Profile GET
  - User Profile PATCH
