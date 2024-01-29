@@ -6,8 +6,7 @@ const getAllSiteController = require("../../controllers/organization/site/getAll
 const createSiteController = require("../../controllers/organization/site/createSite.controller");
 const getAllAddedSiteMemberController = require("../../controllers/organization/site/member/main/getAllAddedSiteMember.controller");
 const getAllNotAddedSiteMemberController = require("../../controllers/organization/site/member/main/getAllNotAddedSiteMember.controller");
-const inviteSiteMemberByMobileController = require("../../controllers/organization/site/member/invite/inviteSiteMemberByMobile.controller");
-const inviteSiteMemberByDesktopController = require("../../controllers/organization/site/member/invite/inviteSiteMemberByDesktop.controller");
+const inviteSiteMemberController = require("../../controllers/organization/site/member/invite/inviteSiteMember.controller");
 
 const router = express.Router();
 
@@ -45,15 +44,7 @@ router.get(
 );
 
 router.post(
-    "/site/member/invite/mobile",
-    Middleware,
-    (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
-    siteMiddleware,
-    inviteSiteMemberByMobileController
-);
-
-router.post(
-    "/site/member/invite/desktop",
+    "/site/member/invite",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
     siteMiddleware,
