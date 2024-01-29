@@ -15,6 +15,5 @@
  - Add Features in subscription.
 
 ## Today Tasks
- - Invite Members in Site { Mobile, Desktop }.
  - Member Role Update
- - Member Add Member
+ - Add Member { Mobile, Desktop }.

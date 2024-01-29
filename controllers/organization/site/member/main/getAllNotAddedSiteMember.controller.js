@@ -10,7 +10,7 @@ const getAllNotAddedSiteMemberController = async (req, res) => {
             .select("user permission")
             .populate({
                 path: "user",
-                select: "name",
+                select: ["name", "email.address"],
             })
             .populate({
                 path: "permission",
