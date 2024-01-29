@@ -365,6 +365,26 @@
         }
       }
     },
+    "/member/invite/mobile": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/member/invite/desktop": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/organization/get": {
       "get": {
         "description": "",
@@ -756,17 +776,7 @@
         }
       }
     },
-    "/site/member/invite/mobile": {
-      "post": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/site/member/invite/desktop": {
+    "/site/member/invite": {
       "post": {
         "description": "",
         "parameters": [

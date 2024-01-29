@@ -48,7 +48,7 @@ router.post(
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
     siteMiddleware,
-    inviteSiteMemberByDesktopController
+    inviteSiteMemberController
 );
 
 module.exports = router;

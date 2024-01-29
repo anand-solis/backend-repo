@@ -21,7 +21,6 @@ router.post(
     "/member/invite/mobile",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
-    siteMiddleware,
     inviteMemberByMobileController
 );
 
@@ -29,7 +28,6 @@ router.post(
     "/member/invite/desktop",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
-    siteMiddleware,
     inviteMemberByDesktopController
 );
 

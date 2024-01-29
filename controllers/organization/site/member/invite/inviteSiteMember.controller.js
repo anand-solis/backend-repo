@@ -14,4 +14,4 @@ const inviteSiteMemberController = async (req, res) => {
     }
 }
 
-module.exports = inviteSiteMemberByDesktopController;
+module.exports = inviteSiteMemberController;
