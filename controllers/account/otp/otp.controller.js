@@ -17,7 +17,14 @@ const OTPController = async (req, res) => {
             await otp.save();
 
             if (paramType.type == "email") {
-                const sendEmail = await sendEmailController(param, "Verification OTP", EmailVerificationOTP(code));
+                const emailParams = {
+                    email: param,
+                    subject: "Verification OTP",
+                    content: EmailVerificationOTP(code)
+                }
+
+                const sendEmail = await sendEmailController(emailParams);
+                
                 return res.status(200).json({ success: sendEmail.success, error: sendEmail.error, message: sendEmail.message });
             }
             else if (paramType.type == "phone") {

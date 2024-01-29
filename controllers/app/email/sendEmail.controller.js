@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-const sendEmailController = async (email, subject, content) => {
+const sendEmailController = async (params) => {
     const transporter = nodemailer.createTransport({
         service: process.env.SMTP_SERVICE,
         host: process.env.SMTP_HOST,
@@ -12,12 +12,31 @@ const sendEmailController = async (email, subject, content) => {
         },
     });
 
-    const emailContent = {
+    let emailContent = {
         from: `"${process.env.SMTP_FROM}" <${process.env.SMTP_USERNAME}>`,
-        to: email,
-        subject: subject,
-        html: content,
+        subject: params?.subject,
+        html: params?.content,
     };
+
+    if(params?.email) {
+        emailContent.to = params?.email;
+    }
+
+    if (params?.bcc) {
+        if (Array.isArray(params.bcc)) {
+            emailContent.bcc = params.bcc.join(', ');
+        } else {
+            emailContent.bcc = params.bcc;
+        }
+    }
+
+    if (params?.cc) {
+        if (Array.isArray(params.cc)) {
+            emailContent.cc = params.cc.join(', ');
+        } else {
+            emailContent.cc = params.cc;
+        }
+    }
 
     try {
         await transporter.sendMail(emailContent);

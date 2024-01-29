@@ -17,7 +17,14 @@ const OrganizationController = async (req, res) => {
         if (organization.success) {
             await createSubscriptionPlan(organization.id, session);
             await createDefaultPermissions(organization.id, req?.user?._id, session);
-            await sendEmailController(email, "Organization Successfully Created", SuccessCreateOrganization(name, email, phone));
+
+            const emailParams = {
+                email: email,
+                subject: "Organization Successfully Created",
+                content: SuccessCreateOrganization(name, email, phone)
+            }
+            
+            await sendEmailController(emailParams);
 
             await session.commitTransaction();
             session.endSession();
