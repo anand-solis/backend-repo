@@ -2,8 +2,8 @@ const express = require("express");
 const Middleware = require("@/utils/middleware/middleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 const getAllMemberController = require("../../controllers/organization/member/getAllMember.controller");
-const inviteMemberByMobileController = require("../../controllers/organization/member/inviteMemberByMobile.controller");
-const inviteMemberByDesktopController = require("../../controllers/organization/member/inviteMemberByDesktop.controller")
+const inviteMemberController = require("../../controllers/organization/member/inviteMember.controller");
+const updateMemberController = require("../../controllers/organization/member/updateMember.controller");
 
 const router = express.Router();
 
@@ -18,17 +18,17 @@ router.get(
 );
 
 router.post(
-    "/member/invite/mobile",
+    "/member/invite",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
-    inviteMemberByMobileController
+    inviteMemberController
 );
 
-router.post(
-    "/member/invite/desktop",
+router.patch(
+    "/member/update/:id",
     Middleware,
-    (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
-    inviteMemberByDesktopController
+    (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
+    updateMemberController
 );
 
 module.exports = router;
