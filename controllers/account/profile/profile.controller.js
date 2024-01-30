@@ -15,7 +15,7 @@ const ProfileController = async (req, res) => {
         
         const emailCheck = await User.findOne({ email: { address : email } }).select("_id");
 
-        if(emailCheck._id){
+        if(emailCheck?._id){
             return res.status(409).json({ success: false, error: "Email already exist.", message: "" });
         }
         
@@ -24,7 +24,8 @@ const ProfileController = async (req, res) => {
             name: name,
             role: role,
             email: {
-                address: email
+                address: email,
+                isValid: false
             }
         }
         );
