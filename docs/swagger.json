@@ -27,7 +27,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "param": {
+                "phone": {
                   "example": "any"
                 },
                 "otp": {
@@ -60,7 +60,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "param": {
+                "phone": {
                   "example": "any"
                 }
               }
@@ -96,9 +96,6 @@
                 "email": {
                   "example": "any"
                 },
-                "phone": {
-                  "example": "any"
-                },
                 "role": {
                   "example": "any"
                 }
@@ -109,6 +106,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
           },
           "500": {
             "description": "Internal Server Error"

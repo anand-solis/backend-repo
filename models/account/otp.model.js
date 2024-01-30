@@ -5,13 +5,9 @@ const OTPSchema = mongoose.Schema({
         type: String,
         required: [true, "OTP is required."]
     },
-    type: {
+    phone: {
         type: String,
-        required: [true, "Type is required."]
-    },
-    param: {
-        type: String,
-        required: [true, "Param is required."]
+        required: [true, "Phone No. is required."]
     }
 }, { timestamps: true });
 

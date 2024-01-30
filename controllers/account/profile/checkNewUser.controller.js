@@ -5,7 +5,7 @@ const CheckNewUserController = async (req, res) => {
         const user = await User.findOne({ _id: req?.user?._id });
 
         if(user?._id){
-            if(user?.name && user?.role){
+            if(user?.email?.address){
                 return res.status(200).json({ exist: true, isNew: false, success: true, error: "" });
             }
             else{

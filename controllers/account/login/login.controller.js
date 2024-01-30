@@ -5,58 +5,35 @@ const OTP = require("@/models/account/otp.model");
 
 const LoginController = async (req, res) => {
     try {
-        const { param, otp } = req.body;
+        const { phone, otp } = req.body;
 
-        const OTPResponse = await OTP.findOne({ otp: otp, param: param }).select("type param createdAt");
+        const OTPResponse = await OTP.findOne({ otp: otp, phone: phone }).select("phone createdAt");
 
         if (OTPResponse?._id) {
             const notExpire = OTPExpiryValidation(OTPResponse.createdAt);
 
             if (notExpire.success && !notExpire.expire) {
-                let findOptions = {};
-
-                if(OTPResponse.type == "email") {
-                    findOptions = {
-                        "email.address": OTPResponse.param
-                    };
-                }
-                else if(OTPResponse.type == "phone"){
-                    findOptions = {
-                        "phone.number": OTPResponse.param
-                    };
-                }
-
-                const UserResponse = await User.findOne(findOptions);
+                const UserResponse = await User.findOne({ "phone.number": OTPResponse.phone });
 
                 if(UserResponse?._id){
                     const assigned = await AssignJWTToken(UserResponse);
 
-                    if(assigned.success) await OTP.deleteMany({ param: param });
+                    if(assigned.success) await OTP.deleteMany({ phone: phone });
 
                     return res.status(200).json({ success: assigned.success, error: assigned.error, token: assigned.token });
                 }
                 else{
-                    if(OTPResponse.type == "email") {
-                        AddUserDetails = {
-                            email: {
-                                address: OTPResponse.param,
-                                isValid: true
-                            }
-                        };
-                    }
-                    else if(OTPResponse.type == "phone"){
-                        AddUserDetails = {
-                            phone: {
-                                number: OTPResponse.param,
-                                isValid: true
-                            }
-                        };
-                    }
+                    const AddedUser = new User({
+                        phone: {
+                            number: OTPResponse.phone,
+                            isValid: true
+                        }
+                    });
 
-                    const AddedUser = await User.create(AddUserDetails);
-                    const assigned = await AssignJWTToken(AddedUser);
+                    const userAdded = await AddedUser.save();
+                    const assigned = await AssignJWTToken(userAdded);
 
-                    if(assigned.success) await OTP.deleteMany({ param: param });
+                    if(assigned.success) await OTP.deleteMany({ phone: phone });
 
                     return res.status(200).json({ success: assigned.success, error: assigned.error, token: assigned.token });
                 }
