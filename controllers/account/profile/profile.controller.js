@@ -12,6 +12,13 @@ const ProfileController = async (req, res) => {
         if (!email) {
             return res.status(422).json({ success: false, error: "Email is required.", message: "" });
         }
+        
+        const emailCheck = await User.findOne({ email: { address : email } }).select("_id");
+
+        if(emailCheck._id){
+            return res.status(409).json({ success: false, error: "Email already exist.", message: "" });
+        }
+        
         await User.findOneAndUpdate(
             { _id: req?.user?._id }, {
             name: name,
