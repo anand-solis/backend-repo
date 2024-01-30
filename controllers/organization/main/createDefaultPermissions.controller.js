@@ -6,6 +6,7 @@ const Member = require("@/models/organization/member.model");
 const createDefaultPermissions = async (organizationId, userId) => {
     try {
         const features = await Feature.find({}).select("_id");
+        var AdminPermissionId;
 
         if (features.length > 0) {
             const defaultPermissions = await DefaultPermission
@@ -16,7 +17,7 @@ const createDefaultPermissions = async (organizationId, userId) => {
                 select: "_id"
             });
 
-            defaultPermissions.forEach(async (permission) => {
+            await Promise.all(defaultPermissions.map(async (permission) => {
                 let NewPermissionRules = {
                     organization: organizationId,
                     name: permission.name,
@@ -25,7 +26,7 @@ const createDefaultPermissions = async (organizationId, userId) => {
                     features: []
                 };
 
-                permission.features.map((feature) => {
+                await Promise.all(permission.features.map(async (feature) => {
                     let rule = {
                         read: feature.permissions.read,
                         update: feature.permissions.update,
@@ -36,20 +37,23 @@ const createDefaultPermissions = async (organizationId, userId) => {
                     NewPermissionRules.features.push({
                         feature: feature.feature._id,
                         permissions: rule
-                    })
-                })
+                    });
+                }));
 
                 const NewPermission = new Permission(NewPermissionRules);
-                await NewPermission.save();
-            })
+                if (permission.isAdmin) {
+                    const PermissionId = await NewPermission.save();
+                    AdminPermissionId = PermissionId?._id;
+                } else {
+                    await NewPermission.save();
+                }
+            }));
 
-            const AdminPermission = await Permission.findOne({ organization: organizationId, isAdmin: true }).select("_id");
-
-            if(AdminPermission?._id){
+            if(AdminPermissionId){
                 const NewMember = new Member({
                     organization: organizationId,
                     user: userId,
-                    permission: AdminPermission._id,
+                    permission: AdminPermissionId,
                     isCreator: true,
                     inviteAccepted: true
                 })

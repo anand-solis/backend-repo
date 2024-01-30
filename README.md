@@ -9,7 +9,6 @@
  - {setting-up-account, profile/update}
 
 ## Bugs
- - Members not creating while adding organization.
 
 ## Enhancement
  - Add Features in subscription.
@@ -17,3 +16,6 @@
 ## Today Tasks
  - Member Role Update
  - Add Member { Mobile, Desktop }.
+
+ - Approval Settings
+ - Changing in User Profile Edit API
