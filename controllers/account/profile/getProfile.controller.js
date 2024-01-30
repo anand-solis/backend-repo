@@ -4,7 +4,7 @@ const getProfileController = async (req, res) => {
     try {
         const user = await User
             .findOne({ _id: req.user._id })
-            .select("name email.address phone.number role")
+            .select("name email phone role")
             .populate({
                 path: "role",
                 select: "name"
