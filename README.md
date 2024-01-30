@@ -12,6 +12,5 @@
  - Add Features in subscription.
 
 ## Today Tasks
- - Approval Settings
  - Changing in User Profile Edit API (Change Token)
  - Logout Functionality
