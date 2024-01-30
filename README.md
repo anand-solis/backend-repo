@@ -18,4 +18,5 @@
  - Add Member { Mobile, Desktop }.
 
  - Approval Settings
- - Changing in User Profile Edit API
+ - Changing in User Profile Edit API (Change Token)
+ - Logout Functionality
