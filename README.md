@@ -12,4 +12,5 @@
  - Add Features in subscription.
 
 ## Today Tasks
- - Changing in User Profile Edit API (Change Token)
+ - Changing in User Profile Edit API (Change Token).
+ - Add invite Accept of organization & Site Member in both middlewares.
