@@ -24,7 +24,7 @@ const sendEmailController = async (params) => {
 
     if (params?.bcc) {
         if (Array.isArray(params.bcc)) {
-            emailContent.bcc = params.bcc.join(', ');
+            emailContent.bcc = params.bcc.join(", ");
         } else {
             emailContent.bcc = params.bcc;
         }
@@ -32,7 +32,7 @@ const sendEmailController = async (params) => {
 
     if (params?.cc) {
         if (Array.isArray(params.cc)) {
-            emailContent.cc = params.cc.join(', ');
+            emailContent.cc = params.cc.join(", ");
         } else {
             emailContent.cc = params.cc;
         }
