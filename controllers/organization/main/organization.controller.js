@@ -19,10 +19,12 @@ const OrganizationController = async (req, res) => {
             await createDefaultPermissions(organization.id, req?.user?._id, session);
 
             const emailParams = {
-                email: email,
+                email: `${req.user.email.address}, ${email}`,
                 subject: "Organization Successfully Created",
                 content: SuccessCreateOrganization(name, email, phone)
             }
+
+            console.log(emailParams);
             
             await sendEmailController(emailParams);
 
