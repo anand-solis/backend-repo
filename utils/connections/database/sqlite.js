@@ -1,22 +1,22 @@
-const connectSqlDB = require("@/utils/connections/database/connectSqlDB");
+const connectSqliteDB = require("@/utils/connections/database/connectSqliteDB");
 
 module.exports = {
     sqliteDelete: () => {
-        const connectionSqlDB = connectSqlDB();
+        const connectionSqliteDB = connectSqliteDB();
 
-        connectionSqlDB.serialize(() => {
+        connectionSqliteDB.serialize(() => {
             const twentyFourHoursAgo = new Date();
             twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24); // Calculate the date and time 24 hours ago
     
-            connectionSqlDB.run(`DELETE FROM tokens WHERE created_at < ?;`, [twentyFourHoursAgo.toISOString()]);
+            connectionSqliteDB.run(`DELETE FROM tokens WHERE created_at < ?;`, [twentyFourHoursAgo.toISOString()]);
         })
     },
 
     sqliteInsert: (token) => {
-        const connectionSqlDB = connectSqlDB();
+        const connectionSqliteDB = connectSqliteDB();
 
-        connectionSqlDB.serialize(() => {
-            connectionSqlDB.run(`INSERT INTO tokens (token) VALUES (?);`, [token]);
+        connectionSqliteDB.serialize(() => {
+            connectionSqliteDB.run(`INSERT INTO tokens (token) VALUES (?);`, [token]);
         })
     }
 };

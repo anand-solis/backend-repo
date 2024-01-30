@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const NodeCache = require("node-cache");
 const myCache = new NodeCache();
 require("dotenv").config();
-const connectSqlDB = require("@/utils/connections/database/connectSqlDB");
+const connectSqliteDB = require("@/utils/connections/database/connectSqliteDB");
 
 const Middleware = async (req, res, next) => {
     const authHeader = req.headers["authorization"];
@@ -14,10 +14,10 @@ const Middleware = async (req, res, next) => {
             return res.status(401).json({ success: false, error: "Unauthorized user." });
         }
         else {
-            const connectionSqlDB = connectSqlDB();
+            const connectionSqliteDB = connectSqliteDB();
 
-            connectionSqlDB.serialize(() => {
-                connectionSqlDB.get(`SELECT token FROM tokens WHERE token = ?`, [token], async (error, row) => {
+            connectionSqliteDB.serialize(() => {
+                connectionSqliteDB.get(`SELECT token FROM tokens WHERE token = ?`, [token], async (error, row) => {
                     if (error) {
                         return res.status(500).json({ success: false, error: `Error: ${error}` });
                     }
