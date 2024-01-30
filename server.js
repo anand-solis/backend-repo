@@ -14,6 +14,7 @@ const swaggerDocument = require("@/docs/swagger.json");
 
 // Utils Imports
 const connectDB = require("@/utils/connections/database/connectDB");
+const { sqlite } = require("@/utils/connections/database/sqlite");
 
 // Server Configuration
 const PORT = process.env.PORT;
@@ -44,6 +45,7 @@ async function startServer() {
     try {
         // Connect to the database
         await connectDB();
+        sqlite();
 
         // Database connected successfully, now start the server
         app.listen(PORT, () => {

@@ -3,3 +3,6 @@ node_modules
 
 # VSCODE Settings
 .vscode
+
+# SQLite Database
+/utils/connections/database/blacklist.db
