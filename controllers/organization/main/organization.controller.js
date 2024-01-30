@@ -23,8 +23,6 @@ const OrganizationController = async (req, res) => {
                 subject: "Organization Successfully Created",
                 content: SuccessCreateOrganization(name, email, phone)
             }
-
-            console.log(emailParams);
             
             await sendEmailController(emailParams);
 
