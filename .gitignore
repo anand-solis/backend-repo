@@ -5,4 +5,5 @@ node_modules
 .vscode
 
 # SQLite Database
-/utils/connections/database/blacklist.db
+blacklist.db
+.DS_STORE

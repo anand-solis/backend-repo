@@ -1,8 +1,13 @@
 const sqlite3 = require("sqlite3").verbose();
 
-const path = require("path");
+const connectSqlDB = () => {
+    const connectionSqlDB = new sqlite3.Database("./blacklist.db");
 
-const dbFilePath = path.join(__dirname, "blacklist.db");
-const connectSqlDB = new sqlite3.Database(dbFilePath);
+    connectionSqlDB.serialize(() => {
+        connectionSqlDB.run(`CREATE TABLE IF NOT EXISTS tokens (token TEXT PRIMARY KEY, created_at DATETIME DEFAULT CURRENT_TIMESTAMP);`);
+    });
+
+    return connectionSqlDB;
+}
 
 module.exports = connectSqlDB;

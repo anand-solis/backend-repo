@@ -14,8 +14,10 @@ const Middleware = async (req, res, next) => {
             return res.status(401).json({ success: false, error: "Unauthorized user." });
         }
         else {
-            connectSqlDB.serialize(() => {
-                connectSqlDB.get(`SELECT token FROM tokens WHERE token = ?`, [token], async (error, row) => {
+            const connectionSqlDB = connectSqlDB();
+
+            connectionSqlDB.serialize(() => {
+                connectionSqlDB.get(`SELECT token FROM tokens WHERE token = ?`, [token], async (error, row) => {
                     if (error) {
                         return res.status(500).json({ success: false, error: `Error: ${error}` });
                     }
