@@ -13,4 +13,3 @@
 
 ## Today Tasks
  - Changing in User Profile Edit API (Change Token)
- - Logout Functionality
