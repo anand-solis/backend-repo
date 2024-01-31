@@ -13,4 +13,4 @@
 
 ## Today Tasks
  - Changing in User Profile Edit API (Change Token).
- - Add invite Accept of organization & Site Member in both middlewares.
+ - GET Assigned members by permission.
