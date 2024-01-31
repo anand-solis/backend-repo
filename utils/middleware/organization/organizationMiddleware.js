@@ -10,56 +10,61 @@ const organizationMiddleware = async (req, res, next, key, rule, subscription) =
     try {
         const member = await Member
             .findOne({ user: req?.user?._id, organization: organization })
-            .select("permission")
+            .select("permission inviteAccepted")
             .populate("permission")
 
         if (member?._id) {
-            let isRuleValid = null;
-            const feature = await Feature.findOne({ key: key }).select("_id");
+            if(member.inviteAccepted){
+                let isRuleValid = null;
+                const feature = await Feature.findOne({ key: key }).select("_id");
+    
+                if (feature?._id) {
 
-            if (feature?._id) {
-
-                member?.permission?.features?.map((singleFeature) => {
-                    if (singleFeature.feature.toString() == feature._id.toString()) {
-                        isRuleValid = singleFeature.permissions[rule]
-                    }
-                })
-
-                if (isRuleValid) {
-                    const plan = await Plan
-                        .findOne({ organization: organization })
-                        .select("subscription expiry")
-                        .populate({
-                            path: "subscription",
-                            select: subscription
-                        });
-
-                    if (plan?._id) {
-                        const today = new Date();
-                        const dateToCheck = new Date(plan?.expiry);
-
-                        if (!(dateToCheck < today)) {
-                            if (plan?.subscription[subscription]) {
-                                next();
+                    member?.permission?.features?.map((singleFeature) => {
+                        if (singleFeature.feature.toString() == feature._id.toString()) {
+                            isRuleValid = singleFeature.permissions[rule]
+                        }
+                    })
+    
+                    if (isRuleValid) {
+                        const plan = await Plan
+                            .findOne({ organization: organization })
+                            .select("subscription expiry")
+                            .populate({
+                                path: "subscription",
+                                select: subscription
+                            });
+    
+                        if (plan?._id) {
+                            const today = new Date();
+                            const dateToCheck = new Date(plan?.expiry);
+    
+                            if (!(dateToCheck < today)) {
+                                if (plan?.subscription[subscription]) {
+                                    next();
+                                }
+                                else {
+                                    return res.status(401).json({ success: false, error: "Error: You don't have permission to do this task, Upgrade your subscription.", message: "" });
+                                }
                             }
                             else {
-                                return res.status(401).json({ success: false, error: "Error: You don't have permission to do this task, Upgrade your subscription.", message: "" });
+                                return res.status(401).json({ success: false, error: "Error: Your organization subscription plan is expired.", message: "" });
                             }
                         }
                         else {
-                            return res.status(401).json({ success: false, error: "Error: Your organization subscription plan is expired.", message: "" });
+                            return res.status(401).json({ success: false, error: "Error: You don't have any valid subscription plan.", message: "" });
                         }
                     }
                     else {
-                        return res.status(401).json({ success: false, error: "Error: You don't have any valid subscription plan.", message: "" });
+                        return res.status(401).json({ success: false, error: "Error: You don't have any permissions to do this task, Contact your organization admin.", message: "" });
                     }
                 }
                 else {
-                    return res.status(401).json({ success: false, error: "Error: You don't have any permissions to do this task, Contact your organization admin.", message: "" });
+                    return res.status(401).json({ success: false, error: "Error: You don't have this features in your subscription plan.", message: "" })
                 }
             }
-            else {
-                return res.status(401).json({ success: false, error: "Error: You don't have this features in your subscription plan.", message: "" })
+            else{
+                return res.status(401).json({ success: false, error: "Error: Accept invite for this organization.", message: "" });
             }
         }
         else {
