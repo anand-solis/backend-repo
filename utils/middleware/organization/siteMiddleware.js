@@ -9,7 +9,7 @@ const siteMiddleware = async (req, res, next) => {
     if(siteDetails?._id){
         const MemberDetails = await SiteMember
         .findOne({ site: siteDetails._id })
-        .select("_id member")
+        .select("_id member inviteAccepted")
         .populate({
             path: "member",
             select: "user",
@@ -19,7 +19,12 @@ const siteMiddleware = async (req, res, next) => {
         });
 
         if(MemberDetails?._id){
-            next();
+            if(MemberDetails.inviteAccepted){
+                next();
+            }
+            else{
+                return res.status(401).json({ success: false, error: "Error: Accept invite for this site project.", message: "" });
+            }
         }
         else{
             return res.status(401).json({ success: false, error: "You are not a member of this site project." });

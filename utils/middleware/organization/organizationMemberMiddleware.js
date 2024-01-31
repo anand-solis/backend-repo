@@ -7,27 +7,32 @@ const organizationMemberMiddleware = async (req, res, next) => {
     try {
         const member = await Member
             .findOne({ user: req?.user?._id, organization: organization })
-            .select("permission")
+            .select("permission inviteAccepted")
             .populate("permission");
 
         if (member?._id) {
-            const plan = await Plan
-                .findOne({ organization: organization })
-                .select("expiry");
+            if(member.inviteAccepted){
+                const plan = await Plan
+                    .findOne({ organization: organization })
+                    .select("expiry");
 
-            if (plan?._id) {
-                const today = new Date();
-                const dateToCheck = new Date(plan?.expiry);
+                if (plan?._id) {
+                    const today = new Date();
+                    const dateToCheck = new Date(plan?.expiry);
 
-                if (!(dateToCheck < today)) {
-                    next();
+                    if (!(dateToCheck < today)) {
+                        next();
+                    }
+                    else {
+                        return res.status(401).json({ success: false, error: "Error: Your organization subscription plan is expired.", message: "" });
+                    }
                 }
                 else {
-                    return res.status(401).json({ success: false, error: "Error: Your organization subscription plan is expired.", message: "" });
+                    return res.status(401).json({ success: false, error: "Error: You don't have any valid subscription plan.", message: "" });
                 }
             }
-            else {
-                return res.status(401).json({ success: false, error: "Error: You don't have any valid subscription plan.", message: "" });
+            else{
+                return res.status(401).json({ success: false, error: "Error: Accept invite for this organization.", message: "" });
             }
         }
         else {

@@ -3,7 +3,6 @@ const Feature = require("@/models/app/features.model");
 const Plan = require("@/models/organization/plan.model");
 const Subscription = require("@/models/app/subscription.model");
 
-
 const organizationMiddleware = async (req, res, next, key, rule, subscription) => {
     const { organization } = req.query;
 
