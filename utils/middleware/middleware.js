@@ -22,7 +22,7 @@ const Middleware = async (req, res, next) => {
                         return res.status(500).json({ success: false, error: `Error: ${error}` });
                     }
                     else if (row?.token) {
-                        return res.status(400).json({ success: false, error: "This token is expired." });
+                        return res.status(400).json({ success: false, expired: true, error: "This token is expired." });
                     }
                     else{
                         const cachedValue = myCache.get("userData");
