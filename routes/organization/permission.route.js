@@ -7,6 +7,7 @@ const getPermissionByUserController = require("../../controllers/organization/pe
 const getPermissionController = require("../../controllers/organization/permission/getPermission.controller");
 const createPermissionController = require("../../controllers/organization/permission/createPermission.controller");
 const updatePermissionController = require("../../controllers/organization/permission/updatePermission.controller");
+const getPermissionAssignedMemberController = require("../../controllers/organization/permission/getPermissionAssignedMember.controller");
 
 const router = express.Router();
 
@@ -32,6 +33,13 @@ router.get(
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
     getPermissionController
+);
+
+router.get(
+    "/permission/members/:id",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
+    getPermissionAssignedMemberController
 );
 
 router.post(
