@@ -5,16 +5,17 @@ const getAllSiteController = async (req, res) => {
     const { organization } = req.query;
 
     try {
-        const siteMembers = await SiteMember
-        .find({}).select("site member inviteAccepted")
+        let siteMembers = await SiteMember
+        .find({})
+        .select("site member inviteAccepted")
         .populate({
             path: "member",
-            select: "_id",
-            match: [
-                { "organization": organization },
-                { "user": req.user._id }
-            ]
+            select: "_id organization user"
         });
+
+        siteMembers = siteMembers.filter(item => {
+            return item.member.organization.toString() == organization.toString() && item.member.user.toString() == req.user._id.toString();
+        })
         
         if(siteMembers.length == 0){
             return res.status(204).json({ sites: null, success: false, error: "You are not in any site project.", message: "" });

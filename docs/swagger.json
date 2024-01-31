@@ -423,6 +423,26 @@
         }
       }
     },
+    "/member/invite/accept": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/member/update/{id}": {
       "patch": {
         "description": "",
@@ -914,6 +934,34 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/site/member/invite/accept": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "site",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           },
           "409": {
             "description": "Conflict"
