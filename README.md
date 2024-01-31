@@ -13,5 +13,3 @@
 
 ## Today Tasks
  - Changing in User Profile Edit API (Change Token).
- - Accept Invite Member.
- - Accept Invite Site Member.

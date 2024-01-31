@@ -1,7 +1,7 @@
 const Site = require("@/models/organization/site/site.model");
 const SiteMember = require("@/models/organization/site/siteMember.model");
 
-const siteMiddleware = async (req, res, next) => {
+const siteMiddleware = async (req, res, next, invitationSkip = false) => {
     const { organization, site } = req.query;
 
     const siteDetails = await Site.findOne({ _id: site, organization: organization }).select("_id");
@@ -19,7 +19,7 @@ const siteMiddleware = async (req, res, next) => {
         });
 
         if(MemberDetails?._id){
-            if(MemberDetails.inviteAccepted){
+            if(MemberDetails.inviteAccepted || invitationSkip){
                 next();
             }
             else{

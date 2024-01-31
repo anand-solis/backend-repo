@@ -3,7 +3,7 @@ const Feature = require("@/models/app/features.model");
 const Plan = require("@/models/organization/plan.model");
 const Subscription = require("@/models/app/subscription.model");
 
-const organizationMiddleware = async (req, res, next, key, rule, subscription) => {
+const organizationMiddleware = async (req, res, next, key, rule, subscription, invitationSkip = false) => {
     const { organization } = req.query;
 
     try {
@@ -13,10 +13,10 @@ const organizationMiddleware = async (req, res, next, key, rule, subscription) =
             .populate("permission")
 
         if (member?._id) {
-            if(member.inviteAccepted){
+            if(member.inviteAccepted || invitationSkip){
                 let isRuleValid = null;
                 const feature = await Feature.findOne({ key: key }).select("_id");
-    
+
                 if (feature?._id) {
 
                     member?.permission?.features?.map((singleFeature) => {

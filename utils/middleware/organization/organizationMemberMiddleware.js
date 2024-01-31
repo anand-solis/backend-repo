@@ -1,7 +1,7 @@
 const Member = require("@/models/organization/member.model");
 const Plan = require("@/models/organization/plan.model");
 
-const organizationMemberMiddleware = async (req, res, next) => {
+const organizationMemberMiddleware = async (req, res, next, invitationSkip = false) => {
     const { organization } = req.query;
 
     try {
@@ -11,7 +11,7 @@ const organizationMemberMiddleware = async (req, res, next) => {
             .populate("permission");
 
         if (member?._id) {
-            if(member.inviteAccepted){
+            if(member.inviteAccepted || invitationSkip){
                 const plan = await Plan
                     .findOne({ organization: organization })
                     .select("expiry");
