@@ -37,6 +37,7 @@ const createSiteController = async (req, res) => {
                     if (OrganizationMember?._id) {
                         const NewSiteMember = new SiteMember({
                             site: newSiteResponse?._id,
+                            organization: organization,
                             member: OrganizationMember._id,
                             isCreator: true,
                             inviteAccepted: true
