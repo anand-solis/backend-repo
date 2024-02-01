@@ -1,26 +1,19 @@
 const SiteMember = require("@/models/organization/site/siteMember.model");
+const Member = require("@/models/organization/member.model");
 const Site = require("@/models/organization/site/site.model");
 
 const getAllSiteController = async (req, res) => {
     const { organization } = req.query;
 
     try {
-        let siteMembers = await SiteMember
-        .find({})
-        .select("site member inviteAccepted")
-        .populate({
-            path: "member",
-            select: "_id organization user"
-        });
+        const member = await Member.findOne({ user: req.user._id, organization: organization }).select("_id");
 
-        siteMembers = siteMembers.filter(item => {
-            return item.member.organization.toString() == organization.toString() && item.member.user.toString() == req.user._id.toString();
-        })
-        
-        if(siteMembers.length == 0){
-            return res.status(204).json({ sites: null, success: false, error: "You are not in any site project.", message: "" });
-        }
-        else{
+        if(member?._id){
+
+        let siteMembers = await SiteMember
+            .find({ organization: organization, member: member._id })
+            .select("site inviteAccepted");
+
             const haveSiteIds = siteMembers.map(member => member.site);
 
             const sites = await Site.find({ _id: { $in: haveSiteIds } }).select("name startDate endDate").sort({ createdAt: -1 });
@@ -40,6 +33,9 @@ const getAllSiteController = async (req, res) => {
             })
 
             return res.status(200).json({ sites: siteWithInviteStatus, success: true, error: "", message: "Sites fetched successfully." });
+        }
+        else{
+            return res.status(409).json({ success: false, error: "You are not in this organization.", message: "" });
         }
     } catch (error) {
         return res.status(500).json({ sites: null, success: false, error: `Error: ${error}`, message: "" });

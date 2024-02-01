@@ -1,32 +1,22 @@
 const SiteMember = require("@/models/organization/site/siteMember.model");
+const Member = require("@/models/organization/member.model");
 
 const inviteAcceptSiteMemberController = async (req, res) => {
     const { organization, site } = req.query;
 
     try {
-        const siteMembers = await SiteMember.find(
-            { site: site }
-        ).populate({
-            path: "member",
-            match: {
-                user: req.user._id,
-                organization: organization
-            },
-            select: "_id"
-        });
+        const member = await Member.findOne({ user: req.user._id, organization: organization }).select("_id");
 
-        const siteMember = siteMembers.filter(item => item.member != null);
-
-        if(siteMember.length > 0){
+        if(member?._id){
             await SiteMember.findOneAndUpdate(
-                { _id: siteMember[0]._id, site: site },
+                { site: site, organization: organization, member: member._id },
                 { inviteAccepted: true }
-            )
+            );
 
             return res.status(200).json({ success: true, error: "", message: "You successfully accept the site project invitation." });
         }
         else{
-            return res.status(409).json({ success: false, error: "You are not in this site project.", message: "" });
+            return res.status(409).json({ success: false, error: "You are not in this organization.", message: "" });
         }
 
     } catch (error) {

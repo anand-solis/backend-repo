@@ -28,7 +28,8 @@ const inviteSiteMemberController = async (req, res) => {
                         if (!check?._id) {
                             const newSiteMember = new SiteMember({
                                 site: site,
-                                member: member._id
+                                member: member._id,
+                                organization: organization
                             });
 
                             await newSiteMember.save();
