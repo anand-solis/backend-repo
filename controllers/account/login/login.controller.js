@@ -39,11 +39,11 @@ const LoginController = async (req, res) => {
                 }
             }
             else {
-                return res.status(204).json({ success: false, error: "OTP is expired." });
+                return res.status(200).json({ success: false, error: "OTP is expired." });
             }
         }
         else {
-            return res.status(204).json({ success: false, error: "OTP Not found in the database" });
+            return res.status(200).json({ success: false, error: "OTP Not found in the database" });
         }
     } catch (error) {
         return res.status(500).json({ success: false, error: `Error: ${error}` });

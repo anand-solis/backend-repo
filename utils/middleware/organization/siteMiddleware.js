@@ -31,7 +31,7 @@ const siteMiddleware = async (req, res, next, invitationSkip = false) => {
         }
     }
     else{
-        return res.status(204).json({ success: false, error: "This site project not exist in your organization." });
+        return res.status(200).json({ success: false, error: "This site project not exist in your organization." });
     }
 }
 

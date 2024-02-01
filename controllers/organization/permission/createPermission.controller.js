@@ -33,7 +33,7 @@ const createPermissionController = async (req, res) => {
             return res.status(201).json({ success: true, error: "", message: "New permission created successfully." });
         }
         else {
-            return res.status(204).json({ success: false, error: "You don't have any features yet.", message: "" });
+            return res.status(200).json({ success: false, error: "You don't have any features yet.", message: "" });
         }
     } catch (error) {
         return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });

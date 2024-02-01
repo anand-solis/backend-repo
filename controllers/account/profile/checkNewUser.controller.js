@@ -13,7 +13,7 @@ const CheckNewUserController = async (req, res) => {
             }
         }
         else{
-            return res.status(204).json({ exist: false, isNew: null, success: true, error: "" });
+            return res.status(200).json({ exist: false, isNew: null, success: true, error: "" });
         }
     } catch (error) {
         return res.status(500).json({ exist: null, isNew: null, success: false, error: `Error: ${error}` });

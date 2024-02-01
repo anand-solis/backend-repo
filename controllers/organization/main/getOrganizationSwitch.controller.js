@@ -5,7 +5,7 @@ const getOrganizationSwitchController = async (req, res) => {
     try {
         const members = await Member.find({ user: req?.user?._id }).select("organization inviteAccepted");
         if(members.length == 0){
-            return res.status(204).json({ organizations: null, success: false, error: "You are not any organization.", message: "" });
+            return res.status(200).json({ organizations: null, success: false, error: "You are not any organization.", message: "" });
         }
         else{
             const haveOrganizationIds = members.map(member => member.organization);
