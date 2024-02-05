@@ -286,6 +286,19 @@
         }
       }
     },
+    "/features": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/feature/add": {
       "post": {
         "description": "",
@@ -322,21 +335,54 @@
         }
       }
     },
-    "/feature/remove": {
-      "delete": {
+    "/feature/update/{id}": {
+      "patch": {
         "description": "",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
-                "feature": {
+                "name": {
+                  "example": "any"
+                },
+                "key": {
+                  "example": "any"
+                },
+                "description": {
                   "example": "any"
                 }
               }
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/feature/remove/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
