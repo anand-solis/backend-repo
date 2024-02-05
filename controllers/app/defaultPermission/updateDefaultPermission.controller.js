@@ -1,6 +1,6 @@
 const DefaultPermission = require("@/models/app/defaultPermission.model");
 
-const updateDefaultPermissionController = async (req, res) => {
+const UpdateDefaultPermissionController = async (req, res) => {
     const { permissions } = req.body;
 
     try{
@@ -8,6 +8,7 @@ const updateDefaultPermissionController = async (req, res) => {
 
         if(!prevDefaultPermission?.isAdmin){
             let updateDefaultPermission = prevDefaultPermission;
+            updateDefaultPermission.name = permissions.name;
             updateDefaultPermission.updatedAt = new Date();
             updateDefaultPermission.updatedBy = req.user._id;
 
@@ -38,4 +39,4 @@ const updateDefaultPermissionController = async (req, res) => {
     }
 }
 
-module.exports = updateDefaultPermissionController
+module.exports = UpdateDefaultPermissionController

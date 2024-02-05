@@ -1,6 +1,6 @@
 const DefaultPermission = require("@/models/app/defaultPermission.model");
 
-const getDefaultPermissionController = async (req, res) => {
+const GetDefaultPermissionController = async (req, res) => {
     const { id } = req.params;
     try{
         const defaultPermission = await DefaultPermission
@@ -17,4 +17,4 @@ const getDefaultPermissionController = async (req, res) => {
     }
 }
 
-module.exports = getDefaultPermissionController;
+module.exports = GetDefaultPermissionController;

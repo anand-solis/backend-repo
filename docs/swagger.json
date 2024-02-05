@@ -286,6 +286,16 @@
         }
       }
     },
+    "/default-permission/remove/{id}": {
+      "delete": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/features": {
       "get": {
         "description": "",

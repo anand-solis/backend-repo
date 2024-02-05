@@ -1,7 +1,7 @@
 const Feature = require("@/models/app/features.model");
 const DefaultPermission = require("@/models/app/defaultPermission.model");
 
-const createDefaultPermissionController = async (req, res) => {
+const CreateDefaultPermissionController = async (req, res) => {
     const { name, isAdmin } = req.body;
     
     try {
@@ -65,4 +65,4 @@ async function create(name, isAdmin, res){
     }
 }
 
-module.exports = createDefaultPermissionController;
+module.exports = CreateDefaultPermissionController;
