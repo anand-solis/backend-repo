@@ -8,9 +8,9 @@ const getOrganizationController = async (req, res) => {
             .findOne({ _id: organization })
             .select("-blocked -createdAt -updatedAt -__v");
 
-        return res.status(200).json({ organizationDetails: organizationDetails, status: true, error: "", message: "Organization details fetched successfully." });
+        return res.status(200).json({ organizationDetails: organizationDetails, success: true, error: "", message: "Organization details fetched successfully." });
     } catch (error) {
-        return res.status(500).json({ organizationDetails: null, status: false, error: `Error: ${error}`, message: "" });
+        return res.status(500).json({ organizationDetails: null, success: false, error: `Error: ${error}`, message: "" });
     }
 }
 
