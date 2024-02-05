@@ -5,9 +5,17 @@ const GetAllDefaultPermissionController = require("../../controllers/app/default
 const GetDefaultPermissionController = require("../../controllers/app/defaultPermission/getDefaultPermission.controller");
 const CreateDefaultPermissionController = require("../../controllers/app/defaultPermission/createDefaultPermission.controller");
 const UpdateDefaultPermissionController = require("../../controllers/app/defaultPermission/updateDefaultPermission.controller");
-const RemoveDefaultPermissionController = require("../../controllers/app/defaultPermission/removeDefaultPermission.controller.js");
+const RemoveDefaultPermissionController = require("../../controllers/app/defaultPermission/removeDefaultPermission.controller");
+const GetDefaultPermissionsCountController = require("../../controllers/app/defaultPermission/getDefaultPermissionsCount.controller");
 
 const router = express.Router();
+
+router.get(
+    "/default-permissions/count",
+    Middleware,
+    superAdminMiddleware,
+    GetDefaultPermissionsCountController
+);
 
 router.get(
     "/default-permissions",

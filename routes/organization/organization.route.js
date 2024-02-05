@@ -6,6 +6,7 @@ const updateOrganizationController = require("../../controllers/organization/mai
 
 const getAllAppOrganizationController = require("../../controllers/organization/app/getAllAppOrganization.controller");
 const updateAppOrganizationController = require("../../controllers/organization/app/updateAppOrganization.controller");
+const GetAppOrganizationCountController = require("../../controllers/organization/app/getAppOrganizationCount.controller");
 
 const Middleware = require("@/utils/middleware/middleware");
 const superAdminMiddleware = require("@/utils/middleware/superAdminMiddleware");
@@ -15,6 +16,13 @@ const router = express.Router();
 
 const key = "organization-profile-and-plans";
 const plan = "admin_settings";
+
+router.get(
+    "/app/organizations/count",
+    Middleware,
+    superAdminMiddleware,
+    GetAppOrganizationCountController
+);
 
 router.get(
     "/app/organizations",

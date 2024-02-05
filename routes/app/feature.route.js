@@ -6,8 +6,16 @@ const GetFeatureController = require("../../controllers/app/feature/getFeature.c
 const AddFeatureController = require("../../controllers/app/feature/addFeature.controller");
 const RemoveFeatureController = require("../../controllers/app/feature/removeFeature.controller");
 const UpdateFeatureController = require("../../controllers/app/feature/updateFeature.controller");
+const GetFeaturesCountController = require("../../controllers/app/feature/getFeaturesCount.controller");
 
 const router = express.Router();
+
+router.get(
+    "/features/count",
+    Middleware,
+    superAdminMiddleware,
+    GetFeaturesCountController
+);
 
 router.get(
     "/features",

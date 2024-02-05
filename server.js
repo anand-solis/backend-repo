@@ -29,10 +29,12 @@ app.use(require("@/routes/account/otp.route"));
 app.use(require("@/routes/account/login.route"));
 app.use(require("@/routes/account/logout.route"));
 app.use(require("@/routes/account/profile.route"));
+app.use(require("@/routes/account/user.route"));
 
 app.use(require("@/routes/app/role.route"));
 app.use(require("@/routes/app/feature.route"));
 app.use(require("@/routes/app/defaultPermission.route"));
+app.use(require("@/routes/app/subscription.route"));
 
 app.use(require("@/routes/organization/organization.route"));
 app.use(require("@/routes/organization/permission.route"));
