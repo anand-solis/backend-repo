@@ -1,6 +1,6 @@
 const Role = require("@/models/app/roles.model");
 
-const addRoleController = async (req, res) => {
+const AddRoleController = async (req, res) => {
     const { name } = req.body;
 
     try {
@@ -16,4 +16,4 @@ const addRoleController = async (req, res) => {
     }
 }
 
-module.exports = addRoleController;
+module.exports = AddRoleController;

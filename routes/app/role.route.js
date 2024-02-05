@@ -2,34 +2,38 @@ const express = require("express");
 const Middleware = require("@/utils/middleware/middleware");
 const superAdminMiddleware = require("@/utils/middleware/superAdminMiddleware");
 
-const getRoleController = require("../../controllers/app/role/getRole.controller");
-const addRoleController = require("../../controllers/app/role/addRole.controller");
-const editRoleController = require("../../controllers/app/role/editRole.controller");
-const removeRoleController = require("../../controllers/app/role/removeRole.controller");
+const GetRoleController = require("../../controllers/app/role/getRole.controller");
+const AddRoleController = require("../../controllers/app/role/addRole.controller");
+const UpdateRoleController = require("../../controllers/app/role/updateRole.controller");
+const RemoveRoleController = require("../../controllers/app/role/removeRole.controller");
 
 const router = express.Router();
 
-router.get("/roles", Middleware, getRoleController);
+router.get(
+    "/roles",
+    Middleware,
+    GetRoleController
+);
 
 router.post(
     "/role/add",
     Middleware,
     superAdminMiddleware,
-    addRoleController
+    AddRoleController
 );
 
 router.patch(
     "/role/update/:id",
     Middleware,
     superAdminMiddleware,
-    editRoleController
+    UpdateRoleController
 );
 
 router.delete(
     "/role/remove/:id",
     Middleware,
     superAdminMiddleware,
-    removeRoleController
+    RemoveRoleController
 );
 
 module.exports = router;

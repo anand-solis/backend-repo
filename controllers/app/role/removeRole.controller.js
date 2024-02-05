@@ -1,6 +1,6 @@
 const Role = require("@/models/app/roles.model");
 
-const removeRoleController = async (req, res) => {
+const RemoveRoleController = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -12,4 +12,4 @@ const removeRoleController = async (req, res) => {
     }
 }
 
-module.exports = removeRoleController;
+module.exports = RemoveRoleController;
