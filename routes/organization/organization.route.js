@@ -4,13 +4,31 @@ const getOrganizationSwitchController = require("../../controllers/organization/
 const getOrganizationController = require("../../controllers/organization/main/getOrganization.controller");
 const updateOrganizationController = require("../../controllers/organization/main/updateOrganization.controller");
 
+const getAllAppOrganizationController = require("../../controllers/organization/app/getAllAppOrganization.controller");
+const updateAppOrganizationController = require("../../controllers/organization/app/updateAppOrganization.controller");
+
 const Middleware = require("@/utils/middleware/middleware");
+const superAdminMiddleware = require("@/utils/middleware/superAdminMiddleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 
 const router = express.Router();
 
 const key = "organization-profile-and-plans";
 const plan = "admin_settings";
+
+router.get(
+    "/app/organizations",
+    Middleware,
+    superAdminMiddleware,
+    getAllAppOrganizationController
+);
+
+router.patch(
+    "/app/organization/update/:id",
+    Middleware,
+    superAdminMiddleware,
+    updateAppOrganizationController
+);
 
 router.get(
     "/organization/get",
