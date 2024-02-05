@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const RoleSchema = mongoose.Schema({
     name: {
         type: String,
-        required: [true, "Role name is required."],
-        unique: [true, "Role name must be unique."]
+        unique: [true, "Role name must be unique."],
+        required: [true, "Role name is required."]
     }
 }, { timestamps: true });
 
