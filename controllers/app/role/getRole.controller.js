@@ -1,6 +1,6 @@
 const Role = require("@/models/app/roles.model");
 
-const RoleController = async (req, res) => {
+const getRoleController = async (req, res) => {
     try {
         const roles = await Role.find({}).select("name").sort({ createdAt: -1 });
 
@@ -11,4 +11,4 @@ const RoleController = async (req, res) => {
     }
 }
 
-module.exports = RoleController;
+module.exports = getRoleController;
