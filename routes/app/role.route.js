@@ -5,6 +5,7 @@ const superAdminMiddleware = require("@/utils/middleware/superAdminMiddleware");
 const getRoleController = require("../../controllers/app/role/getRole.controller");
 const addRoleController = require("../../controllers/app/role/addRole.controller");
 const editRoleController = require("../../controllers/app/role/editRole.controller");
+const removeRoleController = require("../../controllers/app/role/removeRole.controller");
 
 const router = express.Router();
 
@@ -22,6 +23,13 @@ router.patch(
     Middleware,
     superAdminMiddleware,
     editRoleController
+);
+
+router.delete(
+    "/role/remove/:id",
+    Middleware,
+    superAdminMiddleware,
+    removeRoleController
 );
 
 module.exports = router;
