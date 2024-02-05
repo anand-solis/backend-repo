@@ -3,16 +3,16 @@ const Permission = require("@/models/organization/permission.model");
 const DefaultPermission = require("@/models/app/defaultPermission.model");
 
 const RemoveFeatureController = async (req, res) => {
-    const { feature } = req.body;
+    const { id } = req.params;
 
     try {
-        await Feature.deleteOne({ _id: feature });
+        await Feature.deleteOne({ _id: id });
         const permissions = await Permission.find({});
         const defaultPermissions = await DefaultPermission.find({});
 
         defaultPermissions && defaultPermissions.map(async (defaultPermission) => {
             const updatedFeature = defaultPermission.features;
-            const index = defaultPermission.features?.findIndex(item => item.feature == feature);
+            const index = defaultPermission.features?.findIndex(item => item.feature == id);
 
             if (index != -1) {
                 updatedFeature.splice(index, 1);
@@ -22,7 +22,7 @@ const RemoveFeatureController = async (req, res) => {
 
         permissions && permissions.map(async (permission) => {
             const updatedFeature = permission.features;
-            const index = permission.features?.findIndex(item => item.feature == feature);
+            const index = permission.features?.findIndex(item => item.feature == id);
 
             if (index != -1) {
                 updatedFeature.splice(index, 1);
