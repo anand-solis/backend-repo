@@ -34,7 +34,12 @@ const OrganizationSchema = mongoose.Schema({
     },
     gst_number: String,
     pan_number: String,
-    tan: String
+    tan: String,
+    blocked: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
 }, { timestamps: true });
 
 module.exports = mongoose.model("Organization", OrganizationSchema);

@@ -6,7 +6,7 @@ const getOrganizationController = async (req, res) => {
     try {
         const organizationDetails = await Organization
             .findOne({ _id: organization })
-            .select("-createdAt -updatedAt -__v");
+            .select("-blocked -createdAt -updatedAt -__v");
 
         return res.status(200).json({ organizationDetails: organizationDetails, status: true, error: "", message: "Organization details fetched successfully." });
     } catch (error) {

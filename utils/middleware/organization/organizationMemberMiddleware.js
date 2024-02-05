@@ -8,31 +8,40 @@ const organizationMemberMiddleware = async (req, res, next, invitationSkip = fal
         const member = await Member
             .findOne({ user: req?.user?._id, organization: organization })
             .select("permission inviteAccepted")
-            .populate("permission");
+            .populate("permission")
+            .populate({
+                path: "organization",
+                select: "blocked"
+            })
 
         if (member?._id) {
-            if(member.inviteAccepted || invitationSkip){
-                const plan = await Plan
-                    .findOne({ organization: organization })
-                    .select("expiry");
+            if (!member.organization.blocked) {
+                if (member.inviteAccepted || invitationSkip) {
+                    const plan = await Plan
+                        .findOne({ organization: organization })
+                        .select("expiry");
 
-                if (plan?._id) {
-                    const today = new Date();
-                    const dateToCheck = new Date(plan?.expiry);
+                    if (plan?._id) {
+                        const today = new Date();
+                        const dateToCheck = new Date(plan?.expiry);
 
-                    if (!(dateToCheck < today)) {
-                        next();
+                        if (!(dateToCheck < today)) {
+                            next();
+                        }
+                        else {
+                            return res.status(401).json({ success: false, error: "Error: Your organization subscription plan is expired.", message: "" });
+                        }
                     }
                     else {
-                        return res.status(401).json({ success: false, error: "Error: Your organization subscription plan is expired.", message: "" });
+                        return res.status(401).json({ success: false, error: "Error: You don't have any valid subscription plan.", message: "" });
                     }
                 }
                 else {
-                    return res.status(401).json({ success: false, error: "Error: You don't have any valid subscription plan.", message: "" });
+                    return res.status(401).json({ success: false, error: "Error: Accept invite for this organization.", message: "" });
                 }
             }
-            else{
-                return res.status(401).json({ success: false, error: "Error: Accept invite for this organization.", message: "" });
+            else {
+                return res.status(401).json({ success: false, error: "Error: Your Organization is blocked.", message: "" });
             }
         }
         else {
