@@ -32,7 +32,7 @@ const Middleware = async (req, res, next) => {
                             return res.status(401).json({ success: false, error: "User account not found." });
                         }
                         if (user.blocked) {
-                            return res.status(401).json({ success: false, error: "User account blocked." });
+                            return res.status(401).json({ success: false, error: "User account blocked.", blocked: true });
                         }
                         user.token = token;
                         req.user = user;
