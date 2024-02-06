@@ -36,7 +36,7 @@ const organizationMiddleware = async (req, res, next, key, rule, subscription, i
                                 .select("subscription expiry")
                                 .populate({
                                     path: "subscription",
-                                    select: subscription
+                                    select: `permissions.${subscription}`
                                 });
 
                             if (plan?._id) {
