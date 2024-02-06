@@ -1,4 +1,4 @@
-const { sqliteInsert } = require("@/utils/connections/database/sqlite");
+const { sqliteInsert, sqliteDelete } = require("@/utils/connections/database/sqlite");
 
 const LogoutController = async (req, res) => {
     const authHeader = req.headers["authorization"];
@@ -6,6 +6,7 @@ const LogoutController = async (req, res) => {
 
     try {
         sqliteInsert(token);
+        sqliteDelete();
 
         return res.status(200).json({ success: true, error: "", message: "User logout successfully." });
     } catch (error) {
