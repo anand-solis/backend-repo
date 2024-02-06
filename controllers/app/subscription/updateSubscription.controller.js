@@ -6,7 +6,7 @@ const UpdateSubscriptionController = async (req, res) => {
 
     try {
         await Subscription.findOneAndUpdate(
-            { _id, id },
+            { _id: id },
             {
                 title: title,
                 sub_title: sub_title,
