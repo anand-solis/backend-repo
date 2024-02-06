@@ -23,16 +23,6 @@ const SubscriptionSchema = mongoose.Schema({
         required: true,
         default: 0
     },
-    project_management: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
-    admin_settings: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
     users_count: {
         type: Number,
         required: true,
@@ -42,43 +32,56 @@ const SubscriptionSchema = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    permissions: {
+        project_management: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        admin_settings: {
+            type: Boolean,
+            required: true,
+            default: false
+        }
+        // material_management: {
+        //     type: Boolean,
+        //     required: true,
+        //     default: false
+        // },
+        // labour_tracking_and_payable: {
+        //     type: Boolean,
+        //     required: true,
+        //     default: false
+        // },
+        // vendor_payable: {
+        //     type: Boolean,
+        //     required: true,
+        //     default: false
+        // },
+        // reports_and_dashboards: {
+        //     type: Boolean,
+        //     required: true,
+        //     default: false
+        // },
+        // support: {
+        //     type: Boolean,
+        //     required: true,
+        //     default: false
+        // },
+        // expense: {
+        //     type: Boolean,
+        //     required: true,
+        //     default: false
+        // },
+        // budget_calculation: {
+        //     type: Boolean,
+        //     required: true,
+        //     default: false
+        // },
     }
-    // material_management: {
-    //     type: Boolean,
-    //     required: true,
-    //     default: false
-    // },
-    // labour_tracking_and_payable: {
-    //     type: Boolean,
-    //     required: true,
-    //     default: false
-    // },
-    // vendor_payable: {
-    //     type: Boolean,
-    //     required: true,
-    //     default: false
-    // },
-    // reports_and_dashboards: {
-    //     type: Boolean,
-    //     required: true,
-    //     default: false
-    // },
-    // support: {
-    //     type: Boolean,
-    //     required: true,
-    //     default: false
-    // },
-    // expense: {
-    //     type: Boolean,
-    //     required: true,
-    //     default: false
-    // },
-    // budget_calculation: {
-    //     type: Boolean,
-    //     required: true,
-    //     default: false
-    // },
 }, { timestamps: true });
 
 const Subscription = mongoose.model("Subscription", SubscriptionSchema);
+
 module.exports = Subscription

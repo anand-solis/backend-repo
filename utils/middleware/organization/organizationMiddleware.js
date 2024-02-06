@@ -44,7 +44,7 @@ const organizationMiddleware = async (req, res, next, key, rule, subscription, i
                                 const dateToCheck = new Date(plan?.expiry);
 
                                 if (!(dateToCheck < today)) {
-                                    if (plan?.subscription[subscription]) {
+                                    if (plan?.subscription.permissions[subscription]) {
                                         next();
                                     }
                                     else {
