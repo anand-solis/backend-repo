@@ -1,6 +1,7 @@
 const express = require("express");
 const Middleware = require("@/utils/middleware/middleware");
 const superAdminMiddleware = require("@/utils/middleware/superAdminMiddleware");
+const GetAllUsersController = require("../../controllers/account/user/getAllUsers.controller");
 const GetUsersCountController = require("../../controllers/account/user/getUsersCount.controller");
 
 const router = express.Router();
@@ -10,6 +11,20 @@ router.get(
     Middleware,
     superAdminMiddleware,
     GetUsersCountController
+);
+
+router.get(
+    "/users",
+    Middleware,
+    superAdminMiddleware,
+    GetAllUsersController
+);
+
+router.patch(
+    "/user/update/:id",
+    Middleware,
+    superAdminMiddleware,
+    updateAppOrganizationController
 );
 
 module.exports = router;
