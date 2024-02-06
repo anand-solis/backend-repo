@@ -64,7 +64,7 @@ const organizationMiddleware = async (req, res, next, key, rule, subscription, i
                         }
                     }
                     else {
-                        return res.status(401).json({ success: false, error: "Error: You don't have this features in your subscription plan.", message: "" })
+                        return res.status(401).json({ success: false, error: "Error: You don't have this feature.", message: "" })
                     }
                 }
                 else {
