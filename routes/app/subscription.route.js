@@ -3,6 +3,7 @@ const Middleware = require("@/utils/middleware/middleware");
 const superAdminMiddleware = require("@/utils/middleware/superAdminMiddleware");
 
 const GetSubscriptionsCountController = require("../../controllers/app/subscription/getSubscriptionsCount.controller");
+const GetSubscriptionController = require("../../controllers/app/subscription/getSubscriptions.controller");
 const GetAllSubscriptionsController = require("../../controllers/app/subscription/getAllSubscriptions.controller");
 const AddSubscriptionController = require("../../controllers/app/subscription/addSubscription.controller");
 const UpdateSubscriptionController = require("../../controllers/app/subscription/updateSubscription.controller");
@@ -25,6 +26,13 @@ router.get(
     Middleware,
     superAdminMiddleware,
     GetAllSubscriptionsController
+);
+
+router.get(
+    "/subscription/:id",
+    Middleware,
+    superAdminMiddleware,
+    GetSubscriptionController
 );
 
 
