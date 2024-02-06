@@ -11,8 +11,10 @@ const AddSubscriptionController = async (req, res) => {
             price: price,
             sites_count: sites_count,
             users_count: users_count,
-            admin_settings: admin_settings,
-            project_management: project_management
+            permissions: {
+                admin_settings: admin_settings,
+                project_management: project_management
+            }
         })
 
         await newSubscription.save();
