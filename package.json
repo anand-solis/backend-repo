@@ -4,6 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "vercel-build": "echo hello",
         "start": "nodemon index.js",
         "docs": "node swagger.js"
     },
