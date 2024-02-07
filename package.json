@@ -3,9 +3,11 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "engines": {
+        "node": "14.x"
+    },
     "scripts": {
-        "start": "node index.js",
-        "dev": "nodemon index.js",
+        "start": "nodemon index.js",
         "docs": "node swagger.js"
     },
     "_moduleAliases": {
@@ -23,9 +25,7 @@
         "mongoose": "^8.0.3",
         "nodemailer": "^6.9.8",
         "nodemon": "^3.0.2",
-        "sqlite3": "^5.1.7"
-    },
-    "devDependencies": {
+        "sqlite3": "^5.1.7",
         "swagger-autogen": "^2.23.7",
         "swagger-ui-express": "^5.0.0"
     }
