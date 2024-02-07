@@ -10,12 +10,8 @@ const createDefaultPermissions = async (organizationId, userId) => {
 
         if (features.length > 0) {
             const defaultPermissions = await DefaultPermission
-            .find({})
-            .select("name isAdmin features")
-            .populate({
-                path: "features.feature",
-                select: "_id"
-            });
+                .find({})
+                .select("name isAdmin features");
 
             await Promise.all(defaultPermissions.map(async (permission) => {
                 let NewPermissionRules = {
@@ -23,33 +19,25 @@ const createDefaultPermissions = async (organizationId, userId) => {
                     name: permission.name,
                     isAdmin: permission.isAdmin,
                     createdBy: userId,
-                    features: []
+                    features: await permission.features.map(feature => {
+                        return {
+                            feature: feature.feature,
+                            permissions: {
+                                read: feature.permissions.read,
+                                update: feature.permissions.update,
+                                delete: feature.permissions.delete,
+                                insert: feature.permissions.insert
+                            }
+                        }
+                    })
                 };
 
-                await Promise.all(permission.features.map(async (feature) => {
-                    let rule = {
-                        read: feature.permissions.read,
-                        update: feature.permissions.update,
-                        delete: feature.permissions.delete,
-                        insert: feature.permissions.insert,
-                    };
+                const NewPermission = await Permission.create(NewPermissionRules);
 
-                    NewPermissionRules.features.push({
-                        feature: feature.feature._id,
-                        permissions: rule
-                    });
-                }));
-
-                const NewPermission = new Permission(NewPermissionRules);
-                if (permission.isAdmin) {
-                    const PermissionId = await NewPermission.save();
-                    AdminPermissionId = PermissionId?._id;
-                } else {
-                    await NewPermission.save();
-                }
+                if (permission.isAdmin) AdminPermissionId = NewPermission?._id;
             }));
 
-            if(AdminPermissionId){
+            if (AdminPermissionId) {
                 const NewMember = new Member({
                     organization: organizationId,
                     user: userId,
@@ -60,7 +48,7 @@ const createDefaultPermissions = async (organizationId, userId) => {
 
                 await NewMember.save();
             }
-            else{
+            else {
                 return { success: false, error: "Admin permission not found.", message: "" };
             }
 

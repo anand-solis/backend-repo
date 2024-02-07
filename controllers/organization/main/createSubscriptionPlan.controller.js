@@ -1,7 +1,8 @@
+const Subscription = require("@/models/app/subscription.model");
 const Plan = require("@/models/organization/plan.model");
 
 const createSubscriptionPlan = async (organizationId) => {
-    const trialSubscriptionId = "65a751829c2fe4763a5deca0";
+    const trialSubscriptionId = await Subscription.findOne({ isTrial: true}).select("_id");
     
     var currentDate = new Date();
     currentDate.setUTCHours(0, 0, 0, 0);
@@ -11,7 +12,7 @@ const createSubscriptionPlan = async (organizationId) => {
 
     try{
         const NewPlanAssign = new Plan({
-            subscription: trialSubscriptionId,
+            subscription: trialSubscriptionId._id,
             organization: organizationId,
             expiry: nextMonthDate
         });
