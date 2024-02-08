@@ -10,7 +10,7 @@ const GetAllAssignFeaturesSubscriptionController = async (req, res) => {
             select: "name"
         });
 
-        return res.status(200).json({ subscriptionFeatures: subscriptionFeatures, success: true, error: "", message: "Permissions fetched successfully." });
+        return res.status(200).json({ subscriptionFeatures: subscriptionFeatures, success: true, error: "", message: "Assigned features fetched successfully." });
     } catch (error) {
         return res.status(500).json({ subscriptionFeatures: null, success: false, error: `Error: ${error}`, message: "" });
     }
