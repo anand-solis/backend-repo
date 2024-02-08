@@ -34,6 +34,7 @@ app.use(require("@/routes/account/user.route"));
 app.use(require("@/routes/app/role.route"));
 app.use(require("@/routes/app/feature.route"));
 app.use(require("@/routes/app/defaultPermission.route"));
+app.use(require("@/routes/app/subscriptionFeature.route"));
 app.use(require("@/routes/app/subscription.route"));
 
 app.use(require("@/routes/organization/organization.route"));

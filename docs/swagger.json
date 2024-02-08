@@ -788,14 +788,63 @@
       "get": {
         "description": "",
         "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/subscription/assign-features/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
           "default": {
             "description": ""
           }
         }
       }
     },
-    "/subscription/assign-features/{id}": {
+    "/subscription/assign-features/add": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/subscription/assign-features/update/{id}": {
       "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/subscription/assign-features/remove/{id}": {
+      "delete": {
         "description": "",
         "parameters": [
           {
