@@ -3,12 +3,12 @@ const SubscriptionFeature = require("@/models/app/subscriptionFeature.model");
 const GetAllAssignFeaturesSubscriptionController = async (req, res) => {
     try {
         const subscriptionFeatures = await SubscriptionFeature
-        .find({ })
-        .select("key, features")
-        .populate({
-            path: "features",
-            select: "name"
-        });
+            .find({})
+            .select("key, features")
+            .populate({
+                path: "features",
+                select: ["name", "key"]
+            });
 
         return res.status(200).json({ subscriptionFeatures: subscriptionFeatures, success: true, error: "", message: "Assigned features fetched successfully." });
     } catch (error) {
