@@ -7,7 +7,7 @@ const GetAllAssignFeaturesSubscriptionController = async (req, res) => {
             .select("key, features")
             .populate({
                 path: "features",
-                select: ["name", "key"]
+                select: "name"
             });
 
         return res.status(200).json({ subscriptionFeatures: subscriptionFeatures, success: true, error: "", message: "Assigned features fetched successfully." });
