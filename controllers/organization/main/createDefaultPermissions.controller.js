@@ -21,7 +21,7 @@ const createDefaultPermissions = async (organizationId, userId) => {
                     createdBy: userId,
                     features: await permission.features.map(feature => {
                         return {
-                            feature: feature.feature,
+                            feature: feature.feature._id,
                             permissions: {
                                 read: feature.permissions.read,
                                 update: feature.permissions.update,
