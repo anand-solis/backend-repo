@@ -18,7 +18,9 @@ const getPermissionController = async (req, res) => {
         .select("subscription")
         .populate({
             path: "subscription",
-            select: subscriptionKeys
+            select: {
+                "permissions": subscriptionKeys
+            }
         })
 
         const permission = await Permission
@@ -35,7 +37,7 @@ const getPermissionController = async (req, res) => {
         });
 
         subscriptionKeys.map(key => {
-            if(!plan.subscription[key]){
+            if(!plan.subscription.permissions[key]){
                 subscription[key].map(feature => {
                     const index = permission?.features?.findIndex(item => item.feature.key == feature);
                     permission?.features?.splice(index, 1);
