@@ -41,9 +41,13 @@ app.use(require("@/routes/organization/organization.route"));
 app.use(require("@/routes/organization/permission.route"));
 app.use(require("@/routes/organization/member.route"));
 app.use(require("@/routes/organization/plan.route"));
+app.use(require("@/routes/organization/workCategory.route"));
+
 app.use(require("@/routes/organization/site/site.route"));
 app.use(require("@/routes/organization/site/siteMember.route"));
 app.use(require("@/routes/organization/site/floor.route"));
+app.use(require("@/routes/organization/site/task/task.route"));
+app.use(require("@/routes/organization/site/task/taskMember.route"));
 
 async function startServer() {
     try {

@@ -1668,6 +1668,16 @@
           }
         }
       }
+    },
+    "/tasks": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
     }
   }
 }
