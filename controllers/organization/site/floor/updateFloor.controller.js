@@ -18,7 +18,7 @@ const UpdateFloorController = async (req, res) => {
             }
         );
 
-        return res.status(201).json({ success: true, error: "", message: "Floors updated successfully." });
+        return res.status(200).json({ success: true, error: "", message: "Floors updated successfully." });
     } catch (error) {
         return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
