@@ -1464,6 +1464,16 @@
             "type": "string"
           },
           {
+            "name": "organization",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "site",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "schema": {

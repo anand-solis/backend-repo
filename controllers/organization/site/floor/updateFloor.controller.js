@@ -2,11 +2,16 @@ const Floor = require("@/models/organization/site/floor.model");
 
 const UpdateFloorController = async (req, res) => {
     const { name, number } = req.body;
+    const { organization, site } = req.query;
     const { id } = req.params;
 
     try {
         await Floor.findOneAndUpdate(
-            { _id: id },
+            {
+                _id: id,
+                organization: organization,
+                site: site
+            },
             {
                 name: name,
                 number: number
