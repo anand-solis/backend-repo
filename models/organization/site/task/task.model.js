@@ -18,8 +18,7 @@ const TaskSchema = mongoose.Schema({
     },
     number: {
         type: Number,
-        required: [true, "Task number is required."],
-        unique: true
+        required: [true, "Task number is required."]
     },
     work_category: {
         type: mongoose.Schema.Types.ObjectId,

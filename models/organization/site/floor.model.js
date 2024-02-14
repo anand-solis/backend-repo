@@ -13,13 +13,11 @@ const FloorSchema = mongoose.Schema({
     },
     name: {
         type: String,
-        required: [true, "Floor name is required."],
-        unique: true
+        required: [true, "Floor name is required."]
     },
     number: {
         type: Number,
-        required: [true, "Floor number is required."],
-        unique: true
+        required: [true, "Floor number is required."]
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
