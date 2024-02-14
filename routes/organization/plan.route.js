@@ -5,7 +5,7 @@ const getPlanController = require("../../controllers/organization/plan/getPlan.c
 
 const router = express.Router();
 
-const key = "organization-profile-and-plans";
+const key = "organization-plans";
 const plan = "admin_settings";
 
 router.get(

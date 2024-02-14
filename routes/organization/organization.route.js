@@ -14,7 +14,7 @@ const organizationMiddleware = require("@/utils/middleware/organization/organiza
 
 const router = express.Router();
 
-const key = "organization-profile-and-plans";
+const key = "organization-profile";
 const plan = "admin_settings";
 
 router.get(
