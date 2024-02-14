@@ -9,7 +9,12 @@ const WorkCategorySchema = mongoose.Schema({
         type: String,
         required: [true, "Work Category name is required."],
         unique: true
-    }
+    },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
 }, { timestamps: true });
 
 module.exports = mongoose.model("WorkCategory", WorkCategorySchema);
