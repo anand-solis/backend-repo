@@ -4,9 +4,9 @@ const siteMiddleware = require("@/utils/middleware/organization/siteMiddleware")
 const taskMiddleware = require("@/utils/middleware/organization/taskMiddleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 
-const GetAllTaskController = require("../../../../controllers/organization/site/task/getAllTask.controller");
-const GetTaskController = require("../../../../controllers/organization/site/task/getTask.controller");
-const AddTaskController = require("../../../../controllers/organization/site/task/addTask.controller");
+const GetAllTaskController = require("../../../../controllers/organization/site/task/main/getAllTask.controller");
+const GetTaskController = require("../../../../controllers/organization/site/task/main/getTask.controller");
+const AddTaskController = require("../../../../controllers/organization/site/task/main/addTask.controller");
 
 const router = express.Router();
 
