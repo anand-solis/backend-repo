@@ -13,7 +13,7 @@ const key = "sites";
 const plan = "project_management";
 
 router.get(
-    "/site/floors",
+    "/floors",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
     siteMiddleware,
@@ -21,7 +21,7 @@ router.get(
 );
 
 router.post(
-    "/site/floor/add",
+    "/floor/add",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
     siteMiddleware,
@@ -29,7 +29,7 @@ router.post(
 );
 
 router.patch(
-    "/site/floor/update/:id",
+    "/floor/update/:id",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
     siteMiddleware,

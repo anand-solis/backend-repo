@@ -1388,7 +1388,7 @@
         }
       }
     },
-    "/site/floors": {
+    "/floors": {
       "get": {
         "description": "",
         "parameters": [
@@ -1413,7 +1413,7 @@
         }
       }
     },
-    "/site/floor/add": {
+    "/floor/add": {
       "post": {
         "description": "",
         "parameters": [
@@ -1453,7 +1453,7 @@
         }
       }
     },
-    "/site/floor/update/{id}": {
+    "/floor/update/{id}": {
       "patch": {
         "description": "",
         "parameters": [
@@ -1788,6 +1788,36 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/task/members": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/task/not-members": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/task/member/add": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }
