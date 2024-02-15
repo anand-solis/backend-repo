@@ -9,7 +9,7 @@ const Middleware = async (req, res, next) => {
     const token = authHeader && authHeader.split(" ")[1];
     try {
         if (!token) {
-            return res.status(401).json({ success: false, error: "Unauthorized user." });
+            return res.status(401).json({ success: false, error: "Unauthorized user, token not available." });
         }
         else {
             const connectionSqliteDB = connectSqliteDB();
