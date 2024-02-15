@@ -23,7 +23,7 @@ const TaskMemberSchema = mongoose.Schema({
     },
     member: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Member",
+        ref: "SiteMember",
         required: true
     },
     isCreator: {

@@ -12,13 +12,16 @@ const taskMiddleware = async (req, res, next) => {
             .select("_id member")
             .populate({
                 path: "member",
-                select: "user",
-                match: {
-                    user: req.user._id
+                select: "member",
+                populate: {
+                    path: "member",
+                    match: {
+                        user: req.user._id
+                    }
                 }
             });
 
-        if (MemberDetails?._id) {
+        if (MemberDetails?._id && MemberDetails?.member?.member) {
             next();
         }
         else {
