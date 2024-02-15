@@ -1,23 +1,37 @@
 const Member = require("@/models/organization/member.model");
 
 const getPermissionByUserController = async (req, res) => {
-    const { organization } = req.query;
+    const { organization, key } = req.query;
 
-    try{
+    try {
         const permission = await Member
-        .findOne({ user: req.user._id, organization: organization }, {"permissions": 1, "_id": 0})
-        
-        .populate({
-            path: "permission",
-            select: ["name", "isAdmin", "features"],
-            populate: {
-                path: "features.feature",
-                select: ["name", "key"]
-            }
-        })
+            .findOne({ user: req.user._id, organization: organization })
+            .select("permission")
+            .populate({
+                path: "permission",
+                select: "features",
+                populate: {
+                    path: "features.feature",
+                    select: "key",
+                    match: {
+                        "key": key
+                    }
+                }
+            })
 
-        return res.status(200).json({ permission: permission.permission, success: true, error: "", message: "User permission fetched successfully." });
-    } catch(error) {
+        let response = await permission.permission?.features.filter(value => {
+            return value.feature;
+        });
+
+        let denied = {
+            read: false,
+            update: false,
+            delete: false,
+            insert: false
+        }
+
+        return res.status(200).json({ permission: response[0]?.permissions || denied, success: true, error: "", message: "User permission fetched successfully." });
+    } catch (error) {
         return res.status(500).json({ permission: null, success: false, error: `Error: ${error}`, message: "" });
     }
 }

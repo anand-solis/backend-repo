@@ -1239,6 +1239,11 @@
             "name": "organization",
             "in": "query",
             "type": "string"
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "type": "string"
           }
         ],
         "responses": {
@@ -1394,6 +1399,11 @@
         "parameters": [
           {
             "name": "organization",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "plan",
             "in": "query",
             "type": "string"
           }
