@@ -18,7 +18,7 @@ const siteMiddleware = async (req, res, next, invitationSkip = false) => {
             }
         });
 
-        if(MemberDetails?._id){
+        if(MemberDetails.member && MemberDetails?._id){
             if(MemberDetails.inviteAccepted || invitationSkip){
                 next();
             }
