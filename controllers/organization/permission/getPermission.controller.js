@@ -7,7 +7,8 @@ const getPermissionController = async (req, res) => {
 
     const subscription = {
         project_management: [ "sites", "tasks" ],
-        admin_settings: [ "roles-and-permissions", "members", "organization-profile", "organization-plan" ]
+        admin_settings: [ "roles-and-permissions", "members", "organization-profile", "organization-plan" ],
+        media_library: [ "media-library" ],
     }
 
     const subscriptionKeys = Object.keys(subscription);
