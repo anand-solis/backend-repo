@@ -43,7 +43,12 @@ const SubscriptionSchema = mongoose.Schema({
             type: Boolean,
             required: true,
             default: false
-        }
+        },
+        media_library: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
         // material_management: {
         //     type: Boolean,
         //     required: true,

@@ -1,7 +1,7 @@
 const Subscription = require("@/models/app/subscription.model");
 
 const AddSubscriptionController = async (req, res) => {
-    const { title, sub_title, description, price, sites_count, users_count, admin_settings, project_management } = req.body;
+    const { title, sub_title, description, price, sites_count, users_count, admin_settings, project_management, media_library } = req.body;
 
     try {
         const newSubscription = new Subscription({
@@ -13,7 +13,8 @@ const AddSubscriptionController = async (req, res) => {
             users_count: users_count,
             permissions: {
                 admin_settings: admin_settings,
-                project_management: project_management
+                project_management: project_management,
+                media_library: media_library
             }
         })
 
