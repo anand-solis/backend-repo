@@ -24,29 +24,36 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Cross-Origin Resource Sharing Policy
 app.use(cors({ origin: "*" }));
 
-// API Routes
+// API Account Routes
 app.use(require("@/routes/account/otp.route"));
 app.use(require("@/routes/account/login.route"));
 app.use(require("@/routes/account/logout.route"));
 app.use(require("@/routes/account/profile.route"));
 app.use(require("@/routes/account/user.route"));
 
+// API APP Routes
 app.use(require("@/routes/app/role.route"));
 app.use(require("@/routes/app/feature.route"));
 app.use(require("@/routes/app/defaultPermission.route"));
 app.use(require("@/routes/app/subscriptionFeature.route"));
 app.use(require("@/routes/app/subscription.route"));
 
+// API File Routes
+app.use(require("@/routes/file/file.route"));
+
+// API Organization Routes
 app.use(require("@/routes/organization/organization.route"));
 app.use(require("@/routes/organization/permission.route"));
 app.use(require("@/routes/organization/member.route"));
 app.use(require("@/routes/organization/plan.route"));
-app.use(require("@/routes/organization/file.route"));
 app.use(require("@/routes/organization/workCategory.route"));
 
+// API Organization -> Site Routes
 app.use(require("@/routes/organization/site/site.route"));
 app.use(require("@/routes/organization/site/siteMember.route"));
 app.use(require("@/routes/organization/site/floor.route"));
+
+// API Organization -> Site -> Task Routes
 app.use(require("@/routes/organization/site/task/task.route"));
 app.use(require("@/routes/organization/site/task/taskMember.route"));
 
