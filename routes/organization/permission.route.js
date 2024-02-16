@@ -24,7 +24,7 @@ router.get(
 router.get(
     "/permission/user",
     Middleware,
-    (req, res, next) => organizationMemberMiddleware(req, res, next),
+    organizationMemberMiddleware,
     getPermissionByUserController
 );
 

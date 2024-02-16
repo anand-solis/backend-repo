@@ -21,7 +21,7 @@ router.get(
 router.get(
     "/plan/user",
     Middleware,
-    (req, res, next) => organizationMemberMiddleware(req, res, next),
+    organizationMemberMiddleware,
     getPlanByUserController
 );
 
