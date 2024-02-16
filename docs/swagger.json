@@ -1835,9 +1835,34 @@
     "/task/members": {
       "get": {
         "description": "",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "site",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "floor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "task",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -1845,9 +1870,34 @@
     "/task/not-members": {
       "get": {
         "description": "",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "site",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "floor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "task",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -1855,9 +1905,49 @@
     "/task/member/add": {
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "site",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "floor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "task",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "members": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Created"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
