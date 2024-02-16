@@ -1,16 +1,28 @@
 const TaskMember = require("@/models/organization/site/task/taskMember.model");
 const Task = require("@/models/organization/site/task/task.model");
-const Member = require("@/models/organization/member.model");
+const SiteMember = require("@/models/organization/site/siteMember.model");
 
 const GetAllTaskController = async (req, res) => {
     const { organization, site, floor } = req.query;
 
     try {
-        const member = await Member.findOne({ user: req.user._id, organization: organization }).select("_id");
+        const MemberDetails = await SiteMember
+        .findOne({
+            organization: organization,
+            site: site
+        })
+        .select("_id member")
+        .populate({
+            path: "member",
+            select: "user",
+            match: {
+                user: req.user._id
+            }
+        });
 
-        if (member?._id) {
+        if (MemberDetails?._id && MemberDetails?.member?.user?._id) {
             let taskMembers = await TaskMember
-                .find({ organization: organization, site: site, floor: floor, member: member._id })
+                .find({ organization: organization, site: site, floor: floor, member: MemberDetails._id })
                 .select("task");
 
             const haveTaskIds = taskMembers.map(member => member.task);
