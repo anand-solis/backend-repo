@@ -4,9 +4,12 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 // Json Body
 app.use(express.json({ urlencoded: true }));
+app.use(bodyParser.json());
+
 
 // Documentation Imports
 const swaggerUi = require("swagger-ui-express");

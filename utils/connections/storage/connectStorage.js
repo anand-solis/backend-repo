@@ -1,6 +1,6 @@
-import AWS from "aws-sdk";
+const AWS = require("aws-sdk");
 
-export const storage = new AWS.S3({
+const storage = new AWS.S3({
     endpoint: process.env.S3_ENDPOINT,
     region: process.env.S3_REGION,
     credentials: {
@@ -8,3 +8,5 @@ export const storage = new AWS.S3({
         secretAccessKey: process.env.S3_ACCESS_SECRET
     }
 })
+
+module.exports = storage;

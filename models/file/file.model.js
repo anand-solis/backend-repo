@@ -6,25 +6,23 @@ const FileSchema = mongoose.Schema({
         ref: "Organization",
         required: false
     },
+    used: {
+        type: Boolean,
+        required: true
+    },
     name: {
         type: String,
         required: true
     },
     alternative_text: {
-        type: String
+        type: String,
+        required: true
     },
     caption: {
-        type: String
-    },
-    width: {
-        type: Number,
+        type: String,
         required: true
     },
-    height: {
-        type: Number,
-        required: true
-    },
-    ext: {
+    extension: {
         type: String,
         required: true
     },
