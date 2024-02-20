@@ -10,13 +10,13 @@ const AddTaskMemberController = require("../../../../controllers/organization/si
 
 const router = express.Router();
 
-const key = "tasks";
+const key = "task-members";
 const plan = "project_management";
 
 router.get(
     "/task/members",
     Middleware,
-    (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
+    (req, res, next) => organizationMiddleware(req, res, next, "tasks", "read", plan),
     siteMiddleware,
     taskMiddleware,
     GetAllAddedTaskMemberController
