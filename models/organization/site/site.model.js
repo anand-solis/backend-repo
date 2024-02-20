@@ -26,6 +26,10 @@ const SiteSchema = mongoose.Schema({
         ref: "User",
         required: true
     },
+    profile: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "File"
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model("Site", SiteSchema);

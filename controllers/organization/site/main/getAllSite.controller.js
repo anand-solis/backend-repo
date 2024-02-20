@@ -16,7 +16,11 @@ const getAllSiteController = async (req, res) => {
 
             const haveSiteIds = siteMembers.map(member => member.site);
 
-            const sites = await Site.find({ _id: { $in: haveSiteIds } }).select("name startDate endDate").sort({ createdAt: -1 });
+            const sites = await Site
+            .find({ _id: { $in: haveSiteIds } })
+            .select("name startDate endDate profile")
+            .sort({ createdAt: -1 })
+            .populate("profile", { url: 1, _id: 0 });
 
             let siteWithInviteStatus = [];
 
@@ -28,6 +32,7 @@ const getAllSiteController = async (req, res) => {
                     name: site.name,
                     startDate: site.startDate,
                     endDate: site.endDate,
+                    profile: site?.profile,
                     inviteAccepted: siteMembers[index].inviteAccepted
                 });
             })
