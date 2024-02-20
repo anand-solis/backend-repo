@@ -8,7 +8,7 @@ const GetDefaultPermissionController = async (req, res) => {
         .select("name isAdmin features")
         .populate({
             path: "features.feature",
-            select: ["name", "key"]
+            select: ["name", "key", "description"]
         });
 
         return res.status(200).json({ defaultPermission: defaultPermission, success: true, error: "", message: "Default Permission fetched successfully." });
