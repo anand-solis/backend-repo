@@ -3,7 +3,7 @@ const formidable = require("formidable");
 const fs = require("fs");
 const File = require("@/models/file/file.model");
 
-const upload = async (req) => {
+const upload = async (req, allowed) => {
     try {
         const form = new formidable.IncomingForm();
         const parseForm = () => {
@@ -47,15 +47,15 @@ const upload = async (req) => {
                 }
             }
 
-            if (type == "image" && !rules.image.extension.includes(extension)) {
+            if (allowed.includes("image") && type == "image" && !rules.image.extension.includes(extension)) {
                 return { file: null, success: false, error: "Only these extensions allowed for image upload (png, jpeg, jpg).", message: "" };
             }
 
-            if (type == "application" && !rules.doc.extension.includes(extension)) {
+            if (allowed.includes("application") && type == "application" && !rules.doc.extension.includes(extension)) {
                 return { file: null, success: false, error: "Only these extensions allowed for document upload (docs, pdf, excel).", message: "" };
             }
 
-            if (type == "video" && !rules.video.extension.includes(extension)) {
+            if (allowed.includes("video") && type == "video" && !rules.video.extension.includes(extension)) {
                 return { file: null, success: false, error: "Only these extensions allowed for video upload (mp4, mkv).", message: "" };
             }
 

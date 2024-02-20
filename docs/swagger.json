@@ -691,6 +691,9 @@
                 },
                 "project_management": {
                   "example": "any"
+                },
+                "media_library": {
+                  "example": "any"
                 }
               }
             }
@@ -744,6 +747,9 @@
                   "example": "any"
                 },
                 "project_management": {
+                  "example": "any"
+                },
+                "media_library": {
                   "example": "any"
                 }
               }

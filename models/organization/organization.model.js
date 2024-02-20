@@ -40,6 +40,11 @@ const OrganizationSchema = mongoose.Schema({
         required: true,
         default: false
     },
+    profile: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "File",
+        required: true
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model("Organization", OrganizationSchema);
