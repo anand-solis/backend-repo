@@ -8,6 +8,9 @@ const GetAllAppWorkCategoriesController = require("../../controllers/organizatio
 const AddWorkCategoryController = require("../../controllers/organization/workCategory/main/addWorkCategory.controller");
 const AddAppWorkCategoryController = require("../../controllers/organization/workCategory/app/addAppWorkCategory.controller");
 
+const UpdateAppWorkCategoryController = require("../../controllers/organization/workCategory/app/updateAppWorkCategory.controller");
+const RemoveAppWorkCategoryController = require("../../controllers/organization/workCategory/app/removeAppWorkCategory.controller");
+
 const router = express.Router();
 
 const key = "organization-profile";
@@ -39,6 +42,20 @@ router.post(
     Middleware,
     superAdminMiddleware,
     AddAppWorkCategoryController
+);
+
+router.patch(
+    "/app/work-category/update/:id",
+    Middleware,
+    superAdminMiddleware,
+    UpdateAppWorkCategoryController
+);
+
+router.delete(
+    "/app/work-category/remove/:id",
+    Middleware,
+    superAdminMiddleware,
+    RemoveAppWorkCategoryController
 );
 
 module.exports = router;
