@@ -1,6 +1,6 @@
 const TaskMember = require("@/models/organization/site/task/taskMember.model");
 const Task = require("@/models/organization/site/task/task.model");
-const SiteMember = require("@/models/organization/site/siteMember.model");
+const SiteMember = require("@/models/organization/site/main/siteMember.model");
 
 const GetAllTaskController = async (req, res) => {
     const { organization, site, floor } = req.query;

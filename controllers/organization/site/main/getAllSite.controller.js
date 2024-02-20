@@ -1,6 +1,6 @@
-const SiteMember = require("@/models/organization/site/siteMember.model");
+const SiteMember = require("@/models/organization/site/main/siteMember.model");
 const Member = require("@/models/organization/member.model");
-const Site = require("@/models/organization/site/site.model");
+const Site = require("@/models/organization/site/main/site.model");
 
 const getAllSiteController = async (req, res) => {
     const { organization } = req.query;
