@@ -11,13 +11,13 @@ const inviteAcceptSiteMemberController = require("../../../controllers/organizat
 
 const router = express.Router();
 
-const key = "sites";
+const key = "site-members";
 const plan = "project_management";
 
 router.get(
     "/site/members",
     Middleware,
-    (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
+    (req, res, next) => organizationMiddleware(req, res, next, "sites", "read", plan),
     siteMiddleware,
     getAllAddedSiteMemberController
 );
