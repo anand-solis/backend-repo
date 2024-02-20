@@ -42,8 +42,7 @@ const OrganizationSchema = mongoose.Schema({
     },
     profile: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "File",
-        required: true
+        ref: "File"
     }
 }, { timestamps: true });
 
