@@ -7,8 +7,7 @@ const WorkCategorySchema = mongoose.Schema({
     },
     name: {
         type: String,
-        required: [true, "Work Category name is required."],
-        unique: true
+        required: [true, "Work Category name is required."]
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
