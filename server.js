@@ -59,6 +59,11 @@ app.use(require("@/routes/organization/site/floor.route"));
 // API Organization -> Site -> Task Routes
 app.use(require("@/routes/organization/site/task/task.route"));
 app.use(require("@/routes/organization/site/task/taskMember.route"));
+app.use(require("@/routes/organization/site/task/taskTimeline.route"));
+app.use(require("@/routes/organization/site/task/taskPhoto.route"));
+app.use(require("@/routes/organization/site/task/taskAttachment.route"));
+app.use(require("@/routes/organization/site/task/taskComment.route"));
+app.use(require("@/routes/organization/site/task/taskIssue.route"));
 
 async function startServer() {
     try {
