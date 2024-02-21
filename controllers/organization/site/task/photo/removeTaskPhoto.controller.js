@@ -1,4 +1,4 @@
-const RemoveTaskPhotoController = async (req, req) => {
+const RemoveTaskPhotoController = async (req, res) => {
 
 }
 
