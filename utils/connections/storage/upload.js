@@ -23,10 +23,10 @@ const upload = async (req, allowed) => {
         if (files.attachment[0]) {
             let { organization } = req.query;
             let mime = files.attachment[0].mimetype;
-            let type = mime.split("/")[0]
+            let type = mime.split("/")[0];
             let extension = mime.split("/").pop();
             let size = files.attachment[0].size;
-            let path = Date.now() + "." + extension;
+            let path = `${Date.now()}-${Math.random().toString(36).substring(2, 15)}.${extension}`;
             let file = files.attachment[0].filepath;
             let name = files.attachment[0].originalFilename;
             let createdBy = req.user._id;
@@ -37,7 +37,7 @@ const upload = async (req, allowed) => {
                     size: 5000000, // 5MB
                     extension: ["png", "jpeg", "jpg"]
                 },
-                doc: {
+                application: {
                     size: 10000000, // 10MB
                     extension: ["docs", "pdf", "excel"]
                 },
@@ -47,46 +47,52 @@ const upload = async (req, allowed) => {
                 }
             }
 
-            if (allowed.includes("image") && type == "image" && !rules.image.extension.includes(extension)) {
-                return { file: null, success: false, error: "Only these extensions allowed for image upload (png, jpeg, jpg).", message: "" };
+            async function AddFile() {
+                try {
+                    const params = {
+                        Bucket: process.env.S3_BUCKET,
+                        Key: path,
+                        Body: fs.createReadStream(file),
+                        ContentType: extension,
+                        ContentLength: size
+                    };
+    
+                    await storage.putObject(params).promise();
+    
+                    const addedFile = await File.create({
+                        organization: organization,
+                        name: name,
+                        alternative_text: name,
+                        caption: name,
+                        extension: extension,
+                        mime: mime,
+                        size: size,
+                        url: path,
+                        createdBy: createdBy,
+                        updatedBy: updatedBy,
+                        used: true
+                    })
+    
+                    return { file: addedFile?._id, success: true, error: "", message: "File uploaded successfully." };
+                } catch (error) {
+                    return { file: null, success: false, error: `Error: ${error}`, message: "" };
+                }
             }
 
-            if (allowed.includes("application") && type == "application" && !rules.doc.extension.includes(extension)) {
-                return { file: null, success: false, error: "Only these extensions allowed for document upload (docs, pdf, excel).", message: "" };
+            if (allowed.includes("image") && rules.image.extension.includes(extension)) return await AddFile();
+            else if (allowed.includes("application") && rules.application.extension.includes(extension)) return await AddFile();
+            else if (allowed.includes("video") && rules.video.extension.includes(extension)) return await AddFile();
+            else {
+                if(allowed.includes(type)) {
+                    return { file: null, success: false, error: `Only these extensions allowed for ${type == "application" ? "docs" : type} upload are (${rules?.[type]?.extension.join(", ") || "none"}).`, message: "" };
+                }
+                else {
+                    return { file: null, success: false, error: `Only these file types are allowed (${allowed?.join(", ") || "none"}).`, message: "" };
+                }
             }
-
-            if (allowed.includes("video") && type == "video" && !rules.video.extension.includes(extension)) {
-                return { file: null, success: false, error: "Only these extensions allowed for video upload (mp4, mkv).", message: "" };
-            }
-
-            const params = {
-                Bucket: process.env.S3_BUCKET,
-                Key: path,
-                Body: fs.createReadStream(file),
-                ContentType: extension,
-                ContentLength: size
-            };
-
-            await storage.putObject(params).promise();
-
-            const addedFile = await File.create({
-                organization: organization,
-                name: name,
-                alternative_text: name,
-                caption: name,
-                extension: extension,
-                mime: mime,
-                size: size,
-                url: path,
-                createdBy: createdBy,
-                updatedBy: updatedBy,
-                used: true
-            })
-
-            return { file: addedFile?._id, success: true, error: "", message: "File uploaded successfully." };
         }
         else {
-            return { file: null, success: false, error: "Please select a file for uploading to media library.", message: "" };
+            return { file: null, success: false, error: "No file attached in the request.", message: "" };
         }
     } catch (error) {
         return { file: null, success: false, error: `Error: ${error}`, message: "" };
