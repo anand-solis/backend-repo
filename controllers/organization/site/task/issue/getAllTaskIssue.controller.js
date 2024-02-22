@@ -9,7 +9,7 @@ const GetAllTaskIssueController = async (req, res) => {
             site: site,
             floor: floor,
             task: task
-        });
+        }).select("issue");
 
         return res.status(200).json({ taskIssues: taskIssues, success: true, error: "", message: "Task issue fetched successfully." });
     } catch (error) {

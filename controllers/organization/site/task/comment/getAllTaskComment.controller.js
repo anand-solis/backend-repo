@@ -9,7 +9,7 @@ const GetAllTaskCommentController = async (req, res) => {
             site: site,
             floor: floor,
             task: task
-        });
+        }).select("comment");
 
         return res.status(200).json({ taskComment: taskComment, success: true, error: "", message: "Task comments fetched successfully." });
     } catch (error) {
