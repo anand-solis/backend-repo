@@ -14,7 +14,7 @@
 ## Today Tasks
  - Feature Update model check.
  - Role Update model check.
- - Add Progress count to Task and Site GET APIs (2)
+ - Add Progress count Site GET APIs (1)
  - Media Library APIs (3)
  - Gantt Chart API (1)
  - Prt Chart API (1)
