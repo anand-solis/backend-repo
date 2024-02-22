@@ -6,7 +6,6 @@ const organizationMiddleware = require("@/utils/middleware/organization/organiza
 
 const GetAllTaskTimelineController = require("../../../../controllers/organization/site/task/timeline/getAllTaskTimeline.controller");
 const AddTaskTimelineController = require("../../../../controllers/organization/site/task/timeline/addTaskTimeline.controller");
-const UpdateTaskTimelineController = require("../../../../controllers/organization/site/task/timeline/updateTaskTimeline.controller");
 const RemoveTaskTimelineController = require("../../../../controllers/organization/site/task/timeline/removeTaskTimeline.controller");
 
 const router = express.Router();
@@ -30,15 +29,6 @@ router.post(
     siteMiddleware,
     taskMiddleware,
     AddTaskTimelineController
-);
-
-router.patch(
-    "/task/timeline/update/:id",
-    Middleware,
-    (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
-    siteMiddleware,
-    taskMiddleware,
-    UpdateTaskTimelineController
 );
 
 router.delete(
