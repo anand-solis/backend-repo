@@ -11,11 +11,17 @@
 ## Enhancement
  - Add Features in subscription.
 
-## Today Tasks
- - Feature Update model check.
- - Role Update model check.
+## Pending Tasks
  - Media Library APIs (3)
  - Gantt Chart API (1)
  - Prt Chart API (1)
  - User Profile Update APIs (4)
     - Changing in User Profile Edit API (Change Token)
+ - Update Task (1)
+ - Update Site (1)
+ - Uploads in sites (3)
+ - 
+
+## Enhancements
+ - Feature Update model check.
+ - Role Update model check.
