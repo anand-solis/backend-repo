@@ -2,6 +2,7 @@ const SiteMember = require("@/models/organization/site/main/siteMember.model");
 const Member = require("@/models/organization/member.model");
 const Site = require("@/models/organization/site/main/site.model");
 const TaskTimeline = require("@/models/organization/site/task/taskTimeline.model");
+const Task = require("@/models/organization/site/task/task.model");
 
 const getAllSiteController = async (req, res) => {
     const { organization } = req.query;
@@ -32,13 +33,10 @@ const getAllSiteController = async (req, res) => {
                     .find({ organization: organization, site: site._id })
                     .select("progress");
 
-                let count = 0;
+                let count = await Task.find({ organization: organization, site: site._id }).select("_id");
                 let progress = 0;
 
-                taskTimelines.forEach((timeline) => {
-                    count += 1;
-                    progress += timeline.progress;
-                });
+                taskTimelines.forEach((timeline) => progress += timeline.progress);
 
                 siteWithInviteStatus.push({
                     _id: site._id,
@@ -46,7 +44,7 @@ const getAllSiteController = async (req, res) => {
                     startDate: site.startDate,
                     endDate: site.endDate,
                     profile: site?.profile,
-                    progress: count > 0 ? parseInt(progress / count) : 0,
+                    progress: count.length > 0 ? parseInt(progress / count.length) : 0,
                     inviteAccepted: index !== -1 ? siteMembers[index].inviteAccepted : false
                 });
             }
