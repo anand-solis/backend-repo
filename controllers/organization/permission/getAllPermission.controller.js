@@ -10,6 +10,10 @@ const getAllPermissionController = async (req, res) => {
         .populate({
             path: "createdBy",
             select: "name"
+        })
+        .populate({
+            path: "updatedBy",
+            select: "name"
         });
 
         return res.status(200).json({ permissions: permission, success: true, error: "", message: "All permissions fetched successfully." });
