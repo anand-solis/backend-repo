@@ -20,7 +20,7 @@ const upload = async (req, allowed) => {
 
         const { files } = await parseForm();
 
-        if (files.attachment[0]) {
+        if (files && files.attachment && files.attachment[0]) {
             let { organization } = req.query;
             let mime = files.attachment[0].mimetype;
             let type = mime.split("/")[0];
