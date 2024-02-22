@@ -34,10 +34,10 @@ const RemoveTaskPhotoController = async (req, res) => {
                 }
             );
 
-            return res.status(200).json({ success: true, error: "", message: "Task photos successfully removed." });
+            return res.status(200).json({ success: true, error: "", message: "Task photo successfully removed." });
         }
         else{
-            return res.status(200).json({ success: true, error: "", message: "Task photos not exist for remove." });
+            return res.status(200).json({ success: true, error: "", message: "Task photo not exist for remove." });
         }
     } catch (error) {
         return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
