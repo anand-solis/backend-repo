@@ -1,4 +1,4 @@
-const Permission = require("@/models/organization/permission.model");
+const Permission = require("@/models/organization/main/permission.model");
 
 const updatePermissionController = async (req, res) => {
     const { permissions } = req.body;

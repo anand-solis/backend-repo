@@ -1,4 +1,4 @@
-const Member = require("@/models/organization/member.model");
+const Member = require("@/models/organization/main/member.model");
 
 const getPermissionAssignedMemberController = async (req, res) => {
     const { id } = req.params;

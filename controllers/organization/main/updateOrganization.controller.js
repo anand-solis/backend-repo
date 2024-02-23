@@ -1,4 +1,4 @@
-const Organization = require("@/models/organization/organization.model");
+const Organization = require("@/models/organization/main/organization.model");
 const File = require("@/models/file/file.model");
 const upload = require("@/utils/connections/storage/upload");
 

@@ -1,5 +1,5 @@
-const Permission = require("@/models/organization/permission.model");
-const Member = require("@/models/organization/member.model");
+const Permission = require("@/models/organization/main/permission.model");
+const Member = require("@/models/organization/main/member.model");
 
 const updateMemberController = async (req, res) => {
     const { id } = req.params;

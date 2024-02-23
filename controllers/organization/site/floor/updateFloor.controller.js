@@ -1,4 +1,4 @@
-const Floor = require("@/models/organization/site/floor.model");
+const Floor = require("@/models/organization/site/main/floor.model");
 
 const UpdateFloorController = async (req, res) => {
     const { name, number } = req.body;

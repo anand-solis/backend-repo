@@ -1,5 +1,5 @@
-const Member = require("@/models/organization/member.model");
-const Permission = require("@/models/organization/permission.model");
+const Member = require("@/models/organization/main/member.model");
+const Permission = require("@/models/organization/main/permission.model");
 const User = require("@/models/account/users.model");
 
 const inviteMemberController = async (req, res) => {

@@ -1,4 +1,4 @@
-const Organization = require("@/models/organization/organization.model");
+const Organization = require("@/models/organization/main/organization.model");
 
 const UpdateAppOrganizationController = async (req, res) => {
     const { id } = req.params;

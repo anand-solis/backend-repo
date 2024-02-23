@@ -1,4 +1,4 @@
-const Member = require("@/models/organization/member.model");
+const Member = require("@/models/organization/main/member.model");
 
 const getPermissionByUserController = async (req, res) => {
     const { organization, key } = req.query;

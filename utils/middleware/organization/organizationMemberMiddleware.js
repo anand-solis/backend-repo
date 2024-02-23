@@ -1,5 +1,5 @@
-const Member = require("@/models/organization/member.model");
-const Plan = require("@/models/organization/plan.model");
+const Member = require("@/models/organization/main/member.model");
+const Plan = require("@/models/organization/main/plan.model");
 
 const organizationMemberMiddleware = async (req, res, next, invitationSkip = false) => {
     const { organization } = req.query;

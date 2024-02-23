@@ -1,4 +1,4 @@
-const SiteUpload = require("@/models/organization/site/siteUpload.model");
+const SiteUpload = require("@/models/organization/site/main/siteUpload.model");
 const upload = require("@/utils/connections/storage/upload");
 
 const AddSiteUploadController = async (req, res) => {

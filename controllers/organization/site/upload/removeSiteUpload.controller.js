@@ -1,4 +1,4 @@
-const SiteUpload = require("@/models/organization/site/siteUpload.model");
+const SiteUpload = require("@/models/organization/site/main/siteUpload.model");
 const File = require("@/models/file/file.model");
 
 const RemoveSiteUploadController = async (req, res) => {

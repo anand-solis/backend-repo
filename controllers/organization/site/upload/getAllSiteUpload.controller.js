@@ -1,4 +1,4 @@
-const SiteUpload = require("@/models/organization/site/siteUpload.model");
+const SiteUpload = require("@/models/organization/site/main/siteUpload.model");
 
 const GetAllSiteUploadController = async (req, res) => {
     const { organization, site } = req.query;

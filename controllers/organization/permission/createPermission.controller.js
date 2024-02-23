@@ -1,5 +1,5 @@
 const Feature = require("@/models/app/features.model");
-const Permission = require("@/models/organization/permission.model");
+const Permission = require("@/models/organization/main/permission.model");
 
 const createPermissionController = async (req, res) => {
     const { name } = req.body;

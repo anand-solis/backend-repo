@@ -1,6 +1,6 @@
 const upload = require("@/utils/connections/storage/upload");
 const File = require("@/models/file/file.model");
-const Site = require("@/models/organization/site/site.model");
+const Site = require("@/models/organization/site/main/site.model");
 
 const UpdateSiteController = async (req, res) => {
     const { organization, site } = req.query;

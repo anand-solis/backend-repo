@@ -1,5 +1,5 @@
-const Member = require("@/models/organization/member.model");
-const Organization = require("@/models/organization/organization.model");
+const Member = require("@/models/organization/main/member.model");
+const Organization = require("@/models/organization/main/organization.model");
 
 const getOrganizationSwitchController = async (req, res) => {
     try {

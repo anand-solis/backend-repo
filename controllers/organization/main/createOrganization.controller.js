@@ -1,4 +1,4 @@
-const Organization = require("@/models/organization/organization.model");
+const Organization = require("@/models/organization/main/organization.model");
 
 const createOrganization = async (req) => {
     const { name, phone, email } = req.body;

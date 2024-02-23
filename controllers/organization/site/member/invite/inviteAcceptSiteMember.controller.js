@@ -1,5 +1,5 @@
-const SiteMember = require("@/models/organization/site/siteMember.model");
-const Member = require("@/models/organization/member.model");
+const SiteMember = require("@/models/organization/site/main/siteMember.model");
+const Member = require("@/models/organization/main/member.model");
 
 const inviteAcceptSiteMemberController = async (req, res) => {
     const { organization, site } = req.query;

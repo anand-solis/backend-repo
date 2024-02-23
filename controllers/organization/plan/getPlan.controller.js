@@ -1,4 +1,4 @@
-const Plan = require("@/models/organization/plan.model");
+const Plan = require("@/models/organization/main/plan.model");
 
 const getPlanController = async (req, res) => {
     const { organization } = req.query;

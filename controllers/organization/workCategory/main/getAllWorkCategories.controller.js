@@ -1,4 +1,4 @@
-const WorkCategory = require("@/models/organization/workCategory.model");
+const WorkCategory = require("@/models/organization/main/workCategory.model");
 
 const GetAllWorkCategoriesController = async (req, res) => {
     const { organization } = req.query;

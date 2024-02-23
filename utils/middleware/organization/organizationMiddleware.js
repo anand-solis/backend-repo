@@ -1,6 +1,6 @@
-const Member = require("@/models/organization/member.model");
+const Member = require("@/models/organization/main/member.model");
 const Feature = require("@/models/app/features.model");
-const Plan = require("@/models/organization/plan.model");
+const Plan = require("@/models/organization/main/plan.model");
 const Subscription = require("@/models/app/subscription.model");
 
 const organizationMiddleware = async (req, res, next, key, rule, subscription, invitationSkip = false) => {

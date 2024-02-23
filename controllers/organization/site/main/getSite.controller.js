@@ -1,4 +1,4 @@
-const Site = require("@/models/organization/site/site.model");
+const Site = require("@/models/organization/site/main/site.model");
 
 const GetAllSiteController = async (req, res) => {
     const { organization, site } = req.query;

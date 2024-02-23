@@ -1,5 +1,5 @@
 const Subscription = require("@/models/app/subscription.model");
-const Plan = require("@/models/organization/plan.model");
+const Plan = require("@/models/organization/main/plan.model");
 
 const createSubscriptionPlan = async (organizationId) => {
     const trialSubscriptionId = await Subscription.findOne({ isTrial: true}).select("_id");
