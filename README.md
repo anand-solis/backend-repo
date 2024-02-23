@@ -18,7 +18,6 @@
  - User Profile Update APIs (4)
     - Changing in User Profile Edit API (Change Token)
 
- - Update Task (1)
  - Purchase order settings (2)
  - Material Module Settings (2)
 

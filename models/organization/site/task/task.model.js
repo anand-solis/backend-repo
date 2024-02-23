@@ -37,8 +37,9 @@ const TaskSchema = mongoose.Schema({
         type: Number,
         required: [true, "Task expected cost is required."]
     },
-    total_cost: {
-        type: Number
+    totalCost: {
+        type: Number,
+        default: ""
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,

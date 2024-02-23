@@ -4,6 +4,7 @@ const siteMiddleware = require("@/utils/middleware/organization/siteMiddleware")
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 
 const GetAllSiteController = require("../../../controllers/organization/site/main/getAllSite.controller");
+const GetSiteController = require("../../../controllers/organization/site/main/getSite.controller");
 const CreateSiteController = require("../../../controllers/organization/site/main/createSite.controller");
 const UpdateSiteController = require("../../../controllers/organization/site/main/updateSite.controller");
 
@@ -17,6 +18,14 @@ router.get(
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
     GetAllSiteController
+);
+
+router.get(
+    "/site",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
+    siteMiddleware,
+    GetSiteController
 );
 
 router.post(
