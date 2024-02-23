@@ -4,14 +4,13 @@ const Site = require("@/models/organization/site/site.model");
 
 const UpdateSiteController = async (req, res) => {
     const { name, startDate, endDate } = req.body;
-    const { organization } = req.query;
-    const { id } = req.params
+    const { organization, site } = req.query;
 
     try {
         const response = await upload(req, ["image"]);
 
         if (response.success) {
-            const prev = await Site.findOne({ _id: id, organization: organization }).select("profile");
+            const prev = await Site.findOne({ _id: site, organization: organization }).select("profile");
 
             if (prev?.profile) {
                 await File.findOneAndUpdate(
@@ -22,7 +21,7 @@ const UpdateSiteController = async (req, res) => {
 
             await Site.findOneAndUpdate(
                 {
-                    _id: id,
+                    _id: site,
                     organization: organization
                 },
                 {
@@ -33,7 +32,7 @@ const UpdateSiteController = async (req, res) => {
 
         await Site.findOneAndUpdate(
             {
-                _id: id,
+                _id: site,
                 organization: organization
             },
             {
