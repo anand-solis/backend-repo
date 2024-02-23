@@ -26,7 +26,7 @@ router.post(
     CreateSiteController
 );
 
-router.post(
+router.patch(
     "/site/update/:id",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),

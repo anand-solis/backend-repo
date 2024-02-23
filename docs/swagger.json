@@ -1603,7 +1603,7 @@
       }
     },
     "/site/update/{id}": {
-      "post": {
+      "patch": {
         "description": "",
         "parameters": [
           {
