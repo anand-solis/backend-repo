@@ -49,41 +49,41 @@ const SubscriptionSchema = mongoose.Schema({
             required: true,
             default: false
         },
-        // material_management: {
-        //     type: Boolean,
-        //     required: true,
-        //     default: false
-        // },
-        // labour_tracking_and_payable: {
-        //     type: Boolean,
-        //     required: true,
-        //     default: false
-        // },
-        // vendor_payable: {
-        //     type: Boolean,
-        //     required: true,
-        //     default: false
-        // },
-        // reports_and_dashboards: {
-        //     type: Boolean,
-        //     required: true,
-        //     default: false
-        // },
-        // support: {
-        //     type: Boolean,
-        //     required: true,
-        //     default: false
-        // },
-        // expense: {
-        //     type: Boolean,
-        //     required: true,
-        //     default: false
-        // },
-        // budget_calculation: {
-        //     type: Boolean,
-        //     required: true,
-        //     default: false
-        // },
+        material_management: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        labour_tracking_and_payable: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        vendor_payable: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        reports_and_dashboards: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        support: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        expense: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        budget_calculation: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
     }
 }, { timestamps: true });
 

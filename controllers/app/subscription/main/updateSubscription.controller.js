@@ -2,8 +2,25 @@ const Subscription = require("@/models/app/subscription.model");
 
 const UpdateSubscriptionController = async (req, res) => {
     const { id } = req.params;
-    const { title, sub_title, description, price, sites_count, users_count, admin_settings, project_management, media_library } = req.body;
-
+    const {
+        title,
+        sub_title,
+        description,
+        price,
+        sites_count,
+        users_count,
+        admin_settings,
+        project_management,
+        media_library,
+        material_management,
+        labour_tracking_and_payable,
+        vendor_payable,
+        reports_and_dashboards,
+        support,
+        expense,
+        budget_calculation
+    } = req.body;
+    
     try {
         await Subscription.findOneAndUpdate(
             { _id: id },
@@ -17,7 +34,14 @@ const UpdateSubscriptionController = async (req, res) => {
                 permissions: {
                     admin_settings: admin_settings,
                     project_management: project_management,
-                    media_library: media_library
+                    media_library: media_library,
+                    material_management: material_management,
+                    labour_tracking_and_payable: labour_tracking_and_payable,
+                    vendor_payable: vendor_payable,
+                    reports_and_dashboards: reports_and_dashboards,
+                    support: support,
+                    expense: expense,
+                    budget_calculation: budget_calculation
                 }
             }
         )
