@@ -4,7 +4,7 @@ const Site = require("@/models/organization/site/main/site.model");
 const TaskTimeline = require("@/models/organization/site/task/taskTimeline.model");
 const Task = require("@/models/organization/site/task/task.model");
 
-const getAllSiteController = async (req, res) => {
+const GetAllSiteController = async (req, res) => {
     const { organization } = req.query;
 
     try {
@@ -58,4 +58,4 @@ const getAllSiteController = async (req, res) => {
     }
 }
 
-module.exports = getAllSiteController;
+module.exports = GetAllSiteController;

@@ -3,7 +3,7 @@ const Plan = require("@/models/organization/plan.model");
 const Member = require("@/models/organization/member.model");
 const SiteMember = require("@/models/organization/site/main/siteMember.model");
 
-const createSiteController = async (req, res) => {
+const CreateSiteController = async (req, res) => {
     const { name, startDate, endDate } = req.body;
     const { organization } = req.query;
 
@@ -68,4 +68,4 @@ const createSiteController = async (req, res) => {
     }
 }
 
-module.exports = createSiteController;
+module.exports = CreateSiteController;

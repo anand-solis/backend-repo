@@ -1,9 +1,11 @@
 const express = require("express");
 const Middleware = require("@/utils/middleware/middleware");
+const siteMiddleware = require("@/utils/middleware/organization/siteMiddleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 
-const getAllSiteController = require("../../../controllers/organization/site/main/getAllSite.controller");
-const createSiteController = require("../../../controllers/organization/site/main/createSite.controller");
+const GetAllSiteController = require("../../../controllers/organization/site/main/getAllSite.controller");
+const CreateSiteController = require("../../../controllers/organization/site/main/createSite.controller");
+const UpdateSiteController = require("../../../controllers/organization/site/main/updateSite.controller");
 
 const router = express.Router();
 
@@ -14,14 +16,22 @@ router.get(
     "/sites",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
-    getAllSiteController
+    GetAllSiteController
 );
 
 router.post(
     "/site/add",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
-    createSiteController
+    CreateSiteController
+);
+
+router.post(
+    "/site/update/:id",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
+    siteMiddleware,
+    UpdateSiteController
 );
 
 module.exports = router;

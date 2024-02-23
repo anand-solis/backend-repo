@@ -18,9 +18,6 @@ const SiteSchema = mongoose.Schema({
         type: String,
         required: [true, "Site start date is required."]
     },
-    banner: {
-        type: String
-    },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
