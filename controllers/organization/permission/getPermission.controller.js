@@ -6,16 +6,13 @@ const getPermissionController = async (req, res) => {
     const { id } = req.params;
 
     const subscription = {
-        project_management: ["sites", "site-members", "tasks", "task-members", "site-module-members"],
+        project_management: ["sites", "site-members", "site-issues", "tasks", "task-members", "site-module-members"],
         admin_settings: ["roles-and-permissions", "members", "organization-profile", "organization-plan"],
         media_library: ["media-library"],
-        material_management: ["purchase-order"],
-        labour_tracking_and_payable: [],
-        vendor_payable: [],
-        reports_and_dashboards: [],
-        support: [],
-        expense: [],
-        budget_calculation: []
+        material_management: ["indent", "purchase-orders", "grn-billings", "inventory", "material-issues"],
+        labour_tracking_and_payable: ["attendance"],
+        vendor_payable: ["vendor"],
+        budget_calculation: ["bill-of-material", "material-transfer", "bill-of-quantity"]
     }
 
     const subscriptionKeys = Object.keys(subscription);

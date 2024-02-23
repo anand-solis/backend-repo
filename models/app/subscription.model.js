@@ -74,11 +74,6 @@ const SubscriptionSchema = mongoose.Schema({
             required: true,
             default: false
         },
-        expense: {
-            type: Boolean,
-            required: true,
-            default: false
-        },
         budget_calculation: {
             type: Boolean,
             required: true,

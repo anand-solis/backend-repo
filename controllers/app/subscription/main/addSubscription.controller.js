@@ -16,7 +16,6 @@ const AddSubscriptionController = async (req, res) => {
         vendor_payable,
         reports_and_dashboards,
         support,
-        expense,
         budget_calculation
     } = req.body;
 
@@ -37,7 +36,6 @@ const AddSubscriptionController = async (req, res) => {
                 vendor_payable: vendor_payable,
                 reports_and_dashboards: reports_and_dashboards,
                 support: support,
-                expense: expense,
                 budget_calculation: budget_calculation
             }
         })
