@@ -39,7 +39,7 @@ const upload = async (req, allowed) => {
                 },
                 application: {
                     size: 10000000, // 10MB
-                    extension: ["docs", "pdf", "excel"]
+                    extension: ["docs", "pdf", "xlsx", "csv"]
                 },
                 video: {
                     size: 100000000, // 100MB
@@ -84,7 +84,7 @@ const upload = async (req, allowed) => {
             else if (allowed.includes("video") && rules.video.extension.includes(extension)) return await AddFile();
             else {
                 if(allowed.includes(type)) {
-                    return { file: null, success: false, error: `Only these extensions allowed for ${type == "application" ? "docs" : type} upload are (${rules?.[type]?.extension.join(", ") || "none"}).`, message: "" };
+                    return { file: null, success: false, error: `Only these extensions allowed for ${type == "application" ? "documentation" : type} upload are (${rules?.[type]?.extension.join(", ") || "none"}).`, message: "" };
                 }
                 else {
                     return { file: null, success: false, error: `Only these file types are allowed (${allowed?.join(", ") || "none"}).`, message: "" };

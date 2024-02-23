@@ -19,7 +19,6 @@
     - Changing in User Profile Edit API (Change Token)
 
  - Update Task (1)
- - Uploads in sites (3)
  - Purchase order settings (2)
  - Material Module Settings (2)
 

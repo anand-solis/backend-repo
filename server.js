@@ -55,6 +55,7 @@ app.use(require("@/routes/organization/workCategory.route"));
 app.use(require("@/routes/organization/site/site.route"));
 app.use(require("@/routes/organization/site/siteMember.route"));
 app.use(require("@/routes/organization/site/floor.route"));
+app.use(require("@/routes/organization/site/siteUpload.route"));
 
 // API Organization -> Site -> Task Routes
 app.use(require("@/routes/organization/site/task/task.route"));
