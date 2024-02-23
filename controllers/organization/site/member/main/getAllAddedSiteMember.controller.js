@@ -1,4 +1,4 @@
-const SiteMember = require("@/models/organization/site/main/siteMember.model");
+const SiteMember = require("@/models/organization/site/siteMember.model");
 
 const getAllAddedSiteMemberController = async (req, res) => {
     const { site } = req.query;

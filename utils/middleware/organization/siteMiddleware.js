@@ -1,5 +1,5 @@
-const Site = require("@/models/organization/site/main/site.model");
-const SiteMember = require("@/models/organization/site/main/siteMember.model");
+const Site = require("@/models/organization/site/site.model");
+const SiteMember = require("@/models/organization/site/siteMember.model");
 
 const siteMiddleware = async (req, res, next, invitationSkip = false) => {
     const { organization, site } = req.query;

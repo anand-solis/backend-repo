@@ -1,7 +1,7 @@
-const Site = require("@/models/organization/site/main/site.model");
+const Site = require("@/models/organization/site/site.model");
 const Plan = require("@/models/organization/plan.model");
 const Member = require("@/models/organization/member.model");
-const SiteMember = require("@/models/organization/site/main/siteMember.model");
+const SiteMember = require("@/models/organization/site/siteMember.model");
 
 const CreateSiteController = async (req, res) => {
     const { name, startDate, endDate } = req.body;

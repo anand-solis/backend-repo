@@ -1,4 +1,4 @@
-const SiteMember = require("@/models/organization/site/main/siteMember.model");
+const SiteMember = require("@/models/organization/site/siteMember.model");
 const sendEmailController = require("@/controllers/app/email/sendEmail.controller");
 const SiteInvite = require("@/templates/emails/SiteInvite.template");
 const Member = require("@/models/organization/member.model");

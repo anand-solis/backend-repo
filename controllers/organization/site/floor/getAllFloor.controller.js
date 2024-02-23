@@ -1,4 +1,4 @@
-const Floor = require("@/models/organization/site/floor/floor.model");
+const Floor = require("@/models/organization/site/floor.model");
 
 const GetAllFloorController = async (req, res) => {
     const { organization, site } = req.query;

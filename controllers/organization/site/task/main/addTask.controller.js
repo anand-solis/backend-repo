@@ -1,6 +1,6 @@
 const Task = require("@/models/organization/site/task/task.model");
 const TaskMember = require("@/models/organization/site/task/taskMember.model");
-const SiteMember = require("@/models/organization/site/main/siteMember.model");
+const SiteMember = require("@/models/organization/site/siteMember.model");
 
 const AddTaskController = async (req, res) => {
     const { number, work_category, endDate, startDate, budget } = req.body;

@@ -1,4 +1,4 @@
-const SiteMember = require("@/models/organization/site/main/siteMember.model");
+const SiteMember = require("@/models/organization/site/siteMember.model");
 const TaskMember = require("@/models/organization/site/task/taskMember.model");
 
 const AddTaskMemberController = async (req, res) => {
