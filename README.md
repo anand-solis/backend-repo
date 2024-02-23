@@ -17,10 +17,15 @@
  - Prt Chart API (1)
  - User Profile Update APIs (4)
     - Changing in User Profile Edit API (Change Token)
+
  - Update Task (1)
  - Update Site (1)
  - Uploads in sites (3)
- - 
+ - Purchase order settings (2)
+ - Material Module Settings (2)
+
+ - Attendance (Module 3)
+ - Material (Module 2)
 
 ## Enhancements
  - Feature Update model check.
