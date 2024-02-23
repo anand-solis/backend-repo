@@ -3,7 +3,6 @@ const File = require("@/models/file/file.model");
 const upload = require("@/utils/connections/storage/upload");
 
 const updateOrganizationController = async (req, res) => {
-    const { name, email, phone, address, city, state, pin_code, gst_number, pan_number, tan } = req.body;
     const { organization } = req.query;
 
     try {
@@ -34,16 +33,16 @@ const updateOrganizationController = async (req, res) => {
                 _id: organization
             },
             {
-                name: name,
-                email: email,
-                phone: phone,
-                address: address,
-                city: city,
-                state: state,
-                pin_code: pin_code,
-                gst_number: gst_number,
-                pan_number: pan_number,
-                tan: tan
+                name: response?.fields?.name[0],
+                email: response?.fields?.email[0],
+                phone: response?.fields?.phone[0],
+                address: response?.fields?.address[0],
+                city: response?.fields?.city[0],
+                state: response?.fields?.state[0],
+                pin_code: response?.fields?.pin_code[0],
+                gst_number: response?.fields?.gst_number[0],
+                pan_number: response?.fields?.pan_number[0],
+                tan: response?.fields?.tan[0]
             }
         )
 

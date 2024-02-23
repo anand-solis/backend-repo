@@ -3,7 +3,6 @@ const File = require("@/models/file/file.model");
 const Site = require("@/models/organization/site/site.model");
 
 const UpdateSiteController = async (req, res) => {
-    const { name, startDate, endDate } = req.body;
     const { organization, site } = req.query;
 
     try {
@@ -36,9 +35,9 @@ const UpdateSiteController = async (req, res) => {
                 organization: organization
             },
             {
-                name: name,
-                startDate: startDate,
-                endDate: endDate,
+                name: response?.fields?.name[0],
+                startDate: response?.fields?.startDate[0],
+                endDate: response?.fields?.endDate[0],
             }
         )
 

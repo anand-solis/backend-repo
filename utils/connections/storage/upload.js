@@ -12,13 +12,13 @@ const upload = async (req, allowed) => {
                     if (err) {
                         reject(err);
                     } else {
-                        resolve({ files });
+                        resolve({ files, fields });
                     }
                 });
             });
         };
 
-        const { files } = await parseForm();
+        const { files, fields } = await parseForm();
 
         if (files && files.attachment && files.attachment[0]) {
             let { organization } = req.query;
@@ -73,9 +73,9 @@ const upload = async (req, allowed) => {
                         used: true
                     })
     
-                    return { file: addedFile?._id, success: true, error: "", message: "File uploaded successfully." };
+                    return { fields: fields, file: addedFile?._id, success: true, error: "", message: "File uploaded successfully." };
                 } catch (error) {
-                    return { file: null, success: false, error: `Error: ${error}`, message: "" };
+                    return { fields: fields, file: null, success: false, error: `Error: ${error}`, message: "" };
                 }
             }
 
@@ -84,18 +84,18 @@ const upload = async (req, allowed) => {
             else if (allowed.includes("video") && rules.video.extension.includes(extension)) return await AddFile();
             else {
                 if(allowed.includes(type)) {
-                    return { file: null, success: false, error: `Only these extensions allowed for ${type == "application" ? "documentation" : type} upload are (${rules?.[type]?.extension.join(", ") || "none"}).`, message: "" };
+                    return { fields: fields, file: null, success: false, error: `Only these extensions allowed for ${type == "application" ? "documentation" : type} upload are (${rules?.[type]?.extension.join(", ") || "none"}).`, message: "" };
                 }
                 else {
-                    return { file: null, success: false, error: `Only these file types are allowed (${allowed?.join(", ") || "none"}).`, message: "" };
+                    return { fields: fields, file: null, success: false, error: `Only these file types are allowed (${allowed?.join(", ") || "none"}).`, message: "" };
                 }
             }
         }
         else {
-            return { file: null, success: false, error: "No file attached in the request.", message: "" };
+            return { fields: fields, file: null, success: false, error: "No file attached in the request.", message: "" };
         }
     } catch (error) {
-        return { file: null, success: false, error: `Error: ${error}`, message: "" };
+        return { fields: fields, file: null, success: false, error: `Error: ${error}`, message: "" };
     }
 }
 
