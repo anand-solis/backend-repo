@@ -20,7 +20,7 @@ const TaskSchema = mongoose.Schema({
         type: Number,
         required: [true, "Task number is required."]
     },
-    work_category: {
+    workCategory: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "WorkCategory",
         required: [true, "Task work category is required."]
@@ -33,9 +33,12 @@ const TaskSchema = mongoose.Schema({
         type: String,
         required: [true, "Task start date is required."]
     },
-    budget: {
+    expectedCost: {
         type: Number,
-        required: [true, "Task budget is required."]
+        required: [true, "Task expected cost is required."]
+    },
+    total_cost: {
+        type: Number
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,

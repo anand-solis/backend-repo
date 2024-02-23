@@ -27,7 +27,7 @@ router.post(
 );
 
 router.patch(
-    "/site/update/:id",
+    "/site/update",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
     siteMiddleware,
