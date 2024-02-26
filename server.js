@@ -71,6 +71,10 @@ app.use(require("@/routes/organization/site/task/taskIssue.route"));
 app.use(require("@/routes/organization/site/material/main/materialModuleMember.route"));
 app.use(require("@/routes/organization/site/material/purchase-order/purchaseOrderSetting.route"));
 
+// API Organization -> Site -> Attendance Routes
+app.use(require("@/routes/organization/site/attendance/attendance.route"));
+app.use(require("@/routes/organization/site/attendance/employee.route"));
+
 async function startServer() {
     try {
         // Connect to the database
