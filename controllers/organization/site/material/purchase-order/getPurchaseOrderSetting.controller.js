@@ -1,4 +1,4 @@
-const PurchaseOrderSetting = require("@/models/organization/site/material/purchaseOrderSetting.model");
+const PurchaseOrderSetting = require("@/models/organization/site/material/purchase-order/purchaseOrderSetting.model");
 
 const GetPurchaseOrderSettingController = async (req, res) => {
     const { organization, site } = req.query;
