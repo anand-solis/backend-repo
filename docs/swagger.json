@@ -2040,17 +2040,9 @@
         }
       }
     },
-    "/purchase-order/setting/{id}": {
+    "/purchase-order/settings": {
       "get": {
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
         "responses": {
           "default": {
             "description": ""
@@ -2058,17 +2050,9 @@
         }
       }
     },
-    "/purchase-order/setting/update/{id}": {
+    "/purchase-order/setting/update": {
       "patch": {
         "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
         "responses": {
           "default": {
             "description": ""

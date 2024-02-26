@@ -5,22 +5,22 @@ const organizationMiddleware = require("@/utils/middleware/organization/organiza
 
 const router = express.Router();
 
-const GetAllPurchaseOrderSettingController = require("@/controllers/organization/site/material/purchase-order/getAllPurchaseOrderSetting.controller");
+const GetPurchaseOrderSettingController = require("@/controllers/organization/site/material/purchase-order/getPurchaseOrderSetting.controller");
 const UpdatePurchaseOrderSettingController = require("@/controllers/organization/site/material/purchase-order/updatePurchaseOrderSetting.controller");
 
-const key = "purchase-orders";
+const key = "purchase-order";
 const plan = "material_management";
 
 router.get(
-    "/purchase-order/setting/:id",
+    "/purchase-order/settings",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "read", plan),
     siteMiddleware,
-    GetAllPurchaseOrderSettingController
+    GetPurchaseOrderSettingController
 );
 
 router.patch(
-    "/purchase-order/setting/update/:id",
+    "/purchase-order/setting/update",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
     siteMiddleware,

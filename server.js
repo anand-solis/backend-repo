@@ -66,6 +66,11 @@ app.use(require("@/routes/organization/site/task/taskAttachment.route"));
 app.use(require("@/routes/organization/site/task/taskComment.route"));
 app.use(require("@/routes/organization/site/task/taskIssue.route"));
 
+
+// API Organization -> Site -> Material Routes
+app.use(require("@/routes/organization/site/material/main/materialModuleMember.route"));
+app.use(require("@/routes/organization/site/material/purchase-order/purchaseOrderSetting.route"));
+
 async function startServer() {
     try {
         // Connect to the database
