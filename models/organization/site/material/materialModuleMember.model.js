@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const MaterialModuleSettingSchema = mongoose.Schema({
+const MaterialModuleMemberSchema = mongoose.Schema({
     organization: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Organization",
@@ -22,4 +22,4 @@ const MaterialModuleSettingSchema = mongoose.Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model("MaterialModuleSetting", MaterialModuleSettingSchema);
+module.exports = mongoose.model("MaterialModuleMember", MaterialModuleMemberSchema);

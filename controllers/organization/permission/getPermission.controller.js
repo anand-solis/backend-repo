@@ -6,10 +6,10 @@ const getPermissionController = async (req, res) => {
     const { id } = req.params;
 
     const subscription = {
-        project_management: ["sites", "site-members", "site-issues", "tasks", "task-members", "site-module-members"],
+        project_management: ["sites", "site-members", "site-issues", "tasks", "task-members"],
         admin_settings: ["roles-and-permissions", "members", "organization-profile", "organization-plan"],
         media_library: ["media-library"],
-        material_management: ["indent", "purchase-orders", "grn-billings", "inventory", "material-issues"],
+        material_management: ["material-module-members", "indent", "purchase-orders", "grn-billings", "inventory", "material-issues"],
         labour_tracking_and_payable: ["attendance"],
         vendor_payable: ["vendor"],
         budget_calculation: ["bill-of-material", "material-transfer", "bill-of-quantity"]
