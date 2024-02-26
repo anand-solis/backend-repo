@@ -1992,9 +1992,17 @@
         }
       }
     },
-    "/material/members": {
+    "/material/members/{type}": {
       "get": {
         "description": "",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -2002,9 +2010,17 @@
         }
       }
     },
-    "/material/not-members": {
+    "/material/not-members/{type}": {
       "get": {
         "description": "",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
@@ -2015,24 +2031,6 @@
     "/material/member/add": {
       "post": {
         "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/material/member/remove/{id}": {
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
         "responses": {
           "default": {
             "description": ""
