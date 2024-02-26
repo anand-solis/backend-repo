@@ -1,12 +1,12 @@
 const express = require("express");
-const OrganizationController = require("../../controllers/organization/main/organization.controller");
-const getOrganizationSwitchController = require("../../controllers/organization/main/getOrganizationSwitch.controller");
-const getOrganizationController = require("../../controllers/organization/main/getOrganization.controller");
-const updateOrganizationController = require("../../controllers/organization/main/updateOrganization.controller");
+const OrganizationController = require("../../../controllers/organization/main/organization.controller");
+const getOrganizationSwitchController = require("../../../controllers/organization/main/getOrganizationSwitch.controller");
+const getOrganizationController = require("../../../controllers/organization/main/getOrganization.controller");
+const updateOrganizationController = require("../../../controllers/organization/main/updateOrganization.controller");
 
-const getAllAppOrganizationController = require("../../controllers/organization/app/getAllAppOrganization.controller");
-const updateAppOrganizationController = require("../../controllers/organization/app/updateAppOrganization.controller");
-const GetAppOrganizationCountController = require("../../controllers/organization/app/getAppOrganizationCount.controller");
+const getAllAppOrganizationController = require("../../../controllers/organization/app/getAllAppOrganization.controller");
+const updateAppOrganizationController = require("../../../controllers/organization/app/updateAppOrganization.controller");
+const GetAppOrganizationCountController = require("../../../controllers/organization/app/getAppOrganizationCount.controller");
 
 const Middleware = require("@/utils/middleware/middleware");
 const superAdminMiddleware = require("@/utils/middleware/superAdminMiddleware");

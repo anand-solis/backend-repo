@@ -2,10 +2,10 @@ const express = require("express");
 const Middleware = require("@/utils/middleware/middleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 const organizationMemberMiddleware = require("@/utils/middleware/organization/organizationMemberMiddleware");
-const getAllMemberController = require("../../controllers/organization/member/getAllMember.controller");
-const inviteMemberController = require("../../controllers/organization/member/inviteMember.controller");
-const updateMemberController = require("../../controllers/organization/member/updateMember.controller");
-const inviteAcceptMemberController = require("../../controllers/organization/member/inviteAcceptMember.controller");
+const getAllMemberController = require("../../../controllers/organization/member/getAllMember.controller");
+const inviteMemberController = require("../../../controllers/organization/member/inviteMember.controller");
+const updateMemberController = require("../../../controllers/organization/member/updateMember.controller");
+const inviteAcceptMemberController = require("../../../controllers/organization/member/inviteAcceptMember.controller");
 
 const router = express.Router();
 

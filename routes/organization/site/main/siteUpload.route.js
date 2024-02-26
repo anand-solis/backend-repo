@@ -3,9 +3,9 @@ const Middleware = require("@/utils/middleware/middleware");
 const siteMiddleware = require("@/utils/middleware/organization/siteMiddleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 
-const GetAllSiteUploadController = require("../../../controllers/organization/site/upload/getAllSiteUpload.controller");
-const AddSiteUploadController = require("../../../controllers/organization/site/upload/addSiteUpload.controller");
-const RemoveSiteUploadController = require("../../../controllers/organization/site/upload/removeSiteUpload.controller");
+const GetAllSiteUploadController = require("../../../../controllers/organization/site/upload/getAllSiteUpload.controller");
+const AddSiteUploadController = require("../../../../controllers/organization/site/upload/addSiteUpload.controller");
+const RemoveSiteUploadController = require("../../../../controllers/organization/site/upload/removeSiteUpload.controller");
 
 const router = express.Router();
 

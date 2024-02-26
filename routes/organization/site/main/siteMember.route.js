@@ -4,10 +4,10 @@ const siteMiddleware = require("@/utils/middleware/organization/siteMiddleware")
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 
 const organizationMemberMiddleware = require("@/utils/middleware/organization/organizationMemberMiddleware");
-const getAllAddedSiteMemberController = require("../../../controllers/organization/site/member/main/getAllAddedSiteMember.controller");
-const getAllNotAddedSiteMemberController = require("../../../controllers/organization/site/member/main/getAllNotAddedSiteMember.controller");
-const inviteSiteMemberController = require("../../../controllers/organization/site/member/invite/inviteSiteMember.controller");
-const inviteAcceptSiteMemberController = require("../../../controllers/organization/site/member/invite/inviteAcceptSiteMember.controller");
+const getAllAddedSiteMemberController = require("../../../../controllers/organization/site/member/main/getAllAddedSiteMember.controller");
+const getAllNotAddedSiteMemberController = require("../../../../controllers/organization/site/member/main/getAllNotAddedSiteMember.controller");
+const inviteSiteMemberController = require("../../../../controllers/organization/site/member/invite/inviteSiteMember.controller");
+const inviteAcceptSiteMemberController = require("../../../../controllers/organization/site/member/invite/inviteAcceptSiteMember.controller");
 
 const router = express.Router();
 

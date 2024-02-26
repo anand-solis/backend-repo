@@ -3,13 +3,13 @@ const Middleware = require("@/utils/middleware/middleware");
 const superAdminMiddleware = require("@/utils/middleware/superAdminMiddleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 
-const GetAllWorkCategoriesController = require("../../controllers/organization/workCategory/main/getAllWorkCategories.controller");
-const GetAllAppWorkCategoriesController = require("../../controllers/organization/workCategory/app/getAllAppWorkCategories.controller");
-const AddWorkCategoryController = require("../../controllers/organization/workCategory/main/addWorkCategory.controller");
-const AddAppWorkCategoryController = require("../../controllers/organization/workCategory/app/addAppWorkCategory.controller");
+const GetAllWorkCategoriesController = require("../../../controllers/organization/workCategory/main/getAllWorkCategories.controller");
+const GetAllAppWorkCategoriesController = require("../../../controllers/organization/workCategory/app/getAllAppWorkCategories.controller");
+const AddWorkCategoryController = require("../../../controllers/organization/workCategory/main/addWorkCategory.controller");
+const AddAppWorkCategoryController = require("../../../controllers/organization/workCategory/app/addAppWorkCategory.controller");
 
-const UpdateAppWorkCategoryController = require("../../controllers/organization/workCategory/app/updateAppWorkCategory.controller");
-const RemoveAppWorkCategoryController = require("../../controllers/organization/workCategory/app/removeAppWorkCategory.controller");
+const UpdateAppWorkCategoryController = require("../../../controllers/organization/workCategory/app/updateAppWorkCategory.controller");
+const RemoveAppWorkCategoryController = require("../../../controllers/organization/workCategory/app/removeAppWorkCategory.controller");
 
 const router = express.Router();
 
