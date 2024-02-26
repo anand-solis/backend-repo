@@ -2002,6 +2002,16 @@
         }
       }
     },
+    "/material/not-members": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/material/member/add": {
       "post": {
         "description": "",
@@ -2014,6 +2024,42 @@
     },
     "/material/member/remove/{id}": {
       "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/purchase-order/setting/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/purchase-order/setting/update/{id}": {
+      "patch": {
         "description": "",
         "parameters": [
           {

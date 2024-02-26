@@ -7,6 +7,7 @@
  - SMS API Connection.
 
 ## Bugs
+ - Check for the organization & Site Member Permissions
 
 ## Enhancement
  - Add Features in subscription.
@@ -19,7 +20,7 @@
     - Changing in User Profile Edit API (Change Token)
 
  - Purchase order settings (2)
- - Material Module Settings (2)
+ - Material Module Settings (4)
 
  - Attendance (Module 3)
  - Material (Module 2)
