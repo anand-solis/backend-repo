@@ -15,6 +15,11 @@ const AttendanceSchema = mongoose.Schema({
         type: Date,
         required: true
     },
+    availability: {
+        type: Number,
+        required: true,
+        default: 0 // 0 -> Absent, 1 -> Present & 2 -> Half day
+    },
     employee: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Employee",
