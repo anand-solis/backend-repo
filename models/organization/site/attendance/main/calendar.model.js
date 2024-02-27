@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const AttendanceSchema = mongoose.Schema({
+const CalenderSchema = mongoose.Schema({
     organization: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Organization",
@@ -11,21 +11,15 @@ const AttendanceSchema = mongoose.Schema({
         ref: "Site",
         required: true
     },
-    calender: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Calender",
+    date: {
+        type: Date,
         required: true
     },
-    availability: {
-        type: Number,
-        required: true,
-        default: 0 // 0 -> Absent, 1 -> Present & 2 -> Half day
-    },
-    employee: {
+    createdBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Employee",
+        ref: "User",
         required: true
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model("Attendance", AttendanceSchema);
+module.exports = mongoose.model("Calender", CalenderSchema);
