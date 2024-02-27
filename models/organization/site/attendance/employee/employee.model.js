@@ -12,7 +12,7 @@ const EmployeeSchema = mongoose.Schema({
         required: true
     },
     type: {
-        type: String,
+        type: String, // Employee, Labour
         required: [true, "Type is required."]
     },
     name: {
@@ -24,7 +24,7 @@ const EmployeeSchema = mongoose.Schema({
         required: [true, "Phone number is required."]
     },
     role: {
-        type: Number,
+        type: String,
         required: false
     },
     dailyHours: {
@@ -36,19 +36,19 @@ const EmployeeSchema = mongoose.Schema({
         required: [true, "Payment number is required."]
     },
     skills: {
-        type: Boolean,
+        type: Boolean, // false -> Unskilled, true -> Skilled
         required: true,
         default: false
     },
     gender: {
-        type: Boolean,
+        type: Boolean, // false -> Male, true -> Female
         required: true,
         default: false
     },
     profile: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "File",
-        required: true
+        required: false
     }
 }, { timestamps: true });
 

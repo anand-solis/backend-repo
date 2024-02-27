@@ -7,21 +7,19 @@
  - SMS API Connection.
 
 ## Bugs
- - Check for the organization & Site Member Permissions
+ - Check for the organization & Site Member Permissions.
+ - Feature Update model check.
+ - Role Update model check.
 
-## Enhancement
+## Enhancements
  - Add Features in subscription.
 
 ## Pending Tasks
- - Media Library APIs (3)
- - Gantt Chart API (1)
- - Prt Chart API (1)
- - User Profile Update APIs (4)
-    - Changing in User Profile Edit API (Change Token)
+ - Media Library APIs (3).
+ - Gantt Chart API (1).
+ - Prt Chart API (1).
+ - User Profile Update APIs (4).
+    - Changing in User Profile Edit API (Change Token).
 
- - Attendance (Module 3)
- - Material (Module 2)
-
-## Enhancements
- - Feature Update model check.
- - Role Update model check.
+ - Attendance (Module 3).
+ - Material (Module 2).
