@@ -22,7 +22,7 @@ const inviteSiteMemberController = async (req, res) => {
 
                     if (organizationMember?._id) {
                         const check = await SiteMember
-                            .findOne({ site: site, member: member._id })
+                            .findOne({ organization: organization, site: site, member: member._id })
                             .select("_id");
 
                         if (!check?._id) {

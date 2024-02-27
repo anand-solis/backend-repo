@@ -9,7 +9,7 @@ const taskMiddleware = async (req, res, next) => {
 
         if (taskDetails?._id) {
             const MemberDetails = await TaskMember
-                .findOne({ task: taskDetails?._id })
+                .findOne({ organization: organization, site: site, task: taskDetails?._id })
                 .select("_id member")
                 .populate({
                     path: "member",

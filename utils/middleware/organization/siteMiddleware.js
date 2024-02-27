@@ -9,7 +9,7 @@ const siteMiddleware = async (req, res, next, invitationSkip = false) => {
 
         if(siteDetails?._id){
             const MemberDetails = await SiteMember
-            .findOne({ site: siteDetails._id })
+            .findOne({ organization: organization, site: siteDetails._id })
             .select("_id member inviteAccepted")
             .populate({
                 path: "member",

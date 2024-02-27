@@ -1,11 +1,11 @@
 const SiteMember = require("@/models/organization/site/main/siteMember.model");
 
 const getAllAddedSiteMemberController = async (req, res) => {
-    const { site } = req.query;
+    const { site, organization } = req.query;
 
     try {
         const siteMember = await SiteMember
-            .find({ site: site })
+            .find({ organization: organization, site: site })
             .select("member inviteAccepted")
             .populate({
                 path: "member",

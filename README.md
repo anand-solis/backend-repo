@@ -7,7 +7,6 @@
  - SMS API Connection.
 
 ## Bugs
- - Check for the organization & Site Member Permissions.
 
 ## Enhancements
  - Add Features in subscription.
