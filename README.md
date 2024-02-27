@@ -8,8 +8,6 @@
 
 ## Bugs
  - Check for the organization & Site Member Permissions.
- - Feature Update model check.
- - Role Update model check.
 
 ## Enhancements
  - Add Features in subscription.

@@ -22,7 +22,7 @@ RoleSchema.pre("findOneAndUpdate", async function (next) {
     const update = this._update;
     const existingRole = await mongoose.model("Role").findOne({ name: update.name });
 
-    if (existingRole) {
+    if (existingRole && !existingRole._id == this._id) {
         next("Role name exist, It must be unique.");
     } else {
         next();
