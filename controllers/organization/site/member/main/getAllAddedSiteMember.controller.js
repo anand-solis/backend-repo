@@ -6,7 +6,7 @@ const getAllAddedSiteMemberController = async (req, res) => {
     try {
         const siteMember = await SiteMember
             .find({ organization: organization, site: site })
-            .select("member inviteAccepted")
+            .select("member inviteAccepted reject")
             .populate({
                 path: "member",
                 select: ["user", "permission", "inviteAccepted", "isCreator"],

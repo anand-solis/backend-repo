@@ -6,7 +6,7 @@ const getAllMemberController = async (req, res) => {
     try {
         const members = await Member
             .find({ organization: organization })
-            .select("user inviteAccepted permission isCreator")
+            .select("user inviteAccepted permission isCreator reject")
             .populate({
                 path: "user",
                 select: ["name", "phone.number", "email.address"]

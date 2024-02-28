@@ -3,7 +3,8 @@ const Organization = require("@/models/organization/main/organization.model");
 
 const getOrganizationSwitchController = async (req, res) => {
     try {
-        const members = await Member.find({ user: req?.user?._id, reject: { status: false } }).select("organization inviteAccepted");
+        const members = await Member.find({ user: req?.user?._id, "reject.status": false }).select("organization inviteAccepted");
+
         if(members.length == 0){
             return res.status(200).json({ organizations: null, success: false, error: "You are not any organization.", message: "" });
         }

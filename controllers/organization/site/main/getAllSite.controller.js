@@ -8,12 +8,12 @@ const GetAllSiteController = async (req, res) => {
     const { organization } = req.query;
 
     try {
-        const member = await Member.findOne({ user: req.user._id, organization: organization, reject: { status: false } }).select("_id");
+        const member = await Member.findOne({ user: req.user._id, organization: organization, "reject.status": false }).select("_id");
 
         if (member?._id) {
 
             let siteMembers = await SiteMember
-                .find({ organization: organization, member: member._id })
+                .find({ organization: organization, member: member._id, "reject.status": false })
                 .select("site inviteAccepted");
 
             const haveSiteIds = siteMembers.map(member => member.site);
