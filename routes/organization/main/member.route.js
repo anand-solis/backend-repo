@@ -6,6 +6,8 @@ const getAllMemberController = require("../../../controllers/organization/member
 const inviteMemberController = require("../../../controllers/organization/member/inviteMember.controller");
 const updateMemberController = require("../../../controllers/organization/member/updateMember.controller");
 const inviteAcceptMemberController = require("../../../controllers/organization/member/inviteAcceptMember.controller");
+const inviteRejectMemberController = require("../../../controllers/organization/member/inviteRejectMember.controller");
+const resendInviteMemberController = require("../../../controllers/organization/member/resendInviteMember.controller");
 
 const router = express.Router();
 
@@ -31,6 +33,20 @@ router.post(
     Middleware,
     (req, res, next) => organizationMemberMiddleware(req, res, next, true),
     inviteAcceptMemberController
+);
+
+router.post(
+    "/member/invite/reject",
+    Middleware,
+    (req, res, next) => organizationMemberMiddleware(req, res, next, true),
+    inviteRejectMemberController
+);
+
+router.post(
+    "/member/invite/resend/:id",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
+    resendInviteMemberController
 );
 
 router.patch(

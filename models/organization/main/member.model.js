@@ -25,6 +25,17 @@ const MemberSchema = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    reject: {
+        status: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
+        reason: {
+            type: String,
+            required: false
+        }
     }
 }, { timestamps: true });
 

@@ -1025,6 +1025,64 @@
         }
       }
     },
+    "/member/invite/reject": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "reason": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/member/invite/resend/{id}": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "organization",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/member/update/{id}": {
       "patch": {
         "description": "",
@@ -1350,6 +1408,11 @@
       "patch": {
         "description": "",
         "parameters": [
+          {
+            "name": "organization",
+            "in": "query",
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
@@ -1903,6 +1966,11 @@
         "parameters": [
           {
             "name": "site",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "organization",
             "in": "query",
             "type": "string"
           }
