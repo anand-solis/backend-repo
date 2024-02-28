@@ -8,6 +8,9 @@ const getAllAddedSiteMemberController = require("../../../../controllers/organiz
 const getAllNotAddedSiteMemberController = require("../../../../controllers/organization/site/member/main/getAllNotAddedSiteMember.controller");
 const inviteSiteMemberController = require("../../../../controllers/organization/site/member/invite/inviteSiteMember.controller");
 const inviteAcceptSiteMemberController = require("../../../../controllers/organization/site/member/invite/inviteAcceptSiteMember.controller");
+const inviteRejectSiteMemberController = require("../../../../controllers/organization/site/member/invite/inviteRejectSiteMember.controller");
+const resendInviteSiteMemberController = require("../../../../controllers/organization/site/member/invite/resendInviteSiteMember.controller");
+
 
 const router = express.Router();
 
@@ -36,6 +39,21 @@ router.post(
     (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
     siteMiddleware,
     inviteSiteMemberController
+);
+
+router.post(
+    "/site/member/reject",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
+    siteMiddleware,
+    inviteRejectSiteMemberController
+);
+router.post(
+    "/site/member/invite/resend/:id",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
+    siteMiddleware,
+    resendInviteSiteMemberController
 );
 
 router.post(

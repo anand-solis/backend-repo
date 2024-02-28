@@ -8,7 +8,7 @@ const GetAllSiteController = async (req, res) => {
     const { organization } = req.query;
 
     try {
-        const member = await Member.findOne({ user: req.user._id, organization: organization }).select("_id");
+        const member = await Member.findOne({ user: req.user._id, organization: organization, reject: { status: false } }).select("_id");
 
         if (member?._id) {
 
