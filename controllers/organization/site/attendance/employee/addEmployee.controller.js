@@ -9,18 +9,18 @@ const AddEmployeeController = async (req, res) => {
     try {
         const response = await upload(req, ["image"]);
 
-        if (allowedTypes.includes(response?.fields?.type[0])) {
+        if (allowedTypes.includes(response?.fields?.type?.[0])) {
             const employee = await Employee.create({
                 organization: organization,
                 site: site,
-                type: response?.fields?.type[0],
-                name: response?.fields?.name[0],
-                number: response?.fields?.number[0],
-                role: response?.fields?.role[0],
-                dailyHours: response?.fields?.dailyHours[0],
-                payment: response?.fields?.payment[0],
-                skills: response?.fields?.skills[0],
-                gender: response?.fields?.gender[0]
+                type: response?.fields?.type?.[0],
+                name: response?.fields?.name?.[0],
+                number: response?.fields?.number?.[0],
+                role: response?.fields?.role?.[0],
+                dailyHours: response?.fields?.dailyHours?.[0],
+                payment: response?.fields?.payment?.[0],
+                skills: response?.fields?.skills?.[0],
+                gender: response?.fields?.gender?.[0]
             })
 
             if (employee?._id) {

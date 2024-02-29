@@ -29,15 +29,19 @@ const UpdateSiteController = async (req, res) => {
             )
         }
 
+        const updatedFields = {};
+
+        if (response?.fields?.name?.[0] !== undefined) updatedFields.name = response.fields.name[0];
+        if (response?.fields?.startDate?.[0] !== undefined) updatedFields.startDate = response.fields.startDate[0];
+        if (response?.fields?.endDate?.[0] !== undefined) updatedFields.endDate = response.fields.endDate[0];
+
         await Site.findOneAndUpdate(
             {
                 _id: site,
                 organization: organization
             },
             {
-                name: response?.fields?.name[0],
-                startDate: response?.fields?.startDate[0],
-                endDate: response?.fields?.endDate[0],
+                $set: updatedFields
             }
         )
 

@@ -6,7 +6,6 @@ const AddSiteUploadController = async (req, res) => {
 
     try {
         const response = await upload(req, ["image", "application", "video"]);
-        console.log(response)
 
         if (response?.success) {
             await SiteUpload.create({

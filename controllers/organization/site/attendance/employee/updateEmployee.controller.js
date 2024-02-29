@@ -35,6 +35,16 @@ const UpdateEmployeeController = async (req, res) => {
             )
         }
 
+        const updatedFields = {};
+
+        if (response?.fields?.name?.[0] !== undefined) updatedFields.name = response.fields.name[0];
+        if (response?.fields?.number?.[0] !== undefined) updatedFields.number = response.fields.number[0];
+        if (response?.fields?.role?.[0] !== undefined) updatedFields.role = response.fields.role[0];
+        if (response?.fields?.dailyHours?.[0] !== undefined) updatedFields.dailyHours = response.fields.dailyHours[0];
+        if (response?.fields?.payment?.[0] !== undefined) updatedFields.payment = response.fields.payment[0];
+        if (response?.fields?.skills?.[0] !== undefined) updatedFields.skills = response.fields.skills[0];
+        if (response?.fields?.gender?.[0] !== undefined) updatedFields.gender = response.fields.gender[0];
+
         await Employee.findOneAndUpdate(
             {
                 _id: id,
@@ -42,13 +52,7 @@ const UpdateEmployeeController = async (req, res) => {
                 site: site
             },
             {
-                name: response?.fields?.name[0],
-                number: response?.fields?.number[0],
-                role: response?.fields?.role[0],
-                dailyHours: response?.fields?.dailyHours[0],
-                payment: response?.fields?.payment[0],
-                skills: response?.fields?.skills[0],
-                gender: response?.fields?.gender[0]
+                $set: updatedFields
             }
         )
 

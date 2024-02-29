@@ -28,21 +28,25 @@ const updateOrganizationController = async (req, res) => {
             )
         }
 
+        const updatedFields = {};
+
+        if (response?.fields?.name?.[0] !== undefined) updatedFields.name = response.fields.name[0];
+        if (response?.fields?.email?.[0] !== undefined) updatedFields.email = response.fields.email[0];
+        if (response?.fields?.phone?.[0] !== undefined) updatedFields.phone = response.fields.phone[0];
+        if (response?.fields?.address?.[0] !== undefined) updatedFields.address = response.fields.address[0];
+        if (response?.fields?.city?.[0] !== undefined) updatedFields.city = response.fields.city[0];
+        if (response?.fields?.state?.[0] !== undefined) updatedFields.state = response.fields.state[0];
+        if (response?.fields?.pin_code?.[0] !== undefined) updatedFields.pin_code = response.fields.pin_code[0];
+        if (response?.fields?.gst_number?.[0] !== undefined) updatedFields.gst_number = response.fields.gst_number[0];
+        if (response?.fields?.pan_number?.[0] !== undefined) updatedFields.pan_number = response.fields.pan_number[0];
+        if (response?.fields?.tan?.[0] !== undefined) updatedFields.tan = response.fields.tan[0];
+
         await Organization.findOneAndUpdate(
             {
                 _id: organization
             },
             {
-                name: response?.fields?.name[0],
-                email: response?.fields?.email[0],
-                phone: response?.fields?.phone[0],
-                address: response?.fields?.address[0],
-                city: response?.fields?.city[0],
-                state: response?.fields?.state[0],
-                pin_code: response?.fields?.pin_code[0],
-                gst_number: response?.fields?.gst_number[0],
-                pan_number: response?.fields?.pan_number[0],
-                tan: response?.fields?.tan[0]
+                $set: updatedFields
             }
         )
 
