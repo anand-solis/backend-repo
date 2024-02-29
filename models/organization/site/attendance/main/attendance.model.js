@@ -11,9 +11,9 @@ const AttendanceSchema = mongoose.Schema({
         ref: "Site",
         required: true
     },
-    calender: {
+    calendar: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Calender",
+        ref: "Calendar",
         required: true
     },
     availability: {

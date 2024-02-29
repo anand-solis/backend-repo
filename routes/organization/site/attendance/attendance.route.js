@@ -6,8 +6,7 @@ const organizationMiddleware = require("@/utils/middleware/organization/organiza
 const router = express.Router();
 
 const GetAttendanceController = require("@/controllers/organization/site/attendance/main/getAttendance.controller");
-const AddAttendanceController = require("@/controllers/organization/site/attendance/main/addAttendance.controller");
-const UpdateAttendanceController = require("@/controllers/organization/site/attendance/main/updateAttendance.controller");
+const MarkAttendanceController = require("@/controllers/organization/site/attendance/main/markAttendance.controller");
 
 const key = "attendance";
 const plan = "labour_tracking_and_payable";
@@ -20,20 +19,12 @@ router.get(
     GetAttendanceController
 );
 
-router.post(
-    "/attendance/add",
+router.patch(
+    "/attendance/mark",
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
     siteMiddleware,
-    AddAttendanceController
-);
-
-router.patch(
-    "/attendance/update/:date",
-    Middleware,
-    (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
-    siteMiddleware,
-    UpdateAttendanceController
+    MarkAttendanceController
 );
 
 

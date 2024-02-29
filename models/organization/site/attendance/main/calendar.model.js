@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const CalenderSchema = mongoose.Schema({
+const CalendarSchema = mongoose.Schema({
     organization: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Organization",
@@ -12,7 +12,7 @@ const CalenderSchema = mongoose.Schema({
         required: true
     },
     date: {
-        type: Date,
+        type: String,
         required: true
     },
     createdBy: {
@@ -22,4 +22,4 @@ const CalenderSchema = mongoose.Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model("Calender", CalenderSchema);
+module.exports = mongoose.model("Calendar", CalendarSchema);
