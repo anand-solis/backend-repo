@@ -18,5 +18,4 @@
  - User Profile Update APIs (4).
     - Changing in User Profile Edit API (Change Token).
 
- - Attendance (Module 3).
  - Material (Module 2).
