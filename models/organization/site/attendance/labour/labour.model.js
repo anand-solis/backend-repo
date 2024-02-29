@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const EmployeeSchema = mongoose.Schema({
+const LabourSchema = mongoose.Schema({
     organization: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Organization",
@@ -10,10 +10,6 @@ const EmployeeSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Site",
         required: true
-    },
-    type: {
-        type: String, // Employee, Labour
-        required: [true, "Type is required."]
     },
     name: {
         type: String,
@@ -29,7 +25,7 @@ const EmployeeSchema = mongoose.Schema({
     },
     dailyHours: {
         type: Number,
-        required: false
+        required: [true, "Daily Hours number is required."]
     },
     payment: {
         type: Number,
@@ -52,4 +48,4 @@ const EmployeeSchema = mongoose.Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model("Employee", EmployeeSchema);
+module.exports = mongoose.model("Labour", LabourSchema);

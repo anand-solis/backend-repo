@@ -73,7 +73,7 @@ app.use(require("@/routes/organization/site/material/purchase-order/purchaseOrde
 
 // API Organization -> Site -> Attendance Routes
 app.use(require("@/routes/organization/site/attendance/attendance.route"));
-app.use(require("@/routes/organization/site/attendance/employee.route"));
+app.use(require("@/routes/organization/site/attendance/labour.route"));
 
 async function startServer() {
     try {

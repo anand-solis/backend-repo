@@ -1,8 +1,8 @@
-const Employee = require("@/models/organization/site/attendance/employee/employee.model");
+const Labour = require("@/models/organization/site/attendance/labour/labour.model");
 const File = require("@/models/file/file.model");
 const upload = require("@/utils/connections/storage/upload");
 
-const UpdateEmployeeController = async (req, res) => {
+const UpdateLabourController = async (req, res) => {
     const { organization, site } = req.query;
     const { id } = req.params;
 
@@ -10,7 +10,7 @@ const UpdateEmployeeController = async (req, res) => {
         const response = await upload(req, ["image"]);
 
         if (response.success) {
-            const prev = await Employee.findOne({
+            const prev = await Labour.findOne({
                 _id: id,
                 organization: organization,
                 site: site
@@ -23,7 +23,7 @@ const UpdateEmployeeController = async (req, res) => {
                 )
             }
 
-            await Employee.findOneAndUpdate(
+            await Labour.findOneAndUpdate(
                 {
                     _id: id,
                     organization: organization,
@@ -45,7 +45,7 @@ const UpdateEmployeeController = async (req, res) => {
         if (response?.fields?.skills?.[0] !== undefined) updatedFields.skills = response.fields.skills[0];
         if (response?.fields?.gender?.[0] !== undefined) updatedFields.gender = response.fields.gender[0];
 
-        await Employee.findOneAndUpdate(
+        await Labour.findOneAndUpdate(
             {
                 _id: id,
                 organization: organization,
@@ -56,11 +56,11 @@ const UpdateEmployeeController = async (req, res) => {
             }
         )
 
-        return res.status(200).json({ success: true, error: "", message: "Employee details updated successfully." });
+        return res.status(200).json({ success: true, error: "", message: "Labour details updated successfully." });
 
     } catch (error) {
         return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
 }
 
-module.exports = UpdateEmployeeController;
+module.exports = UpdateLabourController;

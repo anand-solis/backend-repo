@@ -15,6 +15,18 @@ const CalendarSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    totalAmountToPay: {
+        type: Number,
+        required: true
+    },
+    totalPresent: {
+        type: Number,
+        required: true
+    },
+    totalAbsent: {
+        type: Number,
+        required: true
+    },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",

@@ -12,23 +12,30 @@ const GetAttendanceController = async (req, res) => {
 
         if (!selectedDate.isValid()) return res.status(200).json({ attendance: null, success: false, error: "Selected date is invalid.", message: "" });
         if (selectedDate.isAfter(moment(), "day")) return res.status(200).json({ attendance: null, success: false, error: "Selected date is in the future.", message: "" });
-        
-        const calendar = await Calendar.findOne({ organization: organization, site: site, date: date }).select("_id");
+
+        const calendar = await Calendar.findOne({ organization: organization, site: site, date: date }).select("_id totalAmountToPay totalPresent totalAbsent");
 
         if (calendar?._id) {
             const attendance = await Attendance
                 .find({ organization: organization, site: site, calendar: calendar._id })
-                .select("availability employee")
+                .select("availability labour workingHour overtime overtimePayment totalPayment")
                 .populate({
-                    path: "employee",
-                    select: ["type", "name", "number", "role", "profile"],
+                    path: "labour",
+                    select: ["name", "number", "role", "profile"],
                     populate: {
                         path: "profile",
                         select: "url"
                     }
                 });
 
-            return res.status(200).json({ attendance: attendance, success: true, error: "", message: "Attendance fetched successfully." });
+            const result = {
+                attendance: Object(...attendance),
+                totalAmountToPay: calendar.totalAmountToPay,
+                totalPresent: calendar.totalPresent,
+                totalAbsent: calendar.totalAbsent,
+            }
+
+            return res.status(200).json({ attendance: result, success: true, error: "", message: "Attendance fetched successfully." });
         }
         else {
             return res.status(200).json({ attendance: null, success: true, error: "", message: "Attendance fetched successfully." });

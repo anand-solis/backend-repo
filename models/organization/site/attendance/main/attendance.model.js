@@ -21,9 +21,25 @@ const AttendanceSchema = mongoose.Schema({
         required: true,
         default: 0 // 0 -> Absent, 1 -> Present & 2 -> Half day
     },
-    employee: {
+    workingHour: {
+        type: Number,
+        required: true
+    },
+    overtime: {
+        type: Number,
+        required: false
+    },
+    overtimePayment: {
+        type: Number,
+        required: false
+    },
+    totalPayment: {
+        type: Number,
+        required: true
+    },
+    labour: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Employee",
+        ref: "Labour",
         required: true
     }
 }, { timestamps: true });
