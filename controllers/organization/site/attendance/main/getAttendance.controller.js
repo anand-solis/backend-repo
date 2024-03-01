@@ -21,7 +21,7 @@ const GetAttendanceController = async (req, res) => {
                 .select("availability labour workingHour overtime overtimePayment totalPayment")
                 .populate({
                     path: "labour",
-                    select: ["name", "number", "role", "profile", "dailyHours", "payment"],
+                    select: ["dailyHours", "payment"],
                     populate: {
                         path: "profile",
                         select: "url"
