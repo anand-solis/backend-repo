@@ -16,7 +16,7 @@ const GetAllLabourController = async (req, res) => {
             });
 
         labours.length > 0 && await Promise.all(labours.map(async (labour) => {
-            if (labour?.attachment?.url) {
+            if (labour?.profile?.url) {
                 const profile = await getStorageFile(labour.profile.url);
                 labour.profile.url = profile.file;
             }
