@@ -4,7 +4,7 @@ const getStorageFile = async (key) => {
     const params = {
         Bucket: process.env.S3_BUCKET,
         Key: key,
-        Expires: 1
+        Expires: 20
     };
 
     try {
