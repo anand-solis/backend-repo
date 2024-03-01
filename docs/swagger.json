@@ -1648,27 +1648,9 @@
         }
       }
     },
-    "/attendance/add": {
-      "post": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/attendance/update/{date}": {
+    "/attendance/mark": {
       "patch": {
         "description": "",
-        "parameters": [
-          {
-            "name": "date",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
         "responses": {
           "default": {
             "description": ""
@@ -1676,7 +1658,7 @@
         }
       }
     },
-    "/employees": {
+    "/labours": {
       "get": {
         "description": "",
         "responses": {
@@ -1686,7 +1668,7 @@
         }
       }
     },
-    "/employee/{id}": {
+    "/labour/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -1704,7 +1686,7 @@
         }
       }
     },
-    "/employee/add": {
+    "/labour/add": {
       "post": {
         "description": "",
         "responses": {
@@ -1714,7 +1696,7 @@
         }
       }
     },
-    "/employee/update/{id}": {
+    "/labour/update/{id}": {
       "patch": {
         "description": "",
         "parameters": [
