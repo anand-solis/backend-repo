@@ -5,8 +5,8 @@ const organizationMiddleware = require("@/utils/middleware/organization/organiza
 
 const router = express.Router();
 
-const GetAttendanceController = require("@/controllers/organization/site/attendance/main/getAttendance.controller");
-const MarkAttendanceController = require("@/controllers/organization/site/attendance/main/markAttendance.controller");
+const GetAttendanceController = require("../../../../controllers/organization/site/attendance/main/getAttendance.controller");
+const MarkAttendanceController = require("../../../../controllers/organization/site/attendance/main/markAttendance.controller");
 
 const key = "attendance";
 const plan = "labour_tracking_and_payable";

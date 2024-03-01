@@ -5,9 +5,9 @@ const organizationMiddleware = require("@/utils/middleware/organization/organiza
 
 const router = express.Router();
 
-const GetAllMaterialModuleMemberController = require("@/controllers/organization/site/material/member/getAllMaterialModuleMember.controller");
-const GetAllNotMaterialModuleMemberController = require("@/controllers/organization/site/material/member/getAllNotMaterialModuleMember.controller");
-const AddMaterialModuleMemberController = require("@/controllers/organization/site/material/member/addMaterialModuleMember.controller");
+const GetAllMaterialModuleMemberController = require("../../../../../controllers/organization/site/material/member/getAllMaterialModuleMember.controller");
+const GetAllNotMaterialModuleMemberController = require("../../../../../controllers/organization/site/material/member/getAllNotMaterialModuleMember.controller");
+const AddMaterialModuleMemberController = require("../../../../../controllers/organization/site/material/member/addMaterialModuleMember.controller");
 
 const key = "material-module-members";
 const plan = "material_management";

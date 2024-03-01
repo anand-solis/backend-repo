@@ -5,8 +5,8 @@ const organizationMiddleware = require("@/utils/middleware/organization/organiza
 
 const router = express.Router();
 
-const GetPurchaseOrderSettingController = require("@/controllers/organization/site/material/purchase-order/getPurchaseOrderSetting.controller");
-const UpdatePurchaseOrderSettingController = require("@/controllers/organization/site/material/purchase-order/updatePurchaseOrderSetting.controller");
+const GetPurchaseOrderSettingController = require("../../../../../controllers/organization/site/material/purchase-order/getPurchaseOrderSetting.controller");
+const UpdatePurchaseOrderSettingController = require("../../../../../controllers/organization/site/material/purchase-order/updatePurchaseOrderSetting.controller");
 
 const key = "purchase-order";
 const plan = "material_management";

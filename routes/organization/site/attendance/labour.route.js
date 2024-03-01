@@ -5,10 +5,10 @@ const organizationMiddleware = require("@/utils/middleware/organization/organiza
 
 const router = express.Router();
 
-const GetAllLabourController = require("@/controllers/organization/site/attendance/labour/getAllLabour.controller");
-const GetLabourController = require("@/controllers/organization/site/attendance/labour/getLabour.controller");
-const AddLabourController = require("@/controllers/organization/site/attendance/labour/addLabour.controller");
-const UpdateLabourController = require("@/controllers/organization/site/attendance/labour/updateLabour.controller");
+const GetAllLabourController = require("../../../../controllers/organization/site/attendance/labour/getAllLabour.controller");
+const GetLabourController = require("../../../../controllers/organization/site/attendance/labour/getLabour.controller");
+const AddLabourController = require("../../../../controllers/organization/site/attendance/labour/addLabour.controller");
+const UpdateLabourController = require("../../../../controllers/organization/site/attendance/labour/updateLabour.controller");
 
 const key = "attendance";
 const plan = "labour_tracking_and_payable";
