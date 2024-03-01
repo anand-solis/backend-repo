@@ -1,4 +1,5 @@
 const Organization = require("@/models/organization/main/organization.model");
+const getStorageFile = require("@/utils/connections/storage/getStorageFile");
 
 const getOrganizationController = async (req, res) => {
     const { organization } = req.query;
@@ -8,6 +9,10 @@ const getOrganizationController = async (req, res) => {
             .findOne({ _id: organization })
             .select("-blocked -createdAt -updatedAt -__v")
             .populate("profile", { url: 1, _id: 0 });
+
+        const profile = await getStorageFile(organizationDetails.profile.url);
+
+        organizationDetails.profile.url = profile.file
 
         return res.status(200).json({ organizationDetails: organizationDetails, success: true, error: "", message: "Organization details fetched successfully." });
     } catch (error) {
