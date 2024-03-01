@@ -12,7 +12,7 @@ const getOrganizationController = async (req, res) => {
 
         const profile = await getStorageFile(organizationDetails.profile.url);
 
-        organizationDetails.profile.url = profile.file
+        organizationDetails.profile.url = profile.file;
 
         return res.status(200).json({ organizationDetails: organizationDetails, success: true, error: "", message: "Organization details fetched successfully." });
     } catch (error) {

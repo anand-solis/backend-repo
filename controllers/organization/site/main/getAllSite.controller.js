@@ -3,6 +3,7 @@ const Member = require("@/models/organization/main/member.model");
 const Site = require("@/models/organization/site/main/site.model");
 const TaskTimeline = require("@/models/organization/site/task/taskTimeline.model");
 const Task = require("@/models/organization/site/task/task.model");
+const getStorageFile = require("@/utils/connections/storage/getStorageFile");
 
 const GetAllSiteController = async (req, res) => {
     const { organization } = req.query;
@@ -37,6 +38,11 @@ const GetAllSiteController = async (req, res) => {
                 let progress = 0;
 
                 taskTimelines.forEach((timeline) => progress += timeline.progress);
+
+                if (site?.profile?.url) {
+                    const profile = await getStorageFile(site.profile.url);
+                    site.profile.url = profile.file;
+                }
 
                 siteWithInviteStatus.push({
                     _id: site._id,

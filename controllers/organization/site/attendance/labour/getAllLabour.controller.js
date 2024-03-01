@@ -1,4 +1,5 @@
 const Labour = require("@/models/organization/site/attendance/labour/labour.model");
+const getStorageFile = require("@/utils/connections/storage/getStorageFile");
 
 const GetAllLabourController = async (req, res) => {
     const { organization, site } = req.query;
@@ -8,11 +9,18 @@ const GetAllLabourController = async (req, res) => {
             organization: organization,
             site: site
         })
-        .select("-organization -site -createdAt -updatedAt -__v")
-        .populate({
-            path: "profile",
-            select: "url"
-        });
+            .select("-organization -site -createdAt -updatedAt -__v")
+            .populate({
+                path: "profile",
+                select: "url"
+            });
+
+        labours.length > 0 && await Promise.all(labours.map(async (labour) => {
+            if (labour?.attachment?.url) {
+                const profile = await getStorageFile(labour.attachment.url);
+                labour.attachment.url = profile.file;
+            }
+        }));
 
         return res.status(200).json({ labours: labours, success: true, error: "", message: "Labours fetched successfully." });
     } catch (error) {

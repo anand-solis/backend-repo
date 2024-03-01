@@ -1,4 +1,5 @@
 const Site = require("@/models/organization/site/main/site.model");
+const getStorageFile = require("@/utils/connections/storage/getStorageFile");
 
 const GetAllSiteController = async (req, res) => {
     const { organization, site } = req.query;
@@ -8,6 +9,11 @@ const GetAllSiteController = async (req, res) => {
             .findOne({ _id: site, organization: organization })
             .select("name startDate endDate profile")
             .populate("profile", { url: 1, _id: 0 });
+
+
+        const profile = await getStorageFile(siteDetails.profile.url);
+
+        siteDetails.profile.url = profile.file;
 
         return res.status(200).json({ site: siteDetails, success: true, error: "", message: "Site fetched successfully." });
     } catch (error) {

@@ -1,4 +1,5 @@
 const TaskPhoto = require("@/models/organization/site/task/taskPhoto.model");
+const getStorageFile = require("@/utils/connections/storage/getStorageFile");
 
 const GetAllTaskPhotoController = async (req, res) => {
     const { organization, site, floor, task } = req.query;
@@ -15,6 +16,13 @@ const GetAllTaskPhotoController = async (req, res) => {
             path: "photo",
             select: "url"
         });
+
+        taskPhotos.length > 0 && await Promise.all(taskPhotos.map(async (taskPhoto) => {
+            if (taskPhoto?.photo?.url) {
+                const profile = await getStorageFile(taskPhoto.photo.url);
+                taskPhoto.photo.url = profile.file;
+            }
+        }));
 
         return res.status(200).json({ taskPhotos: taskPhotos, success: true, error: "", message: "Task photos successfully fetched." });
     } catch (error) {

@@ -1,4 +1,5 @@
 const Labour = require("@/models/organization/site/attendance/labour/labour.model");
+const getStorageFile = require("@/utils/connections/storage/getStorageFile");
 
 const GetLabourController = async (req, res) => {
     const { organization, site } = req.query;
@@ -15,6 +16,10 @@ const GetLabourController = async (req, res) => {
             path: "profile",
             select: "url"
         });
+
+        const profile = await getStorageFile(labour.profile.url);
+
+        labour.profile.url = profile.file;
 
         return res.status(200).json({ labour: labour, success: true, error: "", message: "Labour fetched successfully." });
     } catch (error) {
