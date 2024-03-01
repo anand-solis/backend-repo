@@ -29,7 +29,7 @@ const GetAttendanceController = async (req, res) => {
                 });
 
             const result = {
-                attendance: Object(...attendance),
+                attendance: attendance,
                 totalAmountToPay: calendar.totalAmountToPay,
                 totalPresent: calendar.totalPresent,
                 totalAbsent: calendar.totalAbsent,
