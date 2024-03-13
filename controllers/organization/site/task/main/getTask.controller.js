@@ -6,7 +6,7 @@ const GetTaskController = async (req, res) => {
     try {
         const tasks = await Task
             .find({ _id: task, organization: organization, site: site })
-            .select("number workCategory endDate startDate expectedCost totalCost")
+            .select("number description workCategory endDate startDate expectedCost totalCost")
             .sort({ createdAt: -1 })
             .populate({
                 path: "workCategory",

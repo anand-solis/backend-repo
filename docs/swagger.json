@@ -2581,6 +2581,9 @@
                 "number": {
                   "example": "any"
                 },
+                "description": {
+                  "example": "any"
+                },
                 "workCategory": {
                   "example": "any"
                 },
@@ -2644,6 +2647,9 @@
               "type": "object",
               "properties": {
                 "number": {
+                  "example": "any"
+                },
+                "description": {
                   "example": "any"
                 },
                 "workCategory": {

@@ -20,6 +20,10 @@ const TaskSchema = mongoose.Schema({
         type: Number,
         required: [true, "Task number is required."]
     },
+    description: {
+        type: String,
+        required: false
+    },
     workCategory: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "WorkCategory",

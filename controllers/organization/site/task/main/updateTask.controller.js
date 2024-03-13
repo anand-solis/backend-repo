@@ -1,7 +1,7 @@
 const Task = require("@/models/organization/site/task/task.model");
 
 const UpdateTaskController = async (req, res) => {
-    const { number, workCategory, endDate, startDate, expectedCost, totalCost } = req.body;
+    const { number, description, workCategory, endDate, startDate, expectedCost, totalCost } = req.body;
     const { organization, site, floor, task } = req.query;
 
     try {
@@ -14,6 +14,7 @@ const UpdateTaskController = async (req, res) => {
             },
             {
                 number: number,
+                description: description,
                 workCategory: workCategory,
                 endDate: endDate,
                 startDate: startDate,

@@ -3,12 +3,13 @@ const TaskMember = require("@/models/organization/site/task/taskMember.model");
 const SiteMember = require("@/models/organization/site/main/siteMember.model");
 
 const AddTaskController = async (req, res) => {
-    const { number, workCategory, endDate, startDate, expectedCost } = req.body;
+    const { number, description, workCategory, endDate, startDate, expectedCost } = req.body;
     const { organization, site, floor } = req.query;
 
     try {
         const newTask = await Task.create({
             number: number,
+            description: description,
             workCategory: workCategory,
             endDate: endDate,
             startDate: startDate,
