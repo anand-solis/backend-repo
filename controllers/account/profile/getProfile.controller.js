@@ -1,14 +1,26 @@
 const User = require("@/models/account/users.model");
+const getStorageFile = require("@/utils/connections/storage/getStorageFile");
 
 const GetProfileController = async (req, res) => {
     try {
         const user = await User
             .findOne({ _id: req.user._id })
-            .select("name email phone role isSuperAdmin")
+            .select("name profile email phone role isSuperAdmin")
             .populate({
                 path: "role",
                 select: "name"
-            });
+            })
+            .populate(
+                "profile",
+                {
+                    url: 1,
+                    _id: 0
+                }
+            );
+
+        const profile = await getStorageFile(user?.profile?.url);
+
+        user.profile.url = profile.file;
 
         return res.status(200).json({ user: user, success: true, error: "", message: "User details fetched successfully." });
     } catch (error) {
