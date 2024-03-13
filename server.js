@@ -51,6 +51,9 @@ app.use(require("@/routes/organization/main/member.route"));
 app.use(require("@/routes/organization/main/plan.route"));
 app.use(require("@/routes/organization/main/workCategory.route"));
 
+// API Organization -> Media Library Routes
+app.use(require("@/routes/organization/mediaLibrary/mediaLibrary.route"));
+
 // API Organization -> Site Routes
 app.use(require("@/routes/organization/site/main/site.route"));
 app.use(require("@/routes/organization/site/main/siteMember.route"));
