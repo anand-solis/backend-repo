@@ -12,7 +12,6 @@
  - Add Features in subscription.
 
 ## Pending Tasks
- - Media Library APIs (3).
  - Gantt Chart API (1).
  - Prt Chart API (1).
  - User Profile Update APIs [phone and email OTP + Verify] (4).
