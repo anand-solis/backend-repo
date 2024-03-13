@@ -1,6 +1,7 @@
 const User = require("@/models/account/users.model");
 const File = require("@/models/file/file.model");
 const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
+const removeStorageFile = require("@/utils/connections/storage/removeStorageFile");
 const AssignJWTToken = require("@/controllers/account/login/AssignToken.controller");
 const { sqliteInsert, sqliteDelete } = require("@/utils/connections/database/sqlite");
 
@@ -9,22 +10,23 @@ const UpdateProfileController = async (req, res) => {
         const response = await uploadStorageFile(req, ["image"]);
 
         if (response.success) {
-            const prev = await User.findOne({ _id: req.user._id }).select("profile");
+            const prev = await User.findOne({ _id: req.user._id }).select("profile")
+            .populate({
+                path: "profile",
+                select: "url"
+            });
 
-            if (prev?.profile) {
-                await File.findOneAndUpdate(
-                    { _id: prev.profile },
-                    { used: false }
-                )
+            if (prev?.profile?._id) {
+                const removeFile = await removeStorageFile(prev.profile?.url);
+
+                if (removeFile.success) {
+                    await File.deleteOne({ _id: prev.profile._id });
+                }
             }
 
             await User.findOneAndUpdate(
-                {
-                    _id: req.user._id
-                },
-                {
-                    profile: response.file
-                }
+                { _id: req.user._id },
+                { profile: response.file }
             )
         }
 
