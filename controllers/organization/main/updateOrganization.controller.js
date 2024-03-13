@@ -1,12 +1,12 @@
 const Organization = require("@/models/organization/main/organization.model");
 const File = require("@/models/file/file.model");
-const upload = require("@/utils/connections/storage/upload");
+const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
 
 const updateOrganizationController = async (req, res) => {
     const { organization } = req.query;
 
     try {
-        const response = await upload(req, ["image"]);
+        const response = await uploadStorageFile(req, ["image"]);
 
         if (response.success) {
             const prev = await Organization.findOne({ _id: organization }).select("profile");

@@ -3,7 +3,7 @@ const formidable = require("formidable");
 const fs = require("fs");
 const File = require("@/models/file/file.model");
 
-const upload = async (req, allowed) => {
+const uploadStorageFile = async (req, allowed) => {
     try {
         const form = new formidable.IncomingForm();
         const parseForm = () => {
@@ -99,4 +99,4 @@ const upload = async (req, allowed) => {
     }
 }
 
-module.exports = upload;
+module.exports = uploadStorageFile;

@@ -1,12 +1,12 @@
 const User = require("@/models/account/users.model");
 const File = require("@/models/file/file.model");
-const upload = require("@/utils/connections/storage/upload");
+const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
 const AssignJWTToken = require("@/controllers/account/login/AssignToken.controller");
 const { sqliteInsert, sqliteDelete } = require("@/utils/connections/database/sqlite");
 
 const UpdateProfileController = async (req, res) => {
     try {
-        const response = await upload(req, ["image"]);
+        const response = await uploadStorageFile(req, ["image"]);
 
         if (response.success) {
             const prev = await User.findOne({ _id: req.user._id }).select("profile");

@@ -1,11 +1,11 @@
 const SiteUpload = require("@/models/organization/site/main/siteUpload.model");
-const upload = require("@/utils/connections/storage/upload");
+const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
 
 const AddSiteUploadController = async (req, res) => {
     const { organization, site } = req.query;
 
     try {
-        const response = await upload(req, ["image", "application", "video"]);
+        const response = await uploadStorageFile(req, ["image", "application", "video"]);
 
         if (response?.success) {
             await SiteUpload.create({

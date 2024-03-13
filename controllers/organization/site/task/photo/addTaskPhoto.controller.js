@@ -1,11 +1,11 @@
 const TaskPhoto = require("@/models/organization/site/task/taskPhoto.model");
-const upload = require("@/utils/connections/storage/upload");
+const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
 
 const AddTaskPhotoController = async (req, res) => {
     const { organization, site, floor, task } = req.query;
 
     try {
-        const response = await upload(req, ["image"]);
+        const response = await uploadStorageFile(req, ["image"]);
 
         if (response?.success) {
             await TaskPhoto.create({

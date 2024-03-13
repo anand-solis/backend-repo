@@ -1,13 +1,13 @@
 const Labour = require("@/models/organization/site/attendance/labour/labour.model");
 const File = require("@/models/file/file.model");
-const upload = require("@/utils/connections/storage/upload");
+const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
 
 const UpdateLabourController = async (req, res) => {
     const { organization, site } = req.query;
     const { id } = req.params;
 
     try {
-        const response = await upload(req, ["image"]);
+        const response = await uploadStorageFile(req, ["image"]);
 
         if (response.success) {
             const prev = await Labour.findOne({

@@ -1,11 +1,11 @@
 const TaskAttachment = require("@/models/organization/site/task/taskAttachment.model");
-const upload = require("@/utils/connections/storage/upload");
+const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
 
 const AddTaskAttachmentController = async (req, res) => {
     const { organization, site, floor, task } = req.query;
 
     try {
-        const response = await upload(req, ["application"]);
+        const response = await uploadStorageFile(req, ["application"]);
 
         if (response?.success) {
             await TaskAttachment.create({

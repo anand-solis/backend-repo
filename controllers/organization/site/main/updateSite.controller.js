@@ -1,4 +1,4 @@
-const upload = require("@/utils/connections/storage/upload");
+const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
 const File = require("@/models/file/file.model");
 const Site = require("@/models/organization/site/main/site.model");
 
@@ -6,7 +6,7 @@ const UpdateSiteController = async (req, res) => {
     const { organization, site } = req.query;
 
     try {
-        const response = await upload(req, ["image"]);
+        const response = await uploadStorageFile(req, ["image"]);
 
         if (response.success) {
             const prev = await Site.findOne({ _id: site, organization: organization }).select("profile");

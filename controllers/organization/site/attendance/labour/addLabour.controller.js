@@ -1,11 +1,11 @@
 const Labour = require("@/models/organization/site/attendance/labour/labour.model");
-const upload = require("@/utils/connections/storage/upload");
+const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
 
 const AddLabourController = async (req, res) => {
     const { organization, site } = req.query;
 
     try {
-        const response = await upload(req, ["image"]);
+        const response = await uploadStorageFile(req, ["image"]);
 
         const labour = await Labour.create({
             organization: organization,
