@@ -4,8 +4,6 @@ const UpdateTaskController = async (req, res) => {
     const { number, workCategory, endDate, startDate, expectedCost, totalCost } = req.body;
     const { organization, site, floor, task } = req.query;
 
-    console.log(req.body, req.query)
-
     try {
         await Task.findOneAndUpdate(
             {
