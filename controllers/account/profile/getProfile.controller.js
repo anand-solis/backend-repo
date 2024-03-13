@@ -20,7 +20,7 @@ const GetProfileController = async (req, res) => {
 
         const profile = await getStorageFile(user?.profile?.url);
 
-        user.profile["url"] = profile.file;
+        user.profile = profile.file;
 
         return res.status(200).json({ user: user, success: true, error: "", message: "User details fetched successfully." });
     } catch (error) {
