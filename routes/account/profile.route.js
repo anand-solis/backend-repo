@@ -36,7 +36,7 @@ router.patch(
     UpdateProfileController
 );
 
-router.patch(
+router.post(
     "/profile/verify/phone/send-otp",
     Middleware,
     SendOTPVerifyPhoneProfileController
@@ -48,7 +48,7 @@ router.patch(
     VerifyPhoneProfileController
 );
 
-router.patch(
+router.post(
     "/profile/verify/email/send-otp",
     Middleware,
     SendOTPVerifyEmailProfileController
