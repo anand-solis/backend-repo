@@ -1,6 +1,6 @@
 const User = require("@/models/account/users.model");
 
-const getProfileController = async (req, res) => {
+const GetProfileController = async (req, res) => {
     try {
         const user = await User
             .findOne({ _id: req.user._id })
@@ -16,4 +16,4 @@ const getProfileController = async (req, res) => {
     }
 }
 
-module.exports = getProfileController;
+module.exports = GetProfileController;

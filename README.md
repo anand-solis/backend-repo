@@ -15,7 +15,6 @@
  - Media Library APIs (3).
  - Gantt Chart API (1).
  - Prt Chart API (1).
- - User Profile Update APIs (4).
-    - Changing in User Profile Edit API (Change Token).
+ - User Profile Update APIs [phone and email OTP + Verify] (4).
 
  - Material (Module 2).

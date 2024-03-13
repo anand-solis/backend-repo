@@ -59,6 +59,10 @@ const UserSchema = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    profile: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "File"
     }
 }, { timestamps: true });
 
