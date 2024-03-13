@@ -12,8 +12,6 @@
  - Add Features in subscription.
 
 ## Pending Tasks
- - Gantt Chart API (1).
- - Prt Chart API (1).
  - User Profile Update APIs [phone and email OTP + Verify] (4).
 
  - Material (Module 2).
