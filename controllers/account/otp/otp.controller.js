@@ -1,5 +1,5 @@
 const OTP = require("@/models/account/otp.model");
-const validatePhone = require("@/utils/account/validatePhone.controller");
+const validatePhone = require("@/controllers/account/otp/validatePhone.controller");
 const generateCode = require("@/utils/account/generateCode.controller");
 const sendSMSController = require("@/controllers/app/sms/sendSMS.controller");
 const SMSVerificationOTP = require("@/templates/sms/SMSVerificationOTP.template");
