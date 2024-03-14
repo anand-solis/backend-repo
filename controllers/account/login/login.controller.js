@@ -1,4 +1,4 @@
-const OTPExpiryValidation = require("@/controllers/account/login/OTPExpiryValidation.controller");
+const OTPExpiryValidation = require("@/utils/account/OTPExpiryValidation.controller");
 const AssignJWTToken = require("@/controllers/account/login/AssignToken.controller");
 const User = require("@/models/account/users.model");
 const OTP = require("@/models/account/otp.model");
