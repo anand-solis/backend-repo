@@ -1,18 +1,18 @@
 const mongoose = require("mongoose");
 
-const OTPSchema = mongoose.Schema({
+const VerifySchema = mongoose.Schema({
     otp: {
         type: String,
         required: [true, "OTP is required."]
     },
-    value: {
+    param: {
         type: String,
-        required: [true, "Phone No. is required."]
+        required: [true, "Param is required."]
     },
     type: {
         type: String,
-        required: [true, "Value type is required."]
+        required: [true, "Param type is required."]
     },
 }, { timestamps: true });
 
-module.exports = mongoose.model("OTP", OTPSchema);
+module.exports = mongoose.model("Verify", VerifySchema);

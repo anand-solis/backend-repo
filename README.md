@@ -12,6 +12,3 @@
  - Add Features in subscription.
 
 ## Pending Tasks
- - User Profile Update APIs [phone and email OTP + Verify] (4).
-
- - Material (Module 2).
