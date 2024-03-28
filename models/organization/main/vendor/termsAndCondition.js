@@ -6,11 +6,6 @@ const termsAndConditionSchema = mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         required:[true ,"Organization is required."]
     },
-    vendorId:{
-
-        type:mongoose.Schema.Types.ObjectId,
-        required:[true , "vendor Id is required."]
-    },
     returnPolicy:{
 
         type:String

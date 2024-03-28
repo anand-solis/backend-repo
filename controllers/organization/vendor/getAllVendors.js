@@ -3,14 +3,13 @@ const financialDetails = require("@/models/organization/main/vendor/financialdet
 
 const getAllvendors = async (req, res) => {
   const { organization } = req.query;
+  const {  } = req.query;
 
   try {
     
     const vendors = await vendorDetailsSchema.find({organization}).populate("financialDetails")
     // const financialDetail = await financialDetails.find({organization})
-      
 
-      console.log(vendors , "dfjdfj")
 
     return res.status(200).json({
       success: true,
