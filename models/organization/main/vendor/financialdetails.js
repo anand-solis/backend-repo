@@ -1,0 +1,36 @@
+const mongoose = require('mongoose');
+
+const FinancialSchema = mongoose.Schema(
+  {
+    organization: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: [true, "Organization is required."],
+    },
+    gstTreatment: {
+      type: String,
+      required: [true, "GST Treatment is required."],
+    },
+    gstIn: {
+      type: String,
+      required: [true, "GST No is required."],
+    },
+    bankName: {
+      type: String,
+    },
+    accountHolder: {
+      type: String,
+    },
+    accountNumber: {
+      type: Number,
+    },
+    IFSCcode: {
+      type: String,
+    },
+  },
+  {
+    timestamps: true, // This option enables automatic management of createdAt and updatedAt fields
+  }
+);
+
+
+module.exports = mongoose.model("FinancialSchema" , FinancialSchema) ;
