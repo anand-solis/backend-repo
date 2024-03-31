@@ -10,9 +10,12 @@ const getOrganizationController = async (req, res) => {
             .select("-blocked -createdAt -updatedAt -__v")
             .populate("profile", { url: 1, _id: 0 });
 
-        const profile = await getStorageFile(organizationDetails.profile.url);
-
-        organizationDetails.profile.url = profile.file;
+            if (organizationDetails && organizationDetails.profile) {
+                const profile = await getStorageFile(organizationDetails.profile.url);
+                organizationDetails.profile.url = profile.file;
+            }
+        // const profile = await getStorageFile(organizationDetails.profile.url);
+        // organizationDetails.profile.url = profile.file;
 
         return res.status(200).json({ organizationDetails: organizationDetails, success: true, error: "", message: "Organization details fetched successfully." });
     } catch (error) {
