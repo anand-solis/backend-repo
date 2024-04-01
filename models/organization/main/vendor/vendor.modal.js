@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
-const FinancialSchema = require('@/models/organization/main/vendor/financialdetails');
-const TermsAndConditionSchema = require('@/models/organization/main/vendor/termsAndCondition');
-const UploadProofSchema = require('@/models/organization/main/vendor/uploadProof');
-
 const vendorDetailsSchema = mongoose.Schema({
+    _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
     organization: {
         type: mongoose.Schema.Types.ObjectId,
         default: null  // Set default value to null for optional field
@@ -38,14 +35,14 @@ const vendorDetailsSchema = mongoose.Schema({
     },
     termsAndCondition: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'TermsAndConditionSchema', // Corrected model name
+        ref: 'TermsAndCondition', // Corrected model name
         default: null 
     },
     uploadProof: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'UploadProofSchema', // Corrected model name
+         // Corrected model name
         default: null  
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model("VendorDetails", vendorDetailsSchema);
+module.exports = mongoose.model("vendorDetails", vendorDetailsSchema);

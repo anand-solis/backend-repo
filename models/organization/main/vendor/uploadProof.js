@@ -1,7 +1,9 @@
 const mongoose =require('mongoose');
 
 const uploadProofSchema = mongoose.Schema({
-    organization :{
+
+    _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
+        organization :{
 
         type:mongoose.Schema.Types.ObjectId,
         required:[true ,"Organization is required."]
@@ -28,4 +30,4 @@ const uploadProofSchema = mongoose.Schema({
     },
 }, { timestamps: true })
 
-module.exports = mongoose.model("uploadProof",uploadProofSchema)
+module.exports = mongoose.model("uploadProofVendor",uploadProofSchema)

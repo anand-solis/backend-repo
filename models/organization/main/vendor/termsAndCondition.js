@@ -17,4 +17,4 @@ const termsAndConditionSchema = mongoose.Schema({
 }, { timestamps: true })
 
 
-module.exports = mongoose.model("termsAndConditionSchema",termsAndConditionSchema)
+module.exports = mongoose.model("termsAndCondition",termsAndConditionSchema)

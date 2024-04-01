@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
 const FinancialSchema = mongoose.Schema(
+ 
   {
+    _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
     organization: {
       type: mongoose.Schema.Types.ObjectId,
       required: [true, "Organization is required."],
@@ -31,6 +33,4 @@ const FinancialSchema = mongoose.Schema(
     timestamps: true, // This option enables automatic management of createdAt and updatedAt fields
   }
 );
-
-
-module.exports = mongoose.model("FinancialSchema" , FinancialSchema) ;
+module.exports = mongoose.model("VendorFinancial" , FinancialSchema) ;
