@@ -1,16 +1,12 @@
-const vendorDetailsSchema = require("@/models/organization/main/vendor/vendor.modal")
-const financialDetails = require("@/models/organization/main/vendor/financialdetails")
-const rootVender = require('@/models/organization/main/vendor/rootVender.modal')
+const vendorDetailsSchema = require("@/models/organization/main/vendor/vendor.modal");
+const financialDetails = require("@/models/organization/main/vendor/financialdetails");
+const rootVender = require("@/models/organization/main/vendor/rootVender.modal");
+
 const getAllvendors = async (req, res) => {
   const { organization } = req.query;
 
-
   try {
-    
-    const vendors = await vendorDetailsSchema.find({organization}).populate("financialDetails")
-    // const financialDetail = await financialDetails.find({organization})
-
-
+    const vendors = await rootVender.find({ organization }).populate("vendor");
     return res.status(200).json({
       success: true,
       data: vendors,
@@ -25,16 +21,16 @@ const getAllvendors = async (req, res) => {
   }
 };
 
-const GetVendorByOrganization = async (req,res)=>{
-
-  const { organization,rootvendorId } = req.query;
+const GetVendorByOrganization = async (req, res) => {
+  const { organization, rootvendorId } = req.query;
   try {
-    const vendorByOrg = await rootVender.find({_id:rootvendorId})
-    .populate("uploadProof")
-    .populate("vendor")
-     .populate("finaicialdetails")
-     .populate("termsAndCondition")
-    console.log(vendorByOrg)
+    const vendorByOrg = await rootVender
+      .find({ _id: rootvendorId })
+      .populate("uploadProof")
+      .populate("vendor")
+      .populate("finaicialdetails")
+      .populate("termsAndCondition");
+    console.log(vendorByOrg);
     return res.status(500).json({
       success: true,
       data: vendorByOrg,
@@ -47,7 +43,6 @@ const GetVendorByOrganization = async (req,res)=>{
       message: "Error in fetch By Org Vendors Details.",
     });
   }
-}
+};
 
-module.exports = {getAllvendors,GetVendorByOrganization};
-
+module.exports = { getAllvendors, GetVendorByOrganization };

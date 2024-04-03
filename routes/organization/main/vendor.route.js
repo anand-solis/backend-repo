@@ -9,21 +9,20 @@ const {
   uploadproof,
 } = require("@/controllers/organization/vendor/addVendor");
 const {
-  GetVendorByOrganization
+  GetVendorByOrganization,getAllvendors
 } = require("@/controllers/organization/vendor/getAllVendors");
 
-const getAllvendors = require("@/controllers/organization/vendor/getAllVendors")
 
 const key = "vendor";
 const plan = "vendor_payable";
 
-// router.get(
-//   "/vendors",
-//   Middleware,
-//   (req, res, next) =>
-//     organizationMiddleware(req, res, next, key, "read", plan),
-//     getAllvendors
-// );
+router.get(
+  "/getAllvendors",
+  Middleware,
+  (req, res, next) =>
+    organizationMiddleware(req, res, next, key, "read", plan),
+    getAllvendors
+);
 
 router.post(
   "/vendor/adddetails",
