@@ -11,5 +11,5 @@ const AssignJWTToken = async (user) => {
         return { token: null, success: false, error: "Token not assigned to user.", message: message };
     }
 }
-
 module.exports = AssignJWTToken;
+

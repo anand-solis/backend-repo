@@ -9,7 +9,7 @@ const OTPController = async (req, res) => {
 
     try {
         const phoneValidate = validatePhone(phone);
-        // const code = generateCode();
+      //  const code = generateCode();
         const code = 222222;
 
         if (phoneValidate.success) {
