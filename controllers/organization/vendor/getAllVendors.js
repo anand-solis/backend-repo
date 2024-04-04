@@ -31,7 +31,7 @@ const GetVendorByOrganization = async (req, res) => {
       .populate("finaicialdetails")
       .populate("termsAndCondition");
     console.log(vendorByOrg);
-    return res.status(500).json({
+    return res.status(200).json({
       success: true,
       data: vendorByOrg,
       message: "Vendor By Organization Fetched Successfully.",
