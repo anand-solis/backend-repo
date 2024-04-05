@@ -11,6 +11,7 @@ const {
 const {
   GetVendorByOrganization,getAllvendors
 } = require("@/controllers/organization/vendor/getAllVendors");
+const { updateVendorDetails } = require("@/controllers/organization/vendor/updateVendors.controller");
 
 
 const key = "vendor";
@@ -58,6 +59,14 @@ router.get(
   (req, res, next) =>
   organizationMiddleware(req, res, next, key, "insert", plan),
   GetVendorByOrganization
+);
+
+router.patch(
+  "/vendor/edit/personalDetails",
+  Middleware,
+  (req, res, next) =>
+  organizationMiddleware(req, res, next, key, "insert", plan),
+  updateVendorDetails
 );
 
 module.exports = router;
