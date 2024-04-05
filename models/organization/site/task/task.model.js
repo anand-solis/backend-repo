@@ -16,9 +16,12 @@ const TaskSchema = mongoose.Schema({
         ref: "Floor",
         required: true
     },
-    number: {
+    taskNumber: {
         type: Number,
-        required: [true, "Task number is required."]
+    },
+    taskName: {
+        type: String,
+        required: [true, "Task name is required."]
     },
     description: {
         type: String,
