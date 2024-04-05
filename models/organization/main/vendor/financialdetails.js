@@ -14,7 +14,7 @@ const FinancialSchema = mongoose.Schema(
     },
     gstIn: {
       type: String,
-      required: [true, "GST No is required."],
+      
     },
     bankName: {
       type: String,
