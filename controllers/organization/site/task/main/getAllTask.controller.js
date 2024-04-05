@@ -20,7 +20,8 @@ const GetAllTaskController = async (req, res) => {
                     user: req.user._id
                 }
             });
-
+        console.log(MemberDetails, 'dsfhj')
+        console.log(TaskMember, 'TaskMember')
         if (MemberDetails?._id && MemberDetails?.member?.user?._id) {
             let taskMembers = await TaskMember
                 .find({ organization: organization, site: site, floor: floor, member: MemberDetails._id })
@@ -30,7 +31,7 @@ const GetAllTaskController = async (req, res) => {
 
             const tasks = await Task
                 .find({ _id: { $in: haveTaskIds }, organization: organization, site: site, floor: floor })
-                .select("number description workCategory endDate startDate expectedCost totalCost")
+                .select("taskName description workCategory endDate startDate expectedCost totalCost")
                 .sort({ createdAt: -1 })
                 .populate({
                     path: "workCategory",

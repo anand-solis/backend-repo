@@ -3,12 +3,13 @@ const TaskMember = require("@/models/organization/site/task/taskMember.model");
 const SiteMember = require("@/models/organization/site/main/siteMember.model");
 
 const AddTaskController = async (req, res) => {
-    const { number, description, workCategory, endDate, startDate, expectedCost } = req.body;
+    const { taskName, taskNumber, description, workCategory, endDate, startDate, expectedCost } = req.body;
     const { organization, site, floor } = req.query;
 
     try {
         const newTask = await Task.create({
-            number: number,
+            taskName: taskName,
+            taskNumber: taskNumber,
             description: description,
             workCategory: workCategory,
             endDate: endDate,
@@ -22,15 +23,15 @@ const AddTaskController = async (req, res) => {
 
         if (newTask?._id) {
             const member = await SiteMember
-            .findOne({ organization: organization, site: site })
-            .select("member")
-            .populate({
-                path: "member",
-                select: "user",
-                match: {
-                    user: req.user._id
-                }
-            });
+                .findOne({ organization: organization, site: site })
+                .select("member")
+                .populate({
+                    path: "member",
+                    select: "user",
+                    match: {
+                        user: req.user._id
+                    }
+                });
 
             if (member.member && member?._id) {
                 await TaskMember.create({
@@ -44,7 +45,7 @@ const AddTaskController = async (req, res) => {
 
                 return res.status(201).json({ task: newTask?._id, success: true, error: "", message: "Task successfully created." });
             }
-            else{
+            else {
                 return res.status(401).json({ task: null, success: false, error: "You are not a member of this site.", message: "" });
             }
         }
