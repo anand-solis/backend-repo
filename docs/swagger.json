@@ -1005,6 +1005,26 @@
         }
       }
     },
+    "/material/add": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/materials": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/members": {
       "get": {
         "description": "",
@@ -1535,6 +1555,96 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/getAllvendors": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/vendor/adddetails": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/vendor/addfinancial": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/vendor/addtermsandcondition": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/vendor/uploadproof": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/vendor/getByOrganiztion": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/vendor/edit/personalDetails": {
+      "patch": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/vendor/edit/financialDetails": {
+      "patch": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/vendor/edit/termsAndCondition": {
+      "patch": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }
@@ -2723,7 +2833,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "number": {
+                "taskName": {
+                  "example": "any"
+                },
+                "taskNumber": {
                   "example": "any"
                 },
                 "description": {
@@ -2791,7 +2904,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "number": {
+                "taskName": {
+                  "example": "any"
+                },
+                "taskNumber": {
                   "example": "any"
                 },
                 "description": {
