@@ -1,10 +1,12 @@
-const vendorPersonalDetails = require("@/models/organization/main/vendor/vendor.modal")
-const rootVendor = require('@/models/organization/main/vendor/rootVender.modal')
+const vendorPersonalDetails = require("@/models/organization/main/vendor/vendor.modal");
+const rootVendor = require("@/models/organization/main/vendor/rootVender.modal");
+const vendorFinancialDetails = require("@/models/organization/main/vendor/financialdetails");
+const vendorTermsCondition = require("@/models/organization/main/vendor/termsAndCondition");
 
 const updateVendorDetails = async (req, res) => {
   const { organization } = req.query;
-  const vendorId = req.params.vendorId; 
-  console.log(organization,vendorId)
+  const vendorId = req.params.vendorId;
+  console.log(organization, vendorId);
   try {
     let vendorDetails = await vendorPersonalDetails.findById(vendorId);
     if (!vendorDetails) {
@@ -43,4 +45,91 @@ const updateVendorDetails = async (req, res) => {
     });
   }
 };
-module.exports ={updateVendorDetails}
+
+const updatevendorFinacialDetails = async (req, res) => {
+  const { organization } = req.query;
+  const vendorId = req.params.vendorId;
+  try {
+    let vendorDetails = await vendorFinancialDetails.findById(vendorId);
+    if (!vendorDetails) {
+      return res.status(404).json({
+        success: false,
+        error: "Vendor not found",
+        message: "Vendor not found",
+      });
+    }
+
+    const updatedData = req.body;
+    // Update vendor details with the new data
+    vendorDetails = await vendorFinancialDetails.findByIdAndUpdate(
+      vendorId,
+      { ...vendorDetails.toObject(), ...updatedData },
+      { new: true }
+    );
+
+    // Update rootVendor if needed
+    await rootVendor.findOneAndUpdate(
+      { vendor: vendorId, organization: organization },
+      { vendor: vendorDetails._id, organization: organization },
+      { upsert: true }
+    );
+
+    return res.status(200).json({
+      data: vendorDetails,
+      success: true,
+      error: "",
+      message: "Financial Details updated successfully.",
+    });
+  }
+  catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: `Error: ${error}`,
+      message: "Update Vendor error",
+    });
+  }
+};
+const updatetermsAndCondition = async (req, res) => {
+  const { organization } = req.query;
+  const vendorId = req.params.vendorId;
+  try {
+    let vendorDetails = await vendorTermsCondition.findById(vendorId);
+    if (!vendorDetails) {
+      return res.status(404).json({
+        success: false,
+        error: "Vendor not found",
+        message: "Vendor not found",
+      });
+    }
+
+    const updatedData = req.body;
+    // Update vendor details with the new data
+    vendorDetails = await vendorTermsCondition.findByIdAndUpdate(
+      vendorId,
+      { ...vendorDetails.toObject(), ...updatedData },
+      { new: true }
+    );
+
+    // Update rootVendor if needed
+    await rootVendor.findOneAndUpdate(
+      { vendor: vendorId, organization: organization },
+      { vendor: vendorDetails._id, organization: organization },
+      { upsert: true }
+    );
+
+    return res.status(200).json({
+      data: vendorDetails,
+      success: true,
+      error: "",
+      message: "Terms and Codition Details updated successfully.",
+    });
+  }
+  catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: `Error: ${error}`,
+      message: "Update Vendor error",
+    });
+  }
+};
+module.exports = { updateVendorDetails,updatevendorFinacialDetails,updatetermsAndCondition };

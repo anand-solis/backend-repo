@@ -11,7 +11,7 @@ const {
 const {
   GetVendorByOrganization,getAllvendors
 } = require("@/controllers/organization/vendor/getAllVendors");
-const { updateVendorDetails } = require("@/controllers/organization/vendor/updateVendors.controller");
+const { updateVendorDetails, updatevendorFinacialDetails, updatetermsAndCondition } = require("@/controllers/organization/vendor/updateVendors.controller");
 
 
 const key = "vendor";
@@ -67,6 +67,20 @@ router.patch(
   (req, res, next) =>
   organizationMiddleware(req, res, next, key, "insert", plan),
   updateVendorDetails
+);
+router.patch(
+  "/vendor/edit/financialDetails",
+  Middleware,
+  (req, res, next) =>
+  organizationMiddleware(req, res, next, key, "insert", plan),
+  updatevendorFinacialDetails
+);
+router.patch(
+  "/vendor/edit/termsAndCondition",
+  Middleware,
+  (req, res, next) =>
+  organizationMiddleware(req, res, next, key, "insert", plan),
+  updatetermsAndCondition
 );
 
 module.exports = router;
