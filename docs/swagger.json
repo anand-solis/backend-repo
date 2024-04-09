@@ -1025,6 +1025,16 @@
         }
       }
     },
+    "/material/update": {
+      "patch": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/members": {
       "get": {
         "description": "",
