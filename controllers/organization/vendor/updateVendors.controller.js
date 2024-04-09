@@ -4,11 +4,10 @@ const vendorFinancialDetails = require("@/models/organization/main/vendor/financ
 const vendorTermsCondition = require("@/models/organization/main/vendor/termsAndCondition");
 
 const updateVendorDetails = async (req, res) => {
-  const { organization } = req.query;
-  const vendorId = req.params.vendorId;
-  console.log(organization, vendorId);
+  const { organization ,vendorId } = req.query;
+  
   try {
-    let vendorDetails = await vendorPersonalDetails.findById(vendorId);
+    let vendorDetails = await vendorPersonalDetails.find({_id:vendorId});
     if (!vendorDetails) {
       return res.status(404).json({
         success: false,
@@ -20,10 +19,9 @@ const updateVendorDetails = async (req, res) => {
     // Update vendor details with the new data
     vendorDetails = await vendorPersonalDetails.findByIdAndUpdate(
       vendorId,
-      { ...vendorDetails.toObject(), ...updatedData },
+      {updatedData },
       { new: true }
     );
-
     // Update rootVendor if needed
     await rootVendor.findOneAndUpdate(
       { vendor: vendorId, organization: organization },
