@@ -46,10 +46,10 @@ const updateVendorDetails = async (req, res) => {
 };
 
 const updatevendorFinacialDetails = async (req, res) => {
-  const { organization } = req.query;
-  const vendorId = req.params.vendorId;
+  const { organization ,vendorId} = req.query;
+  // const vendorId = req.params.vendorId;
   try {
-    let vendorDetails = await vendorFinancialDetails.findById(vendorId);
+    let vendorDetails = await vendorFinancialDetails.find({_id:vendorId});
     if (!vendorDetails) {
       return res.status(404).json({
         success: false,
@@ -62,7 +62,7 @@ const updatevendorFinacialDetails = async (req, res) => {
     // Update vendor details with the new data
     vendorDetails = await vendorFinancialDetails.findByIdAndUpdate(
       vendorId,
-      { ...vendorDetails.toObject(), ...updatedData },
+      updatedData,
       { new: true }
     );
 
