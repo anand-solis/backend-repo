@@ -4,11 +4,11 @@ const vendorFinancialDetails = require("@/models/organization/main/vendor/financ
 const vendorTermsCondition = require("@/models/organization/main/vendor/termsAndCondition");
 
 const updateVendorDetails = async (req, res) => {
-  const { organization ,vendorId } = req.query;
-  
+  const { organization, vendorId } = req.query;
+
   try {
-    let vendorDetails = await vendorPersonalDetails.find({_id:vendorId});
-   
+    let vendorDetails = await vendorPersonalDetails.find({ _id: vendorId });
+
     if (!vendorDetails) {
       return res.status(404).json({
         success: false,
@@ -20,7 +20,7 @@ const updateVendorDetails = async (req, res) => {
     // Update vendor details with the new data
     vendorDetails = await vendorPersonalDetails.findByIdAndUpdate(
       vendorId,
-      updatedData ,
+      updatedData,
       { new: true }
     );
     // Update rootVendor if needed
@@ -46,10 +46,10 @@ const updateVendorDetails = async (req, res) => {
 };
 
 const updatevendorFinacialDetails = async (req, res) => {
-  const { organization ,vendorId} = req.query;
+  const { organization, vendorId } = req.query;
   // const vendorId = req.params.vendorId;
   try {
-    let vendorDetails = await vendorFinancialDetails.find({_id:vendorId});
+    let vendorDetails = await vendorFinancialDetails.find({ _id: vendorId });
     if (!vendorDetails) {
       return res.status(404).json({
         success: false,
@@ -79,8 +79,7 @@ const updatevendorFinacialDetails = async (req, res) => {
       error: "",
       message: "Financial Details updated successfully.",
     });
-  }
-  catch (error) {
+  } catch (error) {
     return res.status(500).json({
       success: false,
       error: `Error: ${error}`,
@@ -89,10 +88,10 @@ const updatevendorFinacialDetails = async (req, res) => {
   }
 };
 const updatetermsAndCondition = async (req, res) => {
-  const { organization } = req.query;
-  const vendorId = req.params.vendorId;
+  const { organization, vendorId } = req.query;
+  // const vendorId = req.params.vendorId;
   try {
-    let vendorDetails = await vendorTermsCondition.findById(vendorId);
+    let vendorDetails = await vendorTermsCondition.find({ _id: vendorId });
     if (!vendorDetails) {
       return res.status(404).json({
         success: false,
@@ -105,7 +104,7 @@ const updatetermsAndCondition = async (req, res) => {
     // Update vendor details with the new data
     vendorDetails = await vendorTermsCondition.findByIdAndUpdate(
       vendorId,
-      { ...vendorDetails.toObject(), ...updatedData },
+      updatedData,
       { new: true }
     );
 
@@ -122,8 +121,7 @@ const updatetermsAndCondition = async (req, res) => {
       error: "",
       message: "Terms and Codition Details updated successfully.",
     });
-  }
-  catch (error) {
+  } catch (error) {
     return res.status(500).json({
       success: false,
       error: `Error: ${error}`,
@@ -131,4 +129,8 @@ const updatetermsAndCondition = async (req, res) => {
     });
   }
 };
-module.exports = { updateVendorDetails,updatevendorFinacialDetails,updatetermsAndCondition };
+module.exports = {
+  updateVendorDetails,
+  updatevendorFinacialDetails,
+  updatetermsAndCondition,
+};
