@@ -1,5 +1,6 @@
 const addMaterial = require("@/controllers/organization/material/addmaterial.controller");
 const getAllmaterialdata = require("@/controllers/organization/material/getMaterial.controller");
+const updateMaterial = require("@/controllers/organization/material/updateMaterial.controller");
 const Middleware = require("@/utils/middleware/middleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 const express = require("express");
@@ -22,6 +23,13 @@ router.get(
   (req, res, next) =>
     organizationMiddleware(req, res, next, key, "insert", plan),
     getAllmaterialdata
+);
+router.patch(
+  "/material/update",
+  Middleware,
+  (req, res, next) =>
+    organizationMiddleware(req, res, next, key, "insert", plan),
+    updateMaterial
 );
 
 module.exports = router
