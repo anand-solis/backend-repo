@@ -8,6 +8,7 @@ const updateVendorDetails = async (req, res) => {
   
   try {
     let vendorDetails = await vendorPersonalDetails.find({_id:vendorId});
+   
     if (!vendorDetails) {
       return res.status(404).json({
         success: false,
@@ -19,7 +20,7 @@ const updateVendorDetails = async (req, res) => {
     // Update vendor details with the new data
     vendorDetails = await vendorPersonalDetails.findByIdAndUpdate(
       vendorId,
-      {updatedData },
+      updatedData ,
       { new: true }
     );
     // Update rootVendor if needed
