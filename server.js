@@ -86,6 +86,10 @@ app.use(require("@/routes/organization/main/vendor.route"));
 
 app.use(require("@/routes/organization/main/material.route"))
 
+// API Organization -> Commercial
+
+app.use(require("@/routes/organization/site/commercial/commercial.route"))
+
 async function startServer() {
     try {
         // Connect to the database
