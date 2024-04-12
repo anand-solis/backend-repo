@@ -89,6 +89,7 @@ app.use(require("@/routes/organization/main/material.route"))
 // API Organization -> Commercial
 
 app.use(require("@/routes/organization/site/commercial/commercial.route"))
+app.use(require("@/routes/organization/site/commercial/purchaseOrder.route"))
 
 async function startServer() {
     try {
