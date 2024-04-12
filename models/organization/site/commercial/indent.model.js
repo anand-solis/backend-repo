@@ -33,6 +33,9 @@ const indentSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "PurchaseOrder",
   },
+  remarks: {
+    type: String,
+  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
