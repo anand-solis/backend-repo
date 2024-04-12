@@ -6,21 +6,22 @@ const PurchaseOrder = mongoose.Schema({
     ref: "Organization",
     required: true,
   },
-  siteId: {
+  site: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Site",
     required: true,
   },
   indentId:{
     type: mongoose.Schema.Types.ObjectId,
+    ref:"Indent"
   },
   vendorId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Site",
+    ref: "rootVendor",
     required: true,
   },
   expectedDelivery: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     required: true,
   },
   deliveryAddress: {
