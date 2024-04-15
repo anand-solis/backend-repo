@@ -7,8 +7,8 @@ const GetPurchaseOrderSettingController = async (req, res) => {
         let result;
 
         const purchaseOrderSettings = await PurchaseOrderSetting
-            .findOne({ organization: organization, site: site })
-            .select("prefix tnc");
+            .findOne({ organization: organization, site: site }).populate({path:'organization',select:"-_id name email address city pin_code state"})
+           
 
         if (purchaseOrderSettings?._id) {
             result = purchaseOrderSettings;

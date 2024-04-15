@@ -2,7 +2,7 @@ const PurchaseOrderSetting = require("@/models/organization/site/material/purcha
 
 const UpdatePurchaseOrderSettingController = async (req, res) => {
     const { organization, site } = req.query;
-    const { prefix, tnc } = req.body;
+    const { prefix, tnc ,gst} = req.body;
     const result = prefix.trim().replace(/\s+/g, "-").replace(/-+/g, "-").replace(/[^-\w\s]/g, "");
 
     try {
@@ -10,7 +10,8 @@ const UpdatePurchaseOrderSettingController = async (req, res) => {
             { organization: organization, site: site },
             {
                 prefix: result,
-                tnc: tnc
+                tnc: tnc,
+                gst:gst,
             }
         );
 
