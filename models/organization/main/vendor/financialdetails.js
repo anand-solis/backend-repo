@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const FinancialSchema = mongoose.Schema(
- 
   {
     _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
     organization: {
@@ -14,7 +13,9 @@ const FinancialSchema = mongoose.Schema(
     },
     gstIn: {
       type: String,
-      
+    },
+    pan: {
+      type: String,
     },
     bankName: {
       type: String,
@@ -33,4 +34,4 @@ const FinancialSchema = mongoose.Schema(
     timestamps: true, // This option enables automatic management of createdAt and updatedAt fields
   }
 );
-module.exports = mongoose.model("VendorFinancial" , FinancialSchema) ;
+module.exports = mongoose.model("VendorFinancial", FinancialSchema);
