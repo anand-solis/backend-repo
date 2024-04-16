@@ -11,9 +11,9 @@ const PurchaseOrder = mongoose.Schema({
     ref: "Site",
     required: true,
   },
-  indentId:{
+  indentId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref:"Indent"
+    ref: "Indent",
   },
   vendorId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -31,6 +31,10 @@ const PurchaseOrder = mongoose.Schema({
   poNumber: {
     type: String,
   },
+  poStatus: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-module.exports = mongoose.model('PurchaseOrder' , PurchaseOrder);
+module.exports = mongoose.model("PurchaseOrder", PurchaseOrder);
