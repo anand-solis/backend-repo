@@ -9,7 +9,9 @@ const GetIndent = async (req, res) => {
         path: "materialId",
         select: "materialName brandName uom unitCost description ",
       })
-      .populate({ path: "purchaseOrder", select: "" });
+      .populate({ path: "purchaseOrder", select: "" })
+      .populate({ path: "createdBy", select: "" })
+      .populate({ path: "assignUser", select: "" });
     return res.status(200).json({
       success: true,
       data: Indentdata,
