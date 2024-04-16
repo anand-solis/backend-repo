@@ -6,12 +6,12 @@ const GetIndent = async (req, res) => {
   try {
     const Indentdata = await Indent.find({ site: site })
       .populate({
-        path: "materialId",
-        select: "materialName brandName uom unitCost description ",
+        path:('materialId.material'),
+        select: " -_id materialName brandName uom unitCost description ",
       })
       .populate({ path: "purchaseOrder", select: "" })
-      .populate({ path: "createdBy", select: "" })
-      .populate({ path: "assignUser", select: "" });
+      .populate({ path: "createdBy", select: "-_id email phone name " })
+      .populate({ path: "assignUser", select: "-_id email phone name" });
     return res.status(200).json({
       success: true,
       data: Indentdata,

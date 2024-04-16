@@ -13,9 +13,15 @@ const indentSchema = mongoose.Schema({
   },
   materialId: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Material",
-      required: [true, "Material Id is required."],
+      material: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Material",
+        required: [true, "Material Id is required."],
+      },
+      quantity: {
+        type: Number,
+        required: true,
+      },
     },
   ],
   deliveryDate: {
@@ -29,6 +35,10 @@ const indentSchema = mongoose.Schema({
       required: [true, "Assign user Id is required."],
     },
   ],
+  indentStatus: {
+    type: Boolean,
+    default: false,
+  },
   purchaseOrder: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "PurchaseOrder",
@@ -40,6 +50,10 @@ const indentSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
+  },
+  IssueDate: {
+    type: Date,
+    default: Date.now,
   },
 });
 
