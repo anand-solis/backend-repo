@@ -20,12 +20,12 @@ const siteMiddleware = async (req, res, next, invitationSkip = false) => {
             });
     
             if(MemberDetails.member && MemberDetails?._id){
-                if(MemberDetails.inviteAccepted || invitationSkip){
+                // if(MemberDetails.inviteAccepted || invitationSkip){
                     next();
-                }
-                else{
-                    return res.status(401).json({ success: false, error: "Error: Accept invite for this site project.", message: "" });
-                }
+                // }
+                // else{
+                //     return res.status(401).json({ success: false, error: "Error: Accept invite for this site project.", message: "" });
+                // }
             }
             else{
                 return res.status(401).json({ success: false, error: "You are not a member of this site project." });
