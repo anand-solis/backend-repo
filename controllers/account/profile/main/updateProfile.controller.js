@@ -44,15 +44,15 @@ const UpdateProfileController = async (req, res) => {
             }
         );
 
-        const authHeader = req.headers["authorization"];
-        const token = authHeader && authHeader.split(" ")[1];
+        // const authHeader = req.headers["authorization"];
+        // const token = authHeader && authHeader.split(" ")[1];
 
-        sqliteInsert(token);
-        sqliteDelete();
+        // sqliteInsert(token);
+        // sqliteDelete();
 
-        const assigned = await AssignJWTToken(updatedUser);
+        // const assigned = await AssignJWTToken(updatedUser);
 
-        return res.status(200).json({ token: assigned.token, success: true, error: "", message: "User profile updated successfully." });
+        return res.status(200).json({ success: true, error: "", message: "User profile updated successfully." });
 
     } catch (error) {
         return res.status(500).json({ token: null, success: false, error: `Error: ${error}`, message: "" });
