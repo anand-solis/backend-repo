@@ -5,6 +5,7 @@ const GetIndent = async (req, res) => {
 
   try {
     const Indentdata = await Indent.find({ site: site })
+    .populate("organization")
       .populate({
         path:('materialId.material'),
         select: " -_id materialName brandName uom unitCost description ",
