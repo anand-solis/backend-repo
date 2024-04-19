@@ -14,18 +14,18 @@ const UpdateIssuesController = async (req, res) => {
     if (issueData) {
       return res.status(200).json({
         success: true,
-        message: "Issue raised successfully.",
+        message: "Issue Updated successfully.",
       });
     } else {
       return res.status(500).json({
         success: false,
-        msg: "Failed to Get issue .",
+        msg: "Failed to Uopdate  issue .",
       });
     }
   } catch (err) {
     return res.status(500).json({
       success: false,
-      msg: "Failed to Get issue.",
+      msg: "Failed to update site issue.",
       error: err.message,
     });
   }
