@@ -88,6 +88,7 @@ app.use(require("@/routes/organization/main/material.route"))
 
 // API Organization -> Commercial
 app.use(require("@/routes/organization/org-commercial/getAllIndents.route"))
+app.use(require("@/routes/organization/org-commercial/getAllPurchaseOrder.route"))
 
 // API Organization -> Site -> Commercial
 app.use(require("@/routes/organization/site/commercial/commercial.route"))

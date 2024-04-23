@@ -15,6 +15,10 @@ const PurchaseOrder = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Indent",
   },
+  poId: {
+    type: String,
+    required: true,
+  },
   vendorId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "rootVendor",
@@ -28,13 +32,46 @@ const PurchaseOrder = mongoose.Schema({
     type: String,
     required: true,
   },
-  poNumber: {
+  billingDetails: {
     type: String,
+    required: true,
   },
   poStatus: {
     type: Boolean,
     default: false,
   },
+  termsandcondition: {
+    type: String,
+  },
+  remarks: {
+    type: String,
+  },
+  material: [
+    {
+      itemDetails: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Material",
+        required: [true, "Material Id is required."], // Replace 'OtherModel' with the actual name of the referenced model
+      },
+      quantity: {
+        type: Number,
+        required: true,
+      },
+      rate: {
+        type: Number,
+        required: true,
+      },
+      gst:{
+        type: Number,
+        required: true,
+      },
+      amount:{
+        type: Number,
+        required: true,
+      }
+
+    },
+  ],
 });
 
 module.exports = mongoose.model("PurchaseOrder", PurchaseOrder);
