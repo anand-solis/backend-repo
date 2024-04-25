@@ -6,6 +6,10 @@ const GetAllPurchaseOrder = async (req, res) => {
   try {
     const POData = await PO.find({ organization: organization })
       .populate({
+        path: "site",
+        select: "",
+      })
+      .populate({
         path: "indentId",
         populate: [
           {
@@ -16,7 +20,7 @@ const GetAllPurchaseOrder = async (req, res) => {
           },
           {
             path: "createdBy",
-            select:"name email"
+            select: "name email",
           },
         ],
       })
@@ -36,10 +40,8 @@ const GetAllPurchaseOrder = async (req, res) => {
         select: "finaicialdetails vendor termsAndCondition",
       })
       .populate({
-        path:"material.itemDetails"
-      })
-      ;
-
+        path: "material.itemDetails",
+      });
     return res.status(200).json({
       success: true,
       data: POData,
