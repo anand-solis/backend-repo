@@ -9,6 +9,7 @@ const GetAllLabourController = require("../../../../controllers/organization/sit
 const GetLabourController = require("../../../../controllers/organization/site/attendance/labour/getLabour.controller");
 const AddLabourController = require("../../../../controllers/organization/site/attendance/labour/addLabour.controller");
 const UpdateLabourController = require("../../../../controllers/organization/site/attendance/labour/updateLabour.controller");
+const DeleteLabourController = require("@/controllers/organization/site/attendance/labour/deleteLabour.controller");
 
 const key = "attendance";
 const plan = "labour_tracking_and_payable";
@@ -43,6 +44,13 @@ router.patch(
     (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
     siteMiddleware,
     UpdateLabourController
+);
+router.delete(
+    "/labour/delete/:id",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "delete", plan),
+    siteMiddleware,
+    DeleteLabourController
 );
 
 module.exports = router;
