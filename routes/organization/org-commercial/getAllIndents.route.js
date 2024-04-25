@@ -5,6 +5,9 @@ const organizationMiddleware = require('@/utils/middleware/organization/organiza
 
 const router = express.Router()
 
+plan= "material_management"
+key = "indent" 
+
 router.get(
     "/allindents/get",
     Middleware,

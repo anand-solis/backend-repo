@@ -8,7 +8,7 @@ const GetIndent = async (req, res) => {
     .populate("organization")
       .populate({
         path:('materialId.material'),
-        select: " -_id materialName brandName uom unitCost description ",
+        select: " -_id materialName brandName uom unitCost description gst",
       })
       .populate({ path: "purchaseOrder", select: "" })
       .populate({ path: "createdBy", select: "-_id email phone name " })
