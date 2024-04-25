@@ -6,7 +6,7 @@ const getAllvendors = async (req, res) => {
   const { organization } = req.query;
 
   try {
-    const vendors = await rootVender.find({ organization }).populate("vendor");
+    const vendors = await rootVender.find({ organization }).populate("vendor").populate("finaicialdetails");
     return res.status(200).json({
       success: true,
       data: vendors,
