@@ -10,7 +10,6 @@ const bodyParser = require("body-parser");
 app.use(express.json({ urlencoded: true }));
 app.use(bodyParser.json());
 
-
 // Documentation Imports
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("@/docs/swagger.json");
@@ -69,52 +68,59 @@ app.use(require("@/routes/organization/site/task/taskAttachment.route"));
 app.use(require("@/routes/organization/site/task/taskComment.route"));
 app.use(require("@/routes/organization/site/task/taskIssue.route"));
 
-
 // API Organization -> Site -> Material Routes
-app.use(require("@/routes/organization/site/material/main/materialModuleMember.route"));
-app.use(require("@/routes/organization/site/material/purchase-order/purchaseOrderSetting.route"));
+app.use(
+  require("@/routes/organization/site/material/main/materialModuleMember.route")
+);
+app.use(
+  require("@/routes/organization/site/material/purchase-order/purchaseOrderSetting.route")
+);
 
 // API Organization -> Site -> Attendance Routes
 app.use(require("@/routes/organization/site/attendance/attendance.route"));
 app.use(require("@/routes/organization/site/attendance/labour.route"));
-
 
 // API Organization -> Vendor
 app.use(require("@/routes/organization/main/vendor.route"));
 
 //API Organization -> Material
 
-app.use(require("@/routes/organization/main/material.route"))
-
+app.use(require("@/routes/organization/main/material.route"));
 
 //API Organization -> Material
-app.use(require("@/routes/organization/main/bills.route"))
+app.use(require("@/routes/organization/main/bills.route"));
+
+//API Organization -> BOQ
+
+app.use(require("@/routes/organization/main/boq.route"));
 
 // API Organization -> Commercial
-app.use(require("@/routes/organization/org-commercial/getAllIndents.route"))
-app.use(require("@/routes/organization/org-commercial/getAllPurchaseOrder.route"))
+app.use(require("@/routes/organization/org-commercial/getAllIndents.route"));
+app.use(
+  require("@/routes/organization/org-commercial/getAllPurchaseOrder.route")
+);
 
 // API Organization -> Site -> Commercial
-app.use(require("@/routes/organization/site/commercial/commercial.route"))
-app.use(require("@/routes/organization/site/commercial/purchaseOrder.route"))
+app.use(require("@/routes/organization/site/commercial/commercial.route"));
+app.use(require("@/routes/organization/site/commercial/purchaseOrder.route"));
 
 // API Organization -> Site -> Issues
 
-app.use(require("@/routes/organization/site/siteIssues/siteIssues.route"))
+app.use(require("@/routes/organization/site/siteIssues/siteIssues.route"));
 
 async function startServer() {
-    try {
-        // Connect to the database
-        await connectDB();
+  try {
+    // Connect to the database
+    await connectDB();
 
-        // Database connected successfully, now start the server
-        app.listen(PORT, () => {
-            console.log("Server is running on port :", PORT)
-        })
-    } catch (error) {
-        console.error("Failed to connect to the database:", error)
-        process.exit(1)
-    }
+    // Database connected successfully, now start the server
+    app.listen(PORT, () => {
+      console.log("Server is running on port :", PORT);
+    });
+  } catch (error) {
+    console.error("Failed to connect to the database:", error);
+    process.exit(1);
+  }
 }
 
 startServer();
