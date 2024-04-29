@@ -4,13 +4,16 @@ const organizationMemberMiddleware = require("@/utils/middleware/organization/or
 const {
   addsiteBillsController,
   getsiteBillsController,
+  updateSiteBillsController,
 } = require("@/controllers/organization/bills/siteBills.controller");
 const {
   CreateSiteExpenses,
   getSiteExpenses,
+  updateSiteExpenses,
 } = require("@/controllers/organization/bills/creteExpenses.controller");
 const addExpenseBillController = require("@/controllers/organization/bills/addExpense.controller");
 const getExpenseBill = require("@/controllers/organization/bills/getExpense.controller");
+const calculateBills = require("@/controllers/organization/bills/calculateBills.controller");
 
 const router = express.Router();
 
@@ -29,6 +32,12 @@ router.get(
   (req, res, next) => organizationMemberMiddleware(req, res, next, true),
   getsiteBillsController
 );
+router.patch(
+  "/sitebudget/update/:id",
+  Middleware,
+  (req, res, next) => organizationMemberMiddleware(req, res, next, true),
+  updateSiteBillsController
+);
 router.get(
   "/expenses/get",
   Middleware,
@@ -41,6 +50,12 @@ router.post(
   (req, res, next) => organizationMemberMiddleware(req, res, next, true),
   CreateSiteExpenses
 );
+router.patch(
+  "/expenses/update/:id",
+  Middleware,
+  (req, res, next) => organizationMemberMiddleware(req, res, next, true),
+  updateSiteExpenses
+);
 router.post(
   "/expense/bill/add",
   Middleware,
@@ -52,5 +67,13 @@ router.get(
   Middleware,
   (req, res, next) => organizationMemberMiddleware(req, res, next, true),
   getExpenseBill
+);  
+
+router.get(
+  "/calculatedBills/get",
+  Middleware,
+  (req, res, next) => organizationMemberMiddleware(req, res, next, true),
+  calculateBills
 );
+
 module.exports = router;

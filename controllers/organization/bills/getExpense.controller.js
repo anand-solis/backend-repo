@@ -4,7 +4,7 @@ const getExpenseBill = async (req, res) => {
   const { id, organization } = req.query;
   try {
     const data = await ExpenseBill.find({
-      organization: organization,
+      expenseId: id,
     });
     console.log(data);
     return res.status(200).json({

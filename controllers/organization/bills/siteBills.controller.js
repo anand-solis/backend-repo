@@ -62,5 +62,34 @@ const getsiteBillsController = async (req, res) => {
 
 const updateSiteBillsController = async (req, res) => {
   const { organization, site } = req.query;
+  const { id } = req.params;
+  const { budget } = req.body;
+  try {
+    const siteUpdate = await SiteBillsModel.findByIdAndUpdate(
+      { _id: id },
+      { budget },
+      { new: true }
+    );
+    if (!siteUpdate) {
+      return res.status(400).json({
+        message: "Site Budget is not Updated.",
+      });
+    }
+    return res.status(200).json({
+      data: siteUpdate,
+      success: true,
+      message: "Site Budget updated Successfully.",
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: err,
+      message: "Failed to Updated Site Budget.",
+    });
+  }
 };
-module.exports = { addsiteBillsController, getsiteBillsController };
+module.exports = {
+  addsiteBillsController,
+  getsiteBillsController,
+  updateSiteBillsController,
+};

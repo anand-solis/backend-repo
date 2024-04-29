@@ -47,4 +47,34 @@ const getSiteExpenses = async (req, res) => {
   }
 };
 
-module.exports = { CreateSiteExpenses, getSiteExpenses };
+const updateSiteExpenses = async (req, res) => {
+  const { organization } = req.query;
+  const { id } = req.params;
+  const name  = req.body;
+  try {
+    const expensesUpdate = await SiteExpenses.findByIdAndUpdate(
+      { _id: id },
+       name ,
+      { new: true }
+    );
+    if (!expensesUpdate) {
+      return res.status(500).json({
+        success: false,
+        error: err,
+        meassage: "Failed to  Update Expense Category.",
+      });
+    }
+    return res.status(200).json({
+      expensesCategpry: expensesUpdate,
+      success: true,
+      message: "Expense Category Updated Successfully.",
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: err,
+      meassage: "Failed to  Update Expense Category.",
+    });
+  }
+};
+module.exports = { CreateSiteExpenses, getSiteExpenses, updateSiteExpenses };
