@@ -5,6 +5,9 @@ const getExpenseBill = async (req, res) => {
   try {
     const data = await ExpenseBill.find({
       expenseId: id,
+    }).populate({
+      path:"expenseId",
+      select:""
     });
     console.log(data);
     return res.status(200).json({
