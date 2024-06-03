@@ -30,7 +30,6 @@ const SiteSchema = mongoose.Schema({
     imageUrl:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "files",
-        required: true
     }
 }, { timestamps: true });
 
