@@ -3,18 +3,30 @@ const Plan = require("@/models/organization/main/plan.model");
 const Member = require("@/models/organization/main/member.model");
 const SiteMember = require("@/models/organization/site/main/siteMember.model");
 const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
+const formidable = require('formidable');
 
 const CreateSiteController = async (req, res) => {
-    console.log("kkkkkkkkkkkkkkkkk",req.body)
-    let  { name, startDate, endDate } = req.body;
-    startDate = startDate || "2024-06-08"
-    endDate = endDate || "2024-06-020"
-    name = name || "user56"
 
     const { organization } = req.query;
 
     try {
-        console.log("i am in create site")
+        const form = new formidable.IncomingForm();
+        let SiteName, siteStartDate, siteEndDate
+        form.parse(req, async (err, fields, files) => {
+            if (err) {
+                console.error('Error parsing form data:', err);
+                return res.status(500).json({ success: false, error: 'Error parsing form data' });
+
+            }
+            let { name, startDate, endDate } = fields
+            name = name[0]
+            startDate = startDate[0]
+            endDate = endDate[0]
+            SiteName = name
+            siteStartDate = startDate
+            siteEndDate = endDate
+
+        })
         const response = await uploadStorageFile(req, ["image"]);
         const plan = await Plan
             .findOne({ organization: organization })
@@ -23,23 +35,22 @@ const CreateSiteController = async (req, res) => {
                 path: "subscription",
                 select: "sites_count"
             });
-console.log("response...............",response)
         const createdSites = await Site.find({ organization: organization }).select("_id");
         const createdSitesCount = createdSites.length;
 
         if (plan?.subscription?.sites_count) {
             if (createdSitesCount < plan?.subscription?.sites_count) {
                 const newSite = new Site({
-                    name: name,
-                    startDate: startDate,
-                    endDate: endDate,
+                    name: SiteName,
+                    startDate: siteStartDate,
+                    endDate: siteEndDate,
                     organization: organization,
                     createdBy: req?.user?._id,
-                    imageUrl:response.file
+                    profile: response.file
                 });
 
                 const newSiteResponse = await newSite.save();
-
+                console.log("newSiteResponse...........", newSiteResponse)
                 if (newSiteResponse?._id) {
                     const OrganizationMember = await Member.findOne({ organization: organization, user: req.user._id }).select("_id");
 
@@ -56,7 +67,7 @@ console.log("response...............",response)
 
                         return res.status(201).json({ site: newSiteResponse?._id, success: true, error: "", message: "Site successfully created." });
                     }
-                    else{
+                    else {
                         return res.status(401).json({ site: null, success: false, error: "You are not a member of this organization.", message: "" });
                     }
                 }
