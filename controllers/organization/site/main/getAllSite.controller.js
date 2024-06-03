@@ -19,14 +19,28 @@ const GetAllSiteController = async (req, res) => {
 
             const haveSiteIds = siteMembers.map(member => member.site);
 
-            const sites = await Site
-                .find({ _id: { $in: haveSiteIds } })
-                .select("name startDate endDate profile")
-                .sort({ createdAt: -1 })
-                .populate("profile", { url: 1, _id: 0 });
+            // const sites = await Site
+            //     .find({ _id: { $in: haveSiteIds } })
+            //     .select("name startDate endDate profile,imageUrl")
+            //     .sort({ createdAt: -1 })
+            //     .populate("imageUrl", { url: 1, _id: 0 });
+            const sites = await Site.aggregate([
+                {
+                    $match:{
+                        _id: { $in: haveSiteIds }
+                    }
+                },
+                {
+                    $lookup:{
+                        from: "files",
+                        localField: "imageUrl",
+                        foreignField: "_id",
+                        as: "imagedata"
+                      }
+                }
+            ])
 
             let siteWithInviteStatus = [];
-
             for (const site of sites) {
                 const index = siteMembers ? siteMembers.findIndex(item => item.site.toString() == site._id.toString()) : -1;
 
@@ -38,10 +52,9 @@ const GetAllSiteController = async (req, res) => {
                 let progress = 0;
 
                 taskTimelines.forEach((timeline) => progress += timeline.progress);
-
-                if (site?.profile?.url) {
-                    const profile = await getStorageFile(site.profile.url);
-                    site.profile.url = profile.file;
+                if (site?.imagedata.length && site?.imagedata[0]?.url) {
+                    const profile = await getStorageFile(site?.imagedata[0]?.url);
+                    site.url = profile.file;
                 }
 
                 siteWithInviteStatus.push({
@@ -49,7 +62,7 @@ const GetAllSiteController = async (req, res) => {
                     name: site.name,
                     startDate: site.startDate,
                     endDate: site.endDate,
-                    profile: site?.profile,
+                    profile: site?.url,
                     progress: count.length > 0 ? parseInt(progress / count.length) : 0,
                     inviteAccepted: index !== -1 ? siteMembers[index].inviteAccepted : false
                 });
@@ -60,6 +73,7 @@ const GetAllSiteController = async (req, res) => {
             return res.status(409).json({ success: false, error: "You are not in this organization.", message: "" });
         }
     } catch (error) {
+        console.log(error)
         return res.status(500).json({ sites: null, success: false, error: `Error: ${error}`, message: "" });
     }
 }

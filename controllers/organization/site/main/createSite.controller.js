@@ -2,12 +2,20 @@ const Site = require("@/models/organization/site/main/site.model");
 const Plan = require("@/models/organization/main/plan.model");
 const Member = require("@/models/organization/main/member.model");
 const SiteMember = require("@/models/organization/site/main/siteMember.model");
+const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
 
 const CreateSiteController = async (req, res) => {
-    const { name, startDate, endDate } = req.body;
+    console.log("kkkkkkkkkkkkkkkkk",req.body)
+    let  { name, startDate, endDate } = req.body;
+    startDate = startDate || "2024-06-08"
+    endDate = endDate || "2024-06-020"
+    name = name || "user56"
+
     const { organization } = req.query;
 
     try {
+        console.log("i am in create site")
+        const response = await uploadStorageFile(req, ["image"]);
         const plan = await Plan
             .findOne({ organization: organization })
             .select("subscription")
@@ -15,7 +23,7 @@ const CreateSiteController = async (req, res) => {
                 path: "subscription",
                 select: "sites_count"
             });
-
+console.log("response...............",response)
         const createdSites = await Site.find({ organization: organization }).select("_id");
         const createdSitesCount = createdSites.length;
 
@@ -26,7 +34,8 @@ const CreateSiteController = async (req, res) => {
                     startDate: startDate,
                     endDate: endDate,
                     organization: organization,
-                    createdBy: req?.user?._id
+                    createdBy: req?.user?._id,
+                    imageUrl:response.file
                 });
 
                 const newSiteResponse = await newSite.save();
@@ -64,6 +73,7 @@ const CreateSiteController = async (req, res) => {
         }
 
     } catch (error) {
+        console.log(error)
         return res.status(500).json({ site: null, success: false, error: `Error: ${error}`, message: "" });
     }
 }
