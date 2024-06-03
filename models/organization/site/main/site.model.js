@@ -26,6 +26,11 @@ const SiteSchema = mongoose.Schema({
     profile: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "File"
+    },
+    imageUrl:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "files",
+        required: true
     }
 }, { timestamps: true });
 

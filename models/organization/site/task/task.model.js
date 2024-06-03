@@ -40,10 +40,10 @@ const TaskSchema = mongoose.Schema({
         type: String,
         required: [true, "Task start date is required."]
     },
-    expectedCost: {
-        type: Number,
-        required: [true, "Task expected cost is required."]
-    },
+    // expectedCost: {
+    //     type: Number,
+    //     required: [true, "Task expected cost is required."]
+    // },
     totalCost: {
         type: Number,
         default: ""
