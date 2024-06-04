@@ -33,13 +33,12 @@ const GetAllSiteController = async (req, res) => {
                 {
                     $lookup:{
                         from: "files",
-                        localField: "imageUrl",
+                        localField: "profile",
                         foreignField: "_id",
                         as: "imagedata"
                       }
                 }
             ])
-
             let siteWithInviteStatus = [];
             for (const site of sites) {
                 const index = siteMembers ? siteMembers.findIndex(item => item.site.toString() == site._id.toString()) : -1;
