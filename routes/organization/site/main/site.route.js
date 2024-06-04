@@ -7,6 +7,7 @@ const GetAllSiteController = require("../../../../controllers/organization/site/
 const GetSiteController = require("../../../../controllers/organization/site/main/getSite.controller");
 const CreateSiteController = require("../../../../controllers/organization/site/main/createSite.controller");
 const UpdateSiteController = require("../../../../controllers/organization/site/main/updateSite.controller");
+const addSiteMembers = require("../../../../controllers/organization/site/main/addSiteMembers.controller")
 
 const router = express.Router();
 
@@ -41,6 +42,12 @@ router.patch(
     (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
     siteMiddleware,
     UpdateSiteController
+);
+router.put(
+    "/site/mebers",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
+    addSiteMembers
 );
 
 module.exports = router;

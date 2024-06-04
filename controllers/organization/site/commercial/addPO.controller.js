@@ -1,4 +1,5 @@
 const PO = require("@/models/organization/site/commercial/po.model");
+const { default: mongoose } = require("mongoose");
 
 const AddPurchaseOrder = async (req, res) => {
   const { organization, site } = req.query;
@@ -12,6 +13,8 @@ const AddPurchaseOrder = async (req, res) => {
   };
 
   try {
+
+    data["indentId"] = data?.indentId?.map((id) => new mongoose.Types.ObjectId(id))
     const purchaseorder = await PO.create(popayload); 
 
     return res.status(201).json({

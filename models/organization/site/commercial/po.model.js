@@ -12,8 +12,7 @@ const PurchaseOrder = mongoose.Schema({
     required: true,
   },
   indentId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Indent",
+    type:Array
   },
   poId: {
     type: String,

@@ -27,9 +27,8 @@ const SiteSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "File"
     },
-    imageUrl:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "files",
+    siteMember:{
+        type:Array
     }
 }, { timestamps: true });
 
