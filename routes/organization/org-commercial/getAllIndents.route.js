@@ -2,6 +2,7 @@ const express = require('express');
 const GetAllIndents = require("@/controllers/organization/org-commercial/getAllIndent.controller");
 const Middleware = require('@/utils/middleware/middleware');
 const organizationMiddleware = require('@/utils/middleware/organization/organizationMiddleware');
+const checkBoxSelectIndents = require("@/controllers/organization/org-commercial/getCheckBoxSelectIndent.controller");
 
 const router = express.Router()
 
@@ -14,6 +15,13 @@ router.get(
     (req, res, next) =>
       organizationMiddleware(req, res, next, key, "insert", plan),
       GetAllIndents
+  );
+  router.get(
+    "/checkBoxSelectIndents",
+    Middleware,
+    (req, res, next) =>
+      organizationMiddleware(req, res, next, key, "insert", plan),
+    checkBoxSelectIndents
   );
 
   module.exports = router;
