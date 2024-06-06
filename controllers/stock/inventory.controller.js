@@ -54,6 +54,12 @@ const getAllInventory = async(req,res)=>{
                     $match:{
                         organization:new mongoose.Types.ObjectId(organization)
                       }
+                },
+                {
+                    $skip:skip
+                },
+                {
+                    $limit:perPage
                 }
             ]
         }
@@ -66,7 +72,7 @@ const getAllInventory = async(req,res)=>{
         let total = inventoryData?.total.length?inventoryData?.total[0]?.total:0
         let data = inventoryData?.data.length?inventoryData?.data:[]
 
-        if(inventoryData){
+        if(data.length){
             return res.status(201).json({
                 success: true,
                 Error: "",
