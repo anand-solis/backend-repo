@@ -8,8 +8,6 @@ const checkBoxSelectIndents = async (req, res) => {
   try {
     let payload = req.body.indentId
     let indentId
-    console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkk",payload)
-    // indentId = payload?.map((id)= > new mongoose.Types.ObjectId(id))
     indentId = payload?.map((id)=> new mongoose.Types.ObjectId(id))
     const Indentdata = await Indent.find({ organization: organization ,_id:{$in:indentId}})
       .populate({
@@ -18,7 +16,7 @@ const checkBoxSelectIndents = async (req, res) => {
       })
       .populate({
         path: "materialId.material",
-        select: " -_id materialName brandName uom unitCost description ",
+        select: " -_id materialName brandName uom unitCost description gst ",
       })
       .populate({ path: "purchaseOrder", select: "" })
       .populate({ path: "createdBy", select: "-_id email phone name " })
