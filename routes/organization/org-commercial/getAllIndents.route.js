@@ -16,7 +16,7 @@ router.get(
       organizationMiddleware(req, res, next, key, "insert", plan),
       GetAllIndents
   );
-  router.get(
+  router.post(
     "/checkBoxSelectIndents",
     Middleware,
     (req, res, next) =>
