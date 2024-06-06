@@ -107,6 +107,7 @@ app.use(require("@/routes/organization/site/commercial/purchaseOrder.route"));
 // API Organization -> Site -> Issues
 
 app.use(require("@/routes/organization/site/siteIssues/siteIssues.route"));
+app.use(require("@/routes/stock/inventory.routes"));
 
 async function startServer() {
   try {
