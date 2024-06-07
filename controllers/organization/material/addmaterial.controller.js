@@ -4,7 +4,8 @@ const addMaterial = async (req, res) => {
   const { organization } = req.query;
   const data = req.body;
   try {
-    const material = await materialSchema.create({ ...data, organization:organization });
+    let user = req.user?._id
+    const material = await materialSchema.create({ ...data, organization:organization ,createdBy:user});
 
     // Return success response
     return res.status(200).json({

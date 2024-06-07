@@ -6,6 +6,11 @@ const MaterialSchema = mongoose.Schema({
             ref:"Organization",
             required : true
         },
+        createdBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: true
+        },
         materialCode:{
             type:String
         },
@@ -32,6 +37,12 @@ const MaterialSchema = mongoose.Schema({
         },
         hsn:{
             type:String
+        },
+        inStocks: {
+            type: Number,
+        },
+        usedFromStocks: {
+            type: Number,
         },
         color:{
             type:String

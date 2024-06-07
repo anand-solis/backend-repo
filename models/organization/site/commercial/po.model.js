@@ -71,6 +71,9 @@ const PurchaseOrder = mongoose.Schema({
 
     },
   ],
+  gstType: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("PurchaseOrder", PurchaseOrder);
