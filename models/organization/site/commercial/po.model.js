@@ -16,7 +16,7 @@ const PurchaseOrder = mongoose.Schema({
   },
   poId: {
     type: String,
-    required: true,
+    required: [true,"poid is required ."],
   },
   vendorId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -61,7 +61,7 @@ const PurchaseOrder = mongoose.Schema({
         required: true,
       },
       gst:{
-        type: Number,
+        type: String,
         required: true,
       },
       amount:{
