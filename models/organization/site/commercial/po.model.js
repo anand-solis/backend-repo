@@ -56,7 +56,7 @@ const PurchaseOrder = mongoose.Schema({
         type: Number,
         required: true,
       },
-      rate: {
+      unitCost: {
         type: Number,
         required: true,
       },
