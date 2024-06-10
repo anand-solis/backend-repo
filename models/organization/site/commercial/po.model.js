@@ -6,6 +6,11 @@ const PurchaseOrder = mongoose.Schema({
     ref: "Organization",
     required: true,
   },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   site: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Site",
@@ -73,7 +78,30 @@ const PurchaseOrder = mongoose.Schema({
   ],
   gstType: {
     type: String,
+    required: true
   },
-});
+  subTotal:{
+    type:Number,
+    required: true
+  },
+  disCount:{
+    type:Number
+  },
+  totalIncludingTax:{
+    type:Number,
+    required: true
+  },
+  roundOfTotal:{
+    type:Number,
+    required: true
+  },
+  gstDetails:{
+    type:Array
+  }
+},
+{
+  timestamps:true
+}
+);
 
 module.exports = mongoose.model("PurchaseOrder", PurchaseOrder);

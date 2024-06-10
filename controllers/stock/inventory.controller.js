@@ -30,7 +30,7 @@ const addInventory = async(req,res)=>{
         return res.status(500).json({
             success: false,
             Error: error,
-            message: "Failed to get Indent.",
+            message: "Failed to get Inventory.",
           });
     }
 }

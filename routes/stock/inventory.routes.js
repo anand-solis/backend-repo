@@ -3,7 +3,6 @@ const router = express.Router();
 const inventoryController = require("../../controllers/stock/inventory.controller")
 const Middleware = require("../../utils/middleware/middleware")
 const organizationMiddleware = require("../../utils/middleware/organization/organizationMiddleware")
-console.log("inventoryController............",inventoryController) 
 plan= "material_management"
 key = "indent" 
 router.post("/inventory/add",Middleware,(req, res, next) =>

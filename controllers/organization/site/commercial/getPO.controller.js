@@ -1,10 +1,22 @@
 const PO = require("@/models/organization/site/commercial/po.model");
+const { default: mongoose } = require("mongoose");
+const pagination = require("../../../../utils/pagination")
 
 const GetPurchaseOrder = async (req, res) => {
-  const { organization, site } = req.query;
+  const { organization, site,limit,page } = req.query;
 
   try {
-    const POData = await PO.find({ site: site })
+   let  {skip,perPage} = await pagination(page,limit)
+   console.log("............................",{skip,perPage})
+    let matchObj = {
+      organization: new mongoose.Types.ObjectId(organization)
+    }
+    if(site){
+      matchObj["site"] = new mongoose.Types.ObjectId(site)
+    }
+    const POData = await PO.find(matchObj)
+      .skip(skip)
+      .limit(perPage)
       .populate({
         path: "indentId",
         populate: [
