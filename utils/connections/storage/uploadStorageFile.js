@@ -75,6 +75,7 @@ const uploadStorageFile = async (req, allowed) => {
     
                     return { fields: fields, file: addedFile?._id, success: true, error: "", message: "File uploaded successfully." };
                 } catch (error) {
+                    console.log(error)
                     return { fields: fields, file: null, success: false, error: `Error: ${error}`, message: "" };
                 }
             }
@@ -95,6 +96,7 @@ const uploadStorageFile = async (req, allowed) => {
             return { fields: fields, file: null, success: false, error: "No file attached in the request.", message: "" };
         }
     } catch (error) {
+        console.log(error)
         return { fields: fields, file: null, success: false, error: `Error: ${error}`, message: "" };
     }
 }
