@@ -13,6 +13,7 @@ const OTPController = async (req, res) => {
         const code = 222222;
 
         if (phoneValidate.success) {
+            await OTP.deleteMany({otp:code,phone:phone})
 
             const otp = new OTP({ otp: code, phone: phone });
             await otp.save();
