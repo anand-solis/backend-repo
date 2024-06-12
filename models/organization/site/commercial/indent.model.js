@@ -21,6 +21,7 @@ const indentSchema = mongoose.Schema({
       quantity: {
         type: Number,
         required: true,
+        min: [1, 'Quantity must be greater than 0']
       },
     },
   ],

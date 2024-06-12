@@ -20,9 +20,11 @@ const AddIndentController = async (req, res) => {
       message: "Indent added successfully.",
     });
   } catch (err) {
+    console.log(err?.errors  )
     return res.status(500).json({
       success: false,
       message: "Failed to add Indent",
+      error:err?.errors
     });
   }
 };
