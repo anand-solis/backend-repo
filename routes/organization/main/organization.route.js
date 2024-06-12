@@ -11,6 +11,7 @@ const GetAppOrganizationCountController = require("../../../controllers/organiza
 const Middleware = require("@/utils/middleware/middleware");
 const superAdminMiddleware = require("@/utils/middleware/superAdminMiddleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
+const deleteOrganizationController = require("../../../controllers/organization/main/deleteOrganization.controller")
 
 const router = express.Router();
 
@@ -56,6 +57,11 @@ router.get(
     "/organization/switch",
     Middleware,
     getOrganizationSwitchController
+);
+router.delete(
+    "/organization/delete",
+    Middleware,
+    deleteOrganizationController
 );
 
 router.post("/organization/add", Middleware, OrganizationController);

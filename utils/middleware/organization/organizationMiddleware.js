@@ -17,7 +17,7 @@ const organizationMiddleware = async (req, res, next, key, rule, subscription, i
             })
 
         if (member?._id) {
-            if (!member.organization.blocked) {
+            if (!member?.organization?.blocked) {
                 if (member.inviteAccepted || invitationSkip) {
                     let isRuleValid = null;
                     const feature = await Feature.findOne({ key: key }).select("_id");
@@ -80,6 +80,7 @@ const organizationMiddleware = async (req, res, next, key, rule, subscription, i
         }
 
     } catch (error) {
+        console.log(error)
         return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });
     }
 }

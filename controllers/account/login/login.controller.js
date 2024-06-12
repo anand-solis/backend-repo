@@ -6,6 +6,7 @@ const OTP = require("@/models/account/otp.model");
 const LoginController = async (req, res) => {
     try {
         const { phone, otp } = req.body;
+        let {clintType} = req.query
 
         const OTPResponse = await OTP.findOne({ otp: "222222", phone: phone }).select("phone createdAt");
 
@@ -16,7 +17,7 @@ const LoginController = async (req, res) => {
                 const UserResponse = await User.findOne({ "phone.number": OTPResponse.phone });
 
                 if(UserResponse?._id){
-                    const assigned = await AssignJWTToken(UserResponse);
+                    const assigned = await AssignJWTToken(UserResponse,clintType);
 
                     if(assigned.success) await OTP.deleteMany({ phone: phone });
 
@@ -31,7 +32,7 @@ const LoginController = async (req, res) => {
                     });
 
                     const userAdded = await AddedUser.save();
-                    const assigned = await AssignJWTToken(userAdded);
+                    const assigned = await AssignJWTToken(userAdded,clintType);
 
                     if(assigned.success) await OTP.deleteMany({ phone: phone });
 

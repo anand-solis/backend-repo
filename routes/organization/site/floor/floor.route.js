@@ -6,6 +6,7 @@ const organizationMiddleware = require("@/utils/middleware/organization/organiza
 const GetAllFloorController = require("../../../../controllers/organization/site/floor/getAllFloor.controller");
 const AddFloorController = require("../../../../controllers/organization/site/floor/addFloor.controller");
 const UpdateFloorController = require("../../../../controllers/organization/site/floor/updateFloor.controller");
+const deleteFloorController = require("../../../../controllers/organization/site/floor/deleteFloor.controller")
 
 const router = express.Router();
 
@@ -34,6 +35,13 @@ router.patch(
     (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
     siteMiddleware,
     UpdateFloorController
+);
+router.delete(
+    "/floor/delete",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
+    siteMiddleware,
+    deleteFloorController
 );
 
 module.exports = router;

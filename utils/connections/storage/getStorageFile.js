@@ -16,7 +16,6 @@ const getStorageFile = async (key) => {
             Expires: 200000
         };
         const url = s3.getSignedUrl("getObject", params);
-        console.log("url..................", url)
 
         return { file: url, success: true, error: "", message: "File fetched successfully." };
     } catch (error) {
