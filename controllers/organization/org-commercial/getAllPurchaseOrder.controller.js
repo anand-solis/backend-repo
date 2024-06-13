@@ -4,7 +4,12 @@ const GetAllPurchaseOrder = async (req, res) => {
   const { organization, site } = req.query;
 
   try {
+    console.log("..............................................")
     const POData = await PO.find({ organization: organization })
+    .populate({
+      path: "createdBy",
+      select: "name",
+    })
       .populate({
         path: "site",
         select: "",
