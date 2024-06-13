@@ -7,7 +7,6 @@ const GetPurchaseOrder = async (req, res) => {
 
   try {
    let  {skip,perPage} = await pagination(page,limit)
-   console.log("............................",{skip,perPage})
     let matchObj = {
       organization: new mongoose.Types.ObjectId(organization)
     }
