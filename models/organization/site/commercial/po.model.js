@@ -16,9 +16,13 @@ const PurchaseOrder = mongoose.Schema({
     ref: "Site",
     required: true,
   },
-  indentId: {
-    type:Array
-  },
+  indentId: [
+    {id:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref:"Indent"
+    }
+    }
+  ],
   poId: {
     type: String,
     required: [true,"poid is required ."],

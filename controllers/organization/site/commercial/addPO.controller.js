@@ -14,7 +14,9 @@ const AddPurchaseOrder = async (req, res) => {
 
   try {
 
-    popayload["indentId"] = data?.indentId?.map((id) => new mongoose.Types.ObjectId(id))
+    popayload["indentId"] = data?.indentId?.map((ID) => {
+      return {id:ID}
+    })
     const purchaseorder = await PO.create(popayload); 
 
     return res.status(201).json({

@@ -10,6 +10,10 @@ const GetAllPurchaseOrder = async (req, res) => {
       path: "createdBy",
       select: "name",
     })
+    .populate({
+      path: "indentId.id",
+      select: "indentId",
+    })
       .populate({
         path: "site",
         select: "",

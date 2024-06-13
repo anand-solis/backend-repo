@@ -11,6 +11,7 @@ const indentSchema = mongoose.Schema({
     ref: "Site",
     required: [true, "organization required."],
   },
+  indentId:{type:String},
   materialId: [
     {
       material: {
@@ -56,6 +57,7 @@ const indentSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-});
+},{timestamps:true}
+);
 
 module.exports = mongoose.model("Indent", indentSchema);
