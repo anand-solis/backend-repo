@@ -45,7 +45,7 @@ const GetPurchaseOrder = async (req, res) => {
           },
         ],
         select: "finaicialdetails vendor termsAndCondition",
-      });
+      }).populate("createdBy");
 
     return res.status(200).json({
       success: true,
