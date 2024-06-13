@@ -45,14 +45,14 @@ router.post(
 );
 
 router.patch(
-    "/app/work-category/update/:id",
+    "/work-category/update/:id",
     Middleware,
     superAdminMiddleware,
     UpdateAppWorkCategoryController
 );
 
 router.delete(
-    "/app/work-category/remove/:id",
+    "/work-category/remove/:id",
     Middleware,
     superAdminMiddleware,
     RemoveAppWorkCategoryController

@@ -31,12 +31,12 @@ const getAllmaterialdata = async (req, res) => {
           {
               $match:matchObj
           },
-          {
-              $skip:skip
-          },
-          {
-              $limit:perPage
-          }
+          // {
+          //     $skip:skip
+          // },
+          // {
+          //     $limit:perPage
+          // }
       ]
   }
   let aggregate = []
@@ -51,14 +51,12 @@ const getAllmaterialdata = async (req, res) => {
     return res.status(200).json({
       success: true,
       data: data,
-      total:total,
       message: "Materials found successfully.",
     });
   }
   return res.status(404).json({
     success: false,
     data: [],
-    total:total,
     message: "Materials not found ",
   });
     
