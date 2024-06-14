@@ -3,6 +3,7 @@ const getAllmaterialdata = require("@/controllers/organization/material/getMater
 const updateMaterial = require("@/controllers/organization/material/updateMaterial.controller");
 const Middleware = require("@/utils/middleware/middleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
+const deleteMaterial = require('../../../controllers/organization/material/deleteMatarial.controller')
 const express = require("express");
 const router = express.Router();
 
@@ -30,6 +31,14 @@ router.patch(
   (req, res, next) =>
     organizationMiddleware(req, res, next, key, "insert", plan),
     updateMaterial
+);
+
+router.delete(
+  "/material/delete",
+  Middleware,
+  (req, res, next) =>
+    organizationMiddleware(req, res, next, key, "insert", plan),
+  deleteMaterial
 );
 
 module.exports = router

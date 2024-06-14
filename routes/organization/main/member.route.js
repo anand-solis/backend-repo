@@ -8,6 +8,7 @@ const updateMemberController = require("../../../controllers/organization/member
 const inviteAcceptMemberController = require("../../../controllers/organization/member/inviteAcceptMember.controller");
 const inviteRejectMemberController = require("../../../controllers/organization/member/inviteRejectMember.controller");
 const resendInviteMemberController = require("../../../controllers/organization/member/resendInviteMember.controller");
+const deleteMemberController = require("../../../controllers/organization/member/deleteMember.controller")
 
 const router = express.Router();
 
@@ -54,6 +55,12 @@ router.patch(
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
     updateMemberController
+);
+router.delete(
+    "/member/delete",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
+    deleteMemberController
 );
 
 module.exports = router;
