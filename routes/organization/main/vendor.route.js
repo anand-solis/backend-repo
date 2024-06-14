@@ -7,6 +7,7 @@ const {
   addvendorFinancialDetails,
   addTermsandConditionDetails,
   uploadproof,
+  deleteVendorDetails
 } = require("@/controllers/organization/vendor/addVendor");
 const {
   GetVendorByOrganization,getAllvendors
@@ -81,6 +82,13 @@ router.patch(
   (req, res, next) =>
   organizationMiddleware(req, res, next, key, "insert", plan),
   updatetermsAndCondition
+);
+router.delete(
+  "/vendor/deleteVendorDetails",
+  Middleware,
+  (req, res, next) =>
+  organizationMiddleware(req, res, next, key, "insert", plan),
+  deleteVendorDetails
 );
 
 module.exports = router;

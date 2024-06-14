@@ -4,11 +4,13 @@ const vendorTermsCondition = require("@/models/organization/main/vendor/termsAnd
 const vendorProof = require("@/models/organization/main/vendor/uploadProof");
 const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
 const rootVendor = require("@/models/organization/main/vendor/rootVender.modal");
+const { default: mongoose } = require("mongoose");
 
 const addVendorDetails = async (req, res) => {
   const { organization } = req.query;
 const vendorData = req.body;
   try {
+    vendorData["organization"] = organization
     let vendorDetails = await vendorPersonalDetails.create({...vendorData});
  let rootVendorDetails =await rootVendor.create({vendor:vendorDetails?._id,organization:organization})
     
@@ -123,9 +125,51 @@ const uploadproof = async (req, res) => {
     });
   }
 };
+const deleteVendorDetails = async (req, res) => {
+  try {
+  const { organization, vendorId } = req.query;
+  let rootVenderDetails
+  let vendorFinancialId
+  let venderTermsConditionId
+  let rootVendorId
+  rootVenderDetails = await rootVendor.find({
+    vendor:new mongoose.Types.ObjectId(vendorId)
+  })
+  if(!rootVenderDetails.length){
+    return res.status(404).json({
+      success: false,
+      error: "",
+      message: "Vendor ID not found in database ",
+    });
+  }
+  rootVenderDetails = rootVenderDetails[0]
+  rootVendorId = rootVenderDetails?._id
+  vendorFinancialId = rootVenderDetails?.finaicialdetails
+  venderTermsConditionId =  rootVenderDetails?.termsAndCondition
+  await vendorPersonalDetails.findByIdAndDelete(vendorId)
+  await vendorFinancialDetails.findByIdAndDelete(vendorFinancialId)
+  await vendorTermsCondition.findByIdAndDelete(venderTermsConditionId)
+  await rootVendor.findByIdAndDelete(rootVendorId)
+
+  return res.status(200).json({
+    success: true,
+    error: "",
+    message: "Vendor details deleted successfully.",
+  });
+
+    
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: `Error: ${err}`,
+      message: "Vendor not deleted",
+    });
+  }
+};
 module.exports = {
   addVendorDetails,
   addvendorFinancialDetails,
   addTermsandConditionDetails,
   uploadproof,
+  deleteVendorDetails
 };
