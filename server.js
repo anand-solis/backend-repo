@@ -123,5 +123,5 @@ async function startServer() {
     process.exit(1);
   }
 }
-
+console.log("make console in server.js file")
 startServer();
