@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const workCategoryModel = require("../../main/workCategory.model");
 
 const IssuesSchema = mongoose.Schema({
   organization: {
@@ -10,6 +11,21 @@ const IssuesSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Site",
     required: true,
+  },
+  floor: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Floor",
+    required: true,
+  },
+  workCategory: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "WorkCategory",
+    required: true,
+  },
+  status: {
+    type: String,
+    enum:["Pending","Resolved","In Progress"],
+    default:"Pending"
   },
   assignUser: [
     {

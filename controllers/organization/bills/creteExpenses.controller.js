@@ -77,4 +77,38 @@ const updateSiteExpenses = async (req, res) => {
     });
   }
 };
-module.exports = { CreateSiteExpenses, getSiteExpenses, updateSiteExpenses };
+const deleteSiteExpenses = async (req, res) => {
+  const { organization,expenseId } = req.query;
+  try {
+    if(!expenseId){
+      return res.status(404).json({
+        success: false,
+        error: "",
+        meassage: "Expense Category id is required",
+      });
+    }
+    const expensesData = await SiteExpenses.findByIdAndDelete(
+      expenseId
+      
+    );
+    if (!expensesData) {
+      return res.status(500).json({
+        success: false,
+        error: "",
+        meassage: "Failed to  Delete Expense Category.",
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      message: "Expense Category Delete Successfully.",
+    });
+  } catch (err) {
+    console.log(err)
+    return res.status(500).json({
+      success: false,
+      error: err,
+      meassage: "Failed to  Delete Expense Category.",
+    });
+  }
+};
+module.exports = { CreateSiteExpenses, getSiteExpenses, updateSiteExpenses ,deleteSiteExpenses};

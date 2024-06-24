@@ -9,7 +9,7 @@ const inviteAcceptMemberController = require("../../../controllers/organization/
 const inviteRejectMemberController = require("../../../controllers/organization/member/inviteRejectMember.controller");
 const resendInviteMemberController = require("../../../controllers/organization/member/resendInviteMember.controller");
 const deleteMemberController = require("../../../controllers/organization/member/deleteMember.controller")
-
+const sitAssignMemberController = require('../../../controllers/organization/site/main/addSiteMembers.controller')
 const router = express.Router();
 
 const key = "members";
@@ -61,6 +61,12 @@ router.delete(
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
     deleteMemberController
+);
+router.get(
+    "/member/sitAssignMember",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
+    sitAssignMemberController
 );
 
 module.exports = router;

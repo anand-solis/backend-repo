@@ -73,6 +73,9 @@ const PurchaseOrder = mongoose.Schema({
         type: String,
         required: true,
       },
+      discount:{
+        type: String,
+      },
       amount:{
         type: Number,
         required: true,
@@ -88,8 +91,12 @@ const PurchaseOrder = mongoose.Schema({
     type:Number,
     required: true
   },
-  disCount:{
-    type:Number
+  subTotal:{
+    type:Number,
+  },
+  totalDiscount:{
+    type:Number,
+    default:0
   },
   totalIncludingTax:{
     type:Number,

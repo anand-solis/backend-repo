@@ -8,9 +8,9 @@ const getPermissionController = require("../../../controllers/organization/permi
 const createPermissionController = require("../../../controllers/organization/permission/createPermission.controller");
 const updatePermissionController = require("../../../controllers/organization/permission/updatePermission.controller");
 const getPermissionAssignedMemberController = require("../../../controllers/organization/permission/getPermissionAssignedMember.controller");
-
+const deletePermissionController = require("../../../controllers/organization/permission/deletePermissionName.controller")
+const UpdatePermissionNameController = require("../../../controllers/organization/permission/updatePermissionName.controller")
 const router = express.Router();
-
 const key = "roles-and-permissions";
 const plan = "admin_settings";
 
@@ -55,5 +55,16 @@ router.patch(
     (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
     updatePermissionController
 );
-
+router.delete(
+    "/permission/delete",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
+    deletePermissionController
+);
+router.patch(
+    "/permission/name/update",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
+    UpdatePermissionNameController
+);
 module.exports = router;

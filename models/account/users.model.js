@@ -25,10 +25,9 @@ const UserSchema = mongoose.Schema({
             required: [true, "Phone Number is required."],
             unique: [true, "Phone Number must be unique."],
             match: [
-                /^\d{10}$/,
-                "Please enter a valid 10-digit phone number."
+                /^\d{10,15}$/,
+                "Please enter a valid 10,15-digit phone number."
             ],
-            default: ""
         },
         isValid: {
             type: Boolean,

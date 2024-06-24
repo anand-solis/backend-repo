@@ -88,8 +88,43 @@ const updateSiteBillsController = async (req, res) => {
     });
   }
 };
+const deleteSiteBillsController = async (req, res) => {
+  const { organization,siteBillId } = req.query;
+  try {
+    if(!siteBillId){
+      return res.status(404).json({
+        success: false,
+        error: "",
+        meassage: "Site Budget id is required",
+      });
+    }
+    const billData = await SiteBillsModel.findByIdAndDelete(
+      siteBillId
+      
+    );
+    if (!billData) {
+      return res.status(500).json({
+        success: false,
+        error: "",
+        meassage: "Failed to  Delete Site Budget.",
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      message: "Site Budget Delete Successfully.",
+    });
+  } catch (err) {
+    console.log(err)
+    return res.status(500).json({
+      success: false,
+      error: err,
+      meassage: "Failed to  Delete Site Budget.",
+    });
+  }
+};
 module.exports = {
   addsiteBillsController,
   getsiteBillsController,
   updateSiteBillsController,
+  deleteSiteBillsController
 };

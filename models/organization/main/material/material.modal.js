@@ -19,7 +19,8 @@ const MaterialSchema = mongoose.Schema({
             required:[true , "Material Name is required."]
         },
         brandName :{
-            type:String
+            type:String,
+            required:[true , "Brand Name is required."]
         },
         uom:{
             type:String,
@@ -33,7 +34,7 @@ const MaterialSchema = mongoose.Schema({
         },
         gst:{
             type:String,
-            required:[true , "GST is required."]
+            // required:[true , "GST is required."]
         },
         hsn:{
             type:String

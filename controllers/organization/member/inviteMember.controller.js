@@ -8,7 +8,7 @@ const inviteMemberController = async (req, res) => {
     let phone = [];
 
     try {
-        if (members) {
+        if (members.length) {
             await Promise.all(members.map(async (member) => {
                 if(member?.phone){
                     try {
