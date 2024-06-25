@@ -12,15 +12,18 @@ const IssuesSchema = mongoose.Schema({
     ref: "Site",
     required: true,
   },
+  issueTitle:{
+    type:String
+  },
   floor: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Floor",
-    required: true,
+    // required: true,
   },
   workCategory: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "WorkCategory",
-    required: true,
+    // required: true,
   },
   status: {
     type: String,
@@ -36,7 +39,7 @@ const IssuesSchema = mongoose.Schema({
   ],
   reason: {
     type: String,
-    required: [true, "Issue Reason  is required."],
+    // required: [true, "Issue Reason  is required."],
   },
   dueDate: {
     type: String,

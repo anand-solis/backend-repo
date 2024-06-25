@@ -15,6 +15,8 @@ const RaiseIssuesController = async (req, res) => {
     if (response?.fields?.floor?.[0] !== undefined) IssuesData.floor = response.fields.floor[0];
     if (response?.fields?.workCategory?.[0] !== undefined) IssuesData.workCategory = response.fields.workCategory[0];
     if (response?.fields?.status?.[0] !== undefined) IssuesData.status = response.fields.status[0];
+    if (response?.fields?.issueTitle?.[0] !== undefined) IssuesData.issueTitle = response.fields.issueTitle[0];
+
 
     if (response.success) {
       IssuesData["Files"] = response?.file
