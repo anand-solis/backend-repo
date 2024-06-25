@@ -43,7 +43,7 @@ const IssuesSchema = mongoose.Schema({
   },
   dueDate: {
     type: String,
-    required: [true, "Due Date is required."],
+    // required: [true, "Due Date is required."],
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,

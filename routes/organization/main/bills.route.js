@@ -1,6 +1,5 @@
 const express = require("express");
 const Middleware = require("@/utils/middleware/middleware");
-console.log("mnfgfkgfmkkkkkkkkkkk",global)
 
 const organizationMemberMiddleware = require("@/utils/middleware/organization/organizationMemberMiddleware");
 const {
