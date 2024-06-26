@@ -7,6 +7,8 @@ const addSiteMembers = async (req, res) => {
   try {
     let payload = req.body
     let siteDetails
+    let user = req.user
+    let userId = user?._id?.toString()
     let membersId = payload?.membersId?.length ? payload?.membersId : []
     if (!membersId.length) {
 
@@ -23,6 +25,9 @@ const addSiteMembers = async (req, res) => {
     let allMeberData = []
     for (let i = 0; i < preMeberData.length; i++) {
       allMeberData.push(preMeberData[i]?.toString())
+    }
+    if(!allMeberData.includes(userId)){
+      allMeberData.push(userId)
     }
     for (let i = 0; i < membersId.length; i++) {
       if (!allMeberData.includes(membersId[i])) {
