@@ -108,7 +108,11 @@ const PurchaseOrder = mongoose.Schema({
   },
   gstDetails:{
     type:Array
-  }
+  },
+  profile: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "File"
+},
 },
 {
   timestamps:true

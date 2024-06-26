@@ -21,12 +21,14 @@ const AddPurchaseOrder = async (req, res) => {
 
     return res.status(201).json({
       success: true,
+      data:purchaseorder?._id,
       message: "Purchase order added successfully.",
     });
   } catch (err) {
     console.error(err);
     return res.status(500).json({
       success: false,
+      data:"",
       message: "Failed to create Purchase Order.",
     });
   }

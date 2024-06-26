@@ -3,6 +3,7 @@ const GetPurchaseOrder = require("@/controllers/organization/site/commercial/get
 const Middleware = require("@/utils/middleware/middleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 const siteMiddleware = require("@/utils/middleware/organization/siteMiddleware");
+const updatePurchaseOrderProfile = require("@/controllers/organization/site/commercial/addPoProfile.controller")
 const express = require("express")
 const router = express.Router();
 
@@ -27,5 +28,13 @@ router.get(
  siteMiddleware,
  GetPurchaseOrder
 );
+router.put(
+  "/purchaseOrder/profile",
+  Middleware,
+  (req, res, next) =>
+    organizationMiddleware(req, res, next, key, "insert", plan),
+  siteMiddleware,
+  updatePurchaseOrderProfile
+ );
 
 module.exports = router
