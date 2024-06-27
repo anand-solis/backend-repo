@@ -53,6 +53,8 @@ const IssuesSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "File",
   },
-});
+},
+{ timestamps: true }
+);
 
 module.exports = mongoose.model("Issues", IssuesSchema);
