@@ -9,7 +9,7 @@ const RaiseIssuesController = async (req, res) => {
     const IssuesData = { ...data, organization: organization, site: site, createdBy: userId };
     const response = await uploadStorageFile(req, ["image"]);
 
-    if (response?.fields?.assignUser?.[0] !== undefined) IssuesData.assignUser = response.fields.assignUser[0];
+    if (response?.fields?.assignUser !== undefined) IssuesData.assignUser = response.fields.assignUser;
     if (response?.fields?.reason?.[0] !== undefined) IssuesData.reason = response.fields.reason[0];
     if (response?.fields?.dueDate?.[0] !== undefined) IssuesData.dueDate = response.fields.dueDate[0];
     if (response?.fields?.floor?.[0] !== undefined) IssuesData.floor = response.fields.floor[0];
