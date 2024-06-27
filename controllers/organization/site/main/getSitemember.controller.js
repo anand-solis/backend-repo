@@ -25,9 +25,30 @@ const getSiteMembers = async (req, res) => {
             $unwind:"$siteMemberData"
         },
         {
+          '$lookup': {
+              'from': 'members', 
+              'localField': 'siteMemberData._id', 
+              'foreignField': 'user', 
+              'as': 'memberPopulateData'
+          }
+      },
+
+      {
+        '$lookup': {
+            'from': 'permissions', 
+            'localField': 'memberPopulateData.permission', 
+            'foreignField': '_id', 
+            'as': 'roleData'
+        }
+    },
+
+        {
             '$project': {
                 'siteMemberData._id': 1, 
                 'siteMemberData.name': 1,
+                "memberPopulateData.inviteAccepted":1,
+                "roleData.name":1,
+
                 _id:0
             }
         }

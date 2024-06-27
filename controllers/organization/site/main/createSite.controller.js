@@ -4,14 +4,19 @@ const Member = require("@/models/organization/main/member.model");
 const SiteMember = require("@/models/organization/site/main/siteMember.model");
 const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
 const formidable = require('formidable');
+const { default: mongoose } = require("mongoose");
 
 const CreateSiteController = async (req, res) => {
 
     const { organization } = req.query;
 
     try {
+        let user = req.user
+        let userId = user?._id
+        userId = new mongoose.Types.ObjectId(userId)
         const form = new formidable.IncomingForm();
         let SiteName, siteStartDate, siteEndDate
+        let siteMember = [userId]
         form.parse(req, async (err, fields, files) => {
             if (err) {
                 console.error('Error parsing form data:', err);
@@ -45,7 +50,8 @@ const CreateSiteController = async (req, res) => {
             endDate: siteEndDate,
             organization: organization,
             createdBy: req?.user?._id,
-            profile: response.file
+            profile: response.file,
+            siteMember:siteMember
         });
 
         const newSiteResponse = await newSite.save();
