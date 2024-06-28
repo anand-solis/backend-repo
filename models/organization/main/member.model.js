@@ -24,7 +24,7 @@ const MemberSchema = mongoose.Schema({
     inviteAccepted: {
         type: Boolean,
         required: true,
-        default: false
+        default: true
     },
     reject: {
         status: {
