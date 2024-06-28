@@ -64,7 +64,7 @@ const GetAllSiteController = async (req, res) => {
                     endDate: site.endDate,
                     profile: site?.url,
                     progress: count.length > 0 ? parseInt(progress / count.length) : 0,
-                    // inviteAccepted: index !== -1 ? siteMembers[index].inviteAccepted : false
+                    inviteAccepted: true
                 });
             }
 
