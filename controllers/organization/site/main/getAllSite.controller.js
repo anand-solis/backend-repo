@@ -4,6 +4,7 @@ const Site = require("@/models/organization/site/main/site.model");
 const TaskTimeline = require("@/models/organization/site/task/taskTimeline.model");
 const Task = require("@/models/organization/site/task/task.model");
 const getStorageFile = require("@/utils/connections/storage/getStorageFile");
+const { default: mongoose } = require("mongoose");
 
 const GetAllSiteController = async (req, res) => {
     const { organization } = req.query;
@@ -13,11 +14,11 @@ const GetAllSiteController = async (req, res) => {
 
         if (member?._id) {
 
-            let siteMembers = await SiteMember
-                .find({ organization: organization, member: member._id, "reject.status": false })
-                .select("site inviteAccepted");
+            // let siteMembers = await SiteMember
+            //     .find({ organization: organization, member: member._id, "reject.status": false })
+            //     .select("site inviteAccepted");
 
-            const haveSiteIds = siteMembers.map(member => member.site);
+            // const haveSiteIds = siteMembers.map(member => member.site);
 
             // const sites = await Site
             //     .find({ _id: { $in: haveSiteIds } })
@@ -27,7 +28,7 @@ const GetAllSiteController = async (req, res) => {
             const sites = await Site.aggregate([
                 {
                     $match:{
-                        _id: { $in: haveSiteIds }
+                        organization: new mongoose.Types.ObjectId(organization)
                     }
                 },
                 {
@@ -41,7 +42,7 @@ const GetAllSiteController = async (req, res) => {
             ])
             let siteWithInviteStatus = [];
             for (const site of sites) {
-                const index = siteMembers ? siteMembers.findIndex(item => item.site.toString() == site._id.toString()) : -1;
+                // const index = siteMembers ? siteMembers.findIndex(item => item.site.toString() == site._id.toString()) : -1;
 
                 const taskTimelines = await TaskTimeline
                     .find({ organization: organization, site: site._id })
@@ -63,7 +64,7 @@ const GetAllSiteController = async (req, res) => {
                     endDate: site.endDate,
                     profile: site?.url,
                     progress: count.length > 0 ? parseInt(progress / count.length) : 0,
-                    inviteAccepted: index !== -1 ? siteMembers[index].inviteAccepted : false
+                    // inviteAccepted: index !== -1 ? siteMembers[index].inviteAccepted : false
                 });
             }
 
