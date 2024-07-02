@@ -1,28 +1,30 @@
 const mongoose = require("mongoose");
 const workCategoryModel = require("../../main/workCategory.model");
 
-const IssuesSchema = mongoose.Schema({
+const materialIssueSchema = mongoose.Schema({
   organization: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Organization",
     required: true,
   },
-  site: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Site",
+  issueType:{
+    type:String
+  },
+  materialName:{
+    type:String,
     required: true,
   },
   issueTitle:{
-    type:String
-  },
-  floor: {
+    type:String,
+    required: true,
+  },    
+  vendorId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Floor",
-    // required: true,
+    ref: "rootVendor",
+    required: true,
   },
-  workCategory: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "WorkCategory",
+  dueDate: {
+    type: Date,
     // required: true,
   },
   status: {
@@ -30,31 +32,20 @@ const IssuesSchema = mongoose.Schema({
     enum:["Pending","Resolved"],
     default:"Pending"
   },
-  assignUser: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: [true, "Assign user Id is required."],
-    },
-  ],
-  reason: {
+  description: {
     type: String,
     // required: [true, "Issue Reason  is required."],
-  },
-  dueDate: {
-    type: String,
-    // required: [true, "Due Date is required."],
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  Files: {
+  profile: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "File",
-  },
+    ref: "File"
+},
 },
 { timestamps: true }
 );
 
-module.exports = mongoose.model("Issues", IssuesSchema);
+module.exports = mongoose.model("material_issue", materialIssueSchema);

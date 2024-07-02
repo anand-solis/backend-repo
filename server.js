@@ -112,6 +112,10 @@ app.use(require("@/routes/stock/inventory.routes"));
 //API Organization  --> money transfer
 app.use(require("@/routes/organization/main/moneyTransfer.routes"));
 
+// material issue
+app.use(require("@/routes/organization/site/material/materialIssue.routes"));
+
+
 async function startServer() {
   try {
     // Connect to the database
