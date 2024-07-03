@@ -110,6 +110,8 @@ const updateMaterailIssue = async (req, res) => {
         if (response?.fields?.description?.[0] !== undefined) IssuesData['description'] = response.fields.description[0];
         if (response?.fields?.issueTitle?.[0] !== undefined) IssuesData["issueTitle"] = response.fields.issueTitle[0];
         if (response?.fields?.vendorId?.[0] !== undefined) IssuesData["vendorId"] = response.fields.vendorId[0];
+        if (response?.fields?.status?.[0] !== undefined) IssuesData["status"] = response.fields.status[0];
+
 
         const issueData = await materialIssueModels.findByIdAndUpdate(issueId, IssuesData);
 
@@ -157,6 +159,14 @@ const getMaterailIssues = async (req, res) => {
                     'localField': 'vendorId',
                     'foreignField': '_id',
                     'as': 'vendors'
+                }
+            },
+            {
+                '$lookup': {
+                    'from': 'vendordetails',
+                    'localField': 'vendors.vendor',
+                    'foreignField': '_id',
+                    'as': 'vendorDetailas'
                 }
             }
         ]);
