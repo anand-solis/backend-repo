@@ -1,13 +1,15 @@
 const materialIssueModels = require("@/models/organization/main/material/materialIssue.model")
 const uploadStorageFile = require("@/utils/connections/storage/uploadStorageFile");
+const getStorageFile = require("@/utils/connections/storage/getStorageFile");
 const { default: mongoose } = require("mongoose");
 
 const addMaterailIssue = async (req, res) => {
     try {
-        const { organization } = req.query;
+        const { organization ,site} = req.query;
         let userId = req.user?._id
-        const IssuesData = { organization: organization, createdBy: userId };
+        const IssuesData = { organization: organization, createdBy: userId,site };
         const response = await uploadStorageFile(req, ["image"]);
+        console.log("response////////////////////////////////////",response)
         if (response.success) {
             IssuesData["profile"] = response?.file
         }
@@ -19,6 +21,7 @@ const addMaterailIssue = async (req, res) => {
         if (response?.fields?.description?.[0] !== undefined) IssuesData['description'] = response.fields.description[0];
         if (response?.fields?.issueTitle?.[0] !== undefined) IssuesData["issueTitle"] = response.fields.issueTitle[0];
         if (response?.fields?.vendorId?.[0] !== undefined) IssuesData["vendorId"] = response.fields.vendorId[0];
+        if (response?.fields?.site?.[0] !== undefined) IssuesData["site"] = response.fields.site[0];
 
         const issueData = await materialIssueModels.create(IssuesData);
 
@@ -90,7 +93,7 @@ const deleteMaterialIssues = async (req, res) => {
 const updateMaterailIssue = async (req, res) => {
     try {
 
-        const { organization, issueId } = req.query;
+        const { organization, issueId ,site} = req.query;
         if (!issueId) {
             return res.status(404).json({
                 success: true,
@@ -98,6 +101,9 @@ const updateMaterailIssue = async (req, res) => {
             });
         }
         const IssuesData = {};
+        if(site){
+            IssuesData['site'] = site
+        }
         const response = await uploadStorageFile(req, ["image"]);
         if (response.success) {
             IssuesData["profile"] = response?.file
@@ -112,7 +118,7 @@ const updateMaterailIssue = async (req, res) => {
         if (response?.fields?.vendorId?.[0] !== undefined) IssuesData["vendorId"] = response.fields.vendorId[0];
         if (response?.fields?.status?.[0] !== undefined) IssuesData["status"] = response.fields.status[0];
 
-
+console.log("IssuesData...................................",IssuesData)
         const issueData = await materialIssueModels.findByIdAndUpdate(issueId, IssuesData);
 
         if (issueData) {
@@ -168,8 +174,48 @@ const getMaterailIssues = async (req, res) => {
                     'foreignField': '_id',
                     'as': 'vendorDetailas'
                 }
+            },
+            {
+                '$lookup': {
+                    'from': 'sites',
+                    'localField': 'site',
+                    'foreignField': '_id',
+                    'as': 'siteDetails'
+                }
+            },
+            {
+                '$lookup': {
+                    'from': 'files',
+                    'localField': 'profile',
+                    'foreignField': '_id',
+                    'as': 'filedetails'
+                }
+            },
+            {
+                '$project': {
+                    'issueType': 1, 
+                    'materialName': 1, 
+                    'issueTitle': 1, 
+                    'dueDate': 1, 
+                    'status': 1, 
+                    'description': 1, 
+                    'createdAt': 1,
+                    updatedAt:1,
+                    "users.name":1,
+                    "vendorDetailas.vendorName":1,
+                    "siteDetails.name":1,
+                    "filedetails.url" :1
+                    // "users.name":1,
+                }
             }
         ]);
+
+        for (const site of issueData) {
+            if (site?.filedetails.length && site?.filedetails[0]?.url) {
+                const profile = await getStorageFile(site?.filedetails[0]?.url);
+                site.url = profile.file;
+            }
+        }
 
         if (issueData.length) {
             return res.status(200).json({

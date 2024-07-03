@@ -7,6 +7,11 @@ const materialIssueSchema = mongoose.Schema({
     ref: "Organization",
     required: true,
   },
+  site: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Site",
+    required: [true, "organization required."],
+  },
   issueType:{
     type:String
   },
