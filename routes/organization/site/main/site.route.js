@@ -9,6 +9,8 @@ const CreateSiteController = require("../../../../controllers/organization/site/
 const UpdateSiteController = require("../../../../controllers/organization/site/main/updateSite.controller");
 const addSiteMembers = require("../../../../controllers/organization/site/main/addSiteMembers.controller")
 const deleteSiteController = require("../../../../controllers/organization/site/main/deleteSite.controller")
+const UpdateSiteDocumentController = require("../../../../controllers/organization/site/main/updateSiteDocument.controller")
+const GetSiteDocumentController = require("../../../../controllers/organization/site/main/getSiteUploadDocument.controller")
 
 const router = express.Router();
 
@@ -55,6 +57,20 @@ router.delete(
     Middleware,
     (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
     deleteSiteController
+);
+
+router.put(
+    "/site/updateSideDoccumnet",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
+    UpdateSiteDocumentController
+);
+
+router.get(
+    "/site/getSideDoccumnet",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "insert", plan),
+    GetSiteDocumentController
 );
 
 module.exports = router;

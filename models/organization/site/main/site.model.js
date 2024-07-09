@@ -27,6 +27,9 @@ const SiteSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "File"
     },
+    siteDocuments:{
+        Type:Array
+    },
     siteMember:{
         type:Array
     }

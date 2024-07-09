@@ -115,6 +115,9 @@ app.use(require("@/routes/organization/main/moneyTransfer.routes"));
 // material issue
 app.use(require("@/routes/organization/site/material/materialIssue.routes"));
 
+// GRN
+app.use(require("@/routes/organization/org-commercial/GRN.routes"));
+
 
 async function startServer() {
   try {

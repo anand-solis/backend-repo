@@ -15,7 +15,7 @@ const deleteMemberController = async (req, res) => {
         }
        
         memberDetails= await Member.findById(id)
-        if(!inventoryDetails){
+        if(!memberDetails){
             return res.status(404).json({
                 success: true,
                 Error: "",

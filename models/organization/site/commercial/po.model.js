@@ -65,6 +65,9 @@ const PurchaseOrder = mongoose.Schema({
         type: Number,
         required: true,
       },
+      deliveryQuantity: {
+        type: Number,
+      },
       unitCost: {
         type: Number,
         required: true,
@@ -113,6 +116,11 @@ const PurchaseOrder = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "File"
 },
+poOrderedStatus:{
+  type:String,
+  default:"Approval Pending",
+  enum:["Approval Pending","Delivered","Partially Delivered","Ordered","Excess Delivered"]
+}
 },
 {
   timestamps:true

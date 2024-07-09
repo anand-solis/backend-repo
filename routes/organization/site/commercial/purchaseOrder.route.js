@@ -3,7 +3,8 @@ const GetPurchaseOrder = require("@/controllers/organization/site/commercial/get
 const Middleware = require("@/utils/middleware/middleware");
 const organizationMiddleware = require("@/utils/middleware/organization/organizationMiddleware");
 const siteMiddleware = require("@/utils/middleware/organization/siteMiddleware");
-const updatePurchaseOrderProfile = require("@/controllers/organization/site/commercial/addPoProfile.controller")
+const updatePurchaseOrderProfile = require("@/controllers/organization/site/commercial/addPoProfile.controller");
+const getUpcomingPurchaseOrder = require("@/controllers/organization/site/commercial/upcomingPurchageOrder.controller")
 const express = require("express")
 const router = express.Router();
 
@@ -28,6 +29,14 @@ router.get(
  siteMiddleware,
  GetPurchaseOrder
 );
+router.get(
+  "/purchaseOrder/upcoming",
+  Middleware,
+  (req, res, next) =>
+    organizationMiddleware(req, res, next, key, "insert", plan),
+  siteMiddleware,
+  getUpcomingPurchaseOrder
+ );
 router.put(
   "/purchaseOrder/profile",
   Middleware,
