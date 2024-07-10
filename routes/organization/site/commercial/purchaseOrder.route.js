@@ -34,7 +34,7 @@ router.get(
   Middleware,
   (req, res, next) =>
     organizationMiddleware(req, res, next, key, "insert", plan),
-  siteMiddleware,
+  // siteMiddleware,
   getUpcomingPurchaseOrder
  );
 router.put(
