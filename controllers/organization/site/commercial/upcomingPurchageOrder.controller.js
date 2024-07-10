@@ -20,7 +20,7 @@ const getUpcomingPurchaseOrder = async (req, res) => {
     }
     const POData = await PO.find(matchObj)
       .populate({
-        path: "indentId",
+        path: "indentId.id",
         populate: [
           {
             path: "materialId",
@@ -33,6 +33,9 @@ const getUpcomingPurchaseOrder = async (req, res) => {
             select: "name email"
           },
         ],
+      })
+      .populate({
+        path:"material.itemDetails"
       })
       .populate({
         path: "vendorId",
@@ -50,10 +53,17 @@ const getUpcomingPurchaseOrder = async (req, res) => {
         select: "finaicialdetails vendor termsAndCondition",
       }).populate("createdBy");
     console.log("POData.....................", POData.length)
-    return res.status(200).json({
+    if(POData.length){
+      return res.status(200).json({
+        success: true,
+        data: POData,
+        message: "Purchase Data Get Successfully.",
+      });
+    }
+    return res.status(404).json({
       success: true,
       data: POData,
-      message: "Purchase Data Get Successfully.",
+      message: "Purchase Data not Found",
     });
   } catch (err) {
     return res.status(500).json({
