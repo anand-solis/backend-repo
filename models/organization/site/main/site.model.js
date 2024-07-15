@@ -23,6 +23,14 @@ const SiteSchema = mongoose.Schema({
         ref: "User",
         required: true
     },
+    sitePocId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
+    siteOfficeId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
     profile: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "File"

@@ -1,6 +1,7 @@
 const PO = require("@/models/organization/site/commercial/po.model");
 const { default: mongoose } = require("mongoose");
-const pagination = require("../../../../utils/pagination")
+const pagination = require("../../../../utils/pagination");
+const { populate } = require("@/models/organization/stock/inventory.model");
 
 const getUpcomingPurchaseOrder = async (req, res) => {
 
@@ -51,8 +52,21 @@ const getUpcomingPurchaseOrder = async (req, res) => {
           },
         ],
         select: "finaicialdetails vendor termsAndCondition",
-      }).populate("createdBy");
-    console.log("POData.....................", POData.length)
+      }).populate("createdBy")
+      .populate({
+        path:"site",
+        select:"siteOfficeId sitePocId",
+        populate:[
+          {
+            path:"siteOfficeId",
+            select:"name"
+          },
+          {
+            path:"sitePocId",
+            select:"name"
+          }
+        ]
+      })
     if(POData.length){
       return res.status(200).json({
         success: true,
@@ -66,6 +80,7 @@ const getUpcomingPurchaseOrder = async (req, res) => {
       message: "Purchase Data not Found",
     });
   } catch (err) {
+    console.log(err)
     return res.status(500).json({
       success: false,
       Error: err,

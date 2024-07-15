@@ -34,6 +34,9 @@ const UpdateSiteController = async (req, res) => {
         if (response?.fields?.name?.[0] !== undefined) updatedFields.name = response.fields.name[0];
         if (response?.fields?.startDate?.[0] !== undefined) updatedFields.startDate = response.fields.startDate[0];
         if (response?.fields?.endDate?.[0] !== undefined) updatedFields.endDate = response.fields.endDate[0];
+        if (response?.fields?.sitePocId?.[0] !== undefined) updatedFields.sitePocId = response.fields.sitePocId[0];
+        if (response?.fields?.siteOfficeId?.[0] !== undefined) updatedFields.siteOfficeId = response.fields.siteOfficeId[0];
+
 
         await Site.findOneAndUpdate(
             {

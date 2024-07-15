@@ -17,17 +17,26 @@ const CreateSiteController = async (req, res) => {
         const form = new formidable.IncomingForm();
         let SiteName, siteStartDate, siteEndDate
         let siteMember = [userId]
+        let PocDetails = {}
         form.parse(req, async (err, fields, files) => {
             if (err) {
                 console.error('Error parsing form data:', err);
                 return res.status(500).json({ success: false, error: 'Error parsing form data' });
 
             }
-            let { name, startDate, endDate } = fields
+            let { name, startDate, endDate ,sitePocId,siteOfficeId} = fields
             name = name[0]
             startDate = startDate[0]
             endDate = endDate[0]
             SiteName = name
+             sitePocId = sitePocId[0]
+             siteOfficeId = siteOfficeId[0]
+            if(sitePocId){
+                PocDetails["sitePocId"] = sitePocId
+            }
+            if(siteOfficeId){
+                PocDetails["siteOfficeId"] = siteOfficeId
+            }
             siteStartDate = startDate
             siteEndDate = endDate
 
@@ -51,7 +60,8 @@ const CreateSiteController = async (req, res) => {
             organization: organization,
             createdBy: req?.user?._id,
             profile: response.file,
-            siteMember:siteMember
+            siteMember:siteMember,
+            ...PocDetails
         });
 
         const newSiteResponse = await newSite.save();
