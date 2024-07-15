@@ -8,9 +8,9 @@ const { default: mongoose } = require("mongoose");
 
 const CreateSiteController = async (req, res) => {
 
-    const { organization } = req.query;
 
     try {
+        const { organization } = req.query;
         let user = req.user
         let userId = user?._id
         userId = new mongoose.Types.ObjectId(userId)
@@ -29,12 +29,12 @@ const CreateSiteController = async (req, res) => {
             startDate = startDate[0]
             endDate = endDate[0]
             SiteName = name
-             sitePocId = sitePocId[0]
-             siteOfficeId = siteOfficeId[0]
             if(sitePocId){
+             sitePocId = sitePocId[0]
                 PocDetails["sitePocId"] = sitePocId
             }
             if(siteOfficeId){
+             siteOfficeId = siteOfficeId[0]
                 PocDetails["siteOfficeId"] = siteOfficeId
             }
             siteStartDate = startDate
