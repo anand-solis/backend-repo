@@ -8,6 +8,7 @@ const GetAllTaskController = require("../../../../controllers/organization/site/
 const GetTaskController = require("../../../../controllers/organization/site/task/main/getTask.controller");
 const AddTaskController = require("../../../../controllers/organization/site/task/main/addTask.controller");
 const UpdateTaskController = require("../../../../controllers/organization/site/task/main/updateTask.controller");
+const GetAllTypeTaskController = require("@/controllers/organization/site/task/main/getAllTypeTask")
 
 const router = express.Router();
 
@@ -46,6 +47,15 @@ router.patch(
     siteMiddleware,
     taskMiddleware,
     UpdateTaskController
+);
+
+router.get(
+    "/task/getTaks",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
+    siteMiddleware,
+    // taskMiddleware,
+    GetAllTypeTaskController
 );
 
 module.exports = router;

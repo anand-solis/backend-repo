@@ -29,12 +29,12 @@ const CreateSiteController = async (req, res) => {
             startDate = startDate[0]
             endDate = endDate[0]
             SiteName = name
+            siteOfficeId = siteOfficeId[0]
             if(sitePocId){
              sitePocId = sitePocId[0]
                 PocDetails["sitePocId"] = sitePocId
             }
             if(siteOfficeId){
-             siteOfficeId = siteOfficeId[0]
                 PocDetails["siteOfficeId"] = siteOfficeId
             }
             siteStartDate = startDate
@@ -61,7 +61,7 @@ const CreateSiteController = async (req, res) => {
             createdBy: req?.user?._id,
             profile: response.file,
             siteMember:siteMember,
-            ...PocDetails
+            ...PocDetails,
         });
 
         const newSiteResponse = await newSite.save();

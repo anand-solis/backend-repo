@@ -117,6 +117,20 @@ app.use(require("@/routes/organization/site/material/materialIssue.routes"));
 
 // GRN
 app.use(require("@/routes/organization/org-commercial/GRN.routes"));
+app.use((req, res) => {
+  let url = req.url?.split("?")[0]
+let method = req.method
+  console.log("lllllllllllllllllllllll",req.method);
+  res.status(404).send({
+    status:false,
+    message:`Request not found `,
+    url:url,
+    method:method,
+    status:false,
+    data:{  }
+  });
+});
+
 
 
 async function startServer() {
