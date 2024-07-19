@@ -1,16 +1,12 @@
 const Task = require("@/models/organization/site/task/task.model");
 
 const UpdateTaskController = async (req, res) => {
-    const { taskName,taskNumber, description, workCategory, endDate, startDate, expectedCost, totalCost } = req.body;
-    const { organization, site, floor, task } = req.query;
-
     try {
-        await Task.findOneAndUpdate(
+        const { taskName, taskNumber, description, workCategory, endDate, startDate, progress } = req.body;
+        const { organization, site, floor, task } = req.query;
+        let data = await Task.findOneAndUpdate(
             {
                 _id: task,
-                organization: organization,
-                site: site,
-                floor: floor
             },
             {
                 taskNumber: taskNumber,
@@ -19,11 +15,12 @@ const UpdateTaskController = async (req, res) => {
                 workCategory: workCategory,
                 endDate: endDate,
                 startDate: startDate,
-                expectedCost: expectedCost,
-                totalCost: totalCost
+                progress: progress
             }
         );
-
+        if (data) {
+            return res.status(404).json({ success: false, error: "", message: "Task not updated" });
+        }
         return res.status(200).json({ success: true, error: "", message: "Task successfully updated." });
     } catch (error) {
         return res.status(500).json({ success: false, error: `Error: ${error}`, message: "" });

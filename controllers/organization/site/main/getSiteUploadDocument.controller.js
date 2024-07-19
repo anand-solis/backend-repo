@@ -26,6 +26,7 @@ const GetSiteDocumentController = async (req, res) => {
             if (siteDetails[i]) {
                 let profile = await getStorageFile(siteDetails[i]?.url);
                 fileArray.push({
+                    id:siteDetails[i]?._id,
                     file: profile?.file
                 })
 

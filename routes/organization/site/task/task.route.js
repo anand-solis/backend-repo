@@ -8,7 +8,8 @@ const GetAllTaskController = require("../../../../controllers/organization/site/
 const GetTaskController = require("../../../../controllers/organization/site/task/main/getTask.controller");
 const AddTaskController = require("../../../../controllers/organization/site/task/main/addTask.controller");
 const UpdateTaskController = require("../../../../controllers/organization/site/task/main/updateTask.controller");
-const GetAllTypeTaskController = require("@/controllers/organization/site/task/main/getAllTypeTask")
+const GetAllTypeTaskController = require("@/controllers/organization/site/task/main/getAllTypeTask");
+const deleteTaskController = require("@/controllers/organization/site/task/main/deleteTaskController")
 
 const router = express.Router();
 
@@ -56,6 +57,14 @@ router.get(
     siteMiddleware,
     // taskMiddleware,
     GetAllTypeTaskController
+);
+router.delete(
+    "/task/delete",
+    Middleware,
+    (req, res, next) => organizationMiddleware(req, res, next, key, "update", plan),
+    siteMiddleware,
+    // taskMiddleware,
+    deleteTaskController
 );
 
 module.exports = router;
