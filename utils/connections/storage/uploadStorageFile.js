@@ -39,7 +39,7 @@ const uploadStorageFile = async (req, allowed) => {
                 },
                 application: {
                     size: 10000000, // 10MB
-                    extension: ["docs", "pdf", "xlsx", "csv"]
+                    extension: ["docs", "pdf", "xlsx", "csv","png", "jpeg", "jpg"]
                 },
                 video: {
                     size: 100000000, // 100MB
