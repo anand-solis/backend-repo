@@ -117,6 +117,10 @@ app.use(require("@/routes/organization/site/material/materialIssue.routes"));
 
 // GRN
 app.use(require("@/routes/organization/org-commercial/GRN.routes"));
+
+// Material Transfer
+app.use(require("@/routes/organization/main/materialTransfer.routes"));
+
 app.use((req, res) => {
   let url = req.url?.split("?")[0]
 let method = req.method
