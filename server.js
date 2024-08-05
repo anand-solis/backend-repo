@@ -124,7 +124,7 @@ app.use(require("@/routes/organization/main/materialTransfer.routes"));
 app.use((req, res) => {
   let url = req.url?.split("?")[0]
 let method = req.method
-  console.log("lllllllllllllllllllllll",req.method);
+  // console.log("lllllllllllllllllllllll",req.method);
   res.status(404).send({
     status:false,
     message:`Request not found `,
